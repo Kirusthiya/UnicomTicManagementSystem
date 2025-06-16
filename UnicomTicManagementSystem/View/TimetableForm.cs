@@ -63,28 +63,7 @@ namespace UnicomTicManagementSystem.View
 
         }
 
-        private async void btnAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var timetable = new Timetable
-                {
-                    SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
-                    RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
-                    TimeSlot = txtTime.Text,
-                    Day = cmbDay.Text,
-                    UserID = Convert.ToString(cmbLEcture.SelectedValue)
-                };
-
-                bool result = await controller.AddTimetableAsync(timetable);
-                MessageBox.Show(result ? "Timetable added!" : "Failed to add.");
-                LoadData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Add Error: " + ex.Message);
-            }
-        }
+       
 
         private async void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -244,9 +223,27 @@ namespace UnicomTicManagementSystem.View
 
         }
 
-        private void btnAdd_Click_1(object sender, EventArgs e)
+        private async void btnAdd_Click_1(object sender, EventArgs e)
         {
+            try
+            {
+                var timetable = new Timetable
+                {
+                    SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
+                    RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
+                    TimeSlot = txtTime.Text,
+                    Day = cmbDay.Text,
+                    UserID = Convert.ToString(cmbLEcture.SelectedValue)
+                };
 
+                bool result = await controller.AddTimetableAsync(timetable);
+                MessageBox.Show(result ? "Timetable added!" : "Failed to add.");
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Add Error: " + ex.Message);
+            }
         }
 
         private void txtTime_TextChanged(object sender, EventArgs e)

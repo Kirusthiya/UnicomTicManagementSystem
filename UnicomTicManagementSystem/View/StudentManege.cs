@@ -61,131 +61,15 @@ namespace UnicomTicManagementSystem.View
             txtUserId.Text = "";
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private async void btnAdd_Click(object sender, EventArgs e)
-        {
-            if (!ValidateInput()) return;
-
-            var student = new Student
-            {
-                UserID = txtUserId.Text.Trim(),
-                Name = txtName.Text.Trim(),
-                Address = txtAddress.Text.Trim(),
-                PhoneNumber = txtPhoneNO.Text.Trim(),
-                Gender = GetSelectedGender(),
-                CourseID = (int)cmbCourse.SelectedValue
-            };
-
-            bool success = await studentController.AddStudentAsync(student);
-            if (success)
-            {
-                MessageBox.Show("Student added successfully!");
-                ClearForm();
-                await LoadStudents();
-            }
-            else
-            {
-                MessageBox.Show("Failed to add student.");
-            }
-        }
-
-        private async void btnUpdate_Click(object sender, EventArgs e)
-        {
-            if (!ValidateInput()) return;
-
-            var student = new Student
-            {
-                UserID = txtUserId.Text.Trim(),
-                Name = txtName.Text.Trim(),
-                Address = txtAddress.Text.Trim(),
-                PhoneNumber = txtPhoneNO.Text.Trim(),
-                Gender = GetSelectedGender(),
-                CourseID = (int)cmbCourse.SelectedValue
-            };
-
-            bool success = await studentController.UpdateStudentAsync(student);
-            if (success)
-            {
-                MessageBox.Show("Student updated successfully!");
-                ClearForm();
-                await LoadStudents();
-            }
-            else
-            {
-                MessageBox.Show("Failed to update student.");
-            }
-        }
-
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtUserId.Text))
-            {
-                MessageBox.Show("Please enter User ID to search.");
-                return;
-            }
-            var userId = txtUserId.Text.Trim();
-            if (string.IsNullOrEmpty(userId))
-            {
-                MessageBox.Show("Please enter a valid User ID.");
-                return;
-            }
-            bool success = await studentController.DeleteStudentAsync(userId);
-            if (success)
-            {
-                MessageBox.Show("Student deleted successfully!");
-                ClearForm();
-                await LoadStudents();
-            }
-            else
-            {
-                MessageBox.Show("Failed to delete student.");
-            }
-        }
-
-        private async void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtUserId.Text))
-            {
-                MessageBox.Show("Please enter User ID to search.");
-                return;
-            }
-            var userId = txtUserId.Text.Trim();
-            if (string.IsNullOrEmpty(userId))
-            {
-                MessageBox.Show("Please enter a valid User ID.");
-                return;
-            }
-
-
-            var student = await studentController.GetStudentByUserIdAsync(userId);
-            if (student != null)
-            {
-                txtName.Text = student.Name;
-                txtAddress.Text = student.Address;
-                txtPhoneNO.Text = student.PhoneNumber;
-                cmbCourse.SelectedValue = student.CourseID;
-
-                if (student.Gender == "Male") rdoMale.Checked = true;
-                else if (student.Gender == "Female") rdoFemale.Checked = true;
-                else if (student.Gender == "Other") rdoOther.Checked = true;
-            }
-            else
-            {
-                MessageBox.Show("Student not found.");
-            }
-        }
         private bool ValidateInput()
         {
             if (string.IsNullOrWhiteSpace(txtUserId.Text) ||
-        string.IsNullOrWhiteSpace(txtName.Text) ||
-        string.IsNullOrWhiteSpace(txtAddress.Text) ||
-        string.IsNullOrWhiteSpace(txtPhoneNO.Text) ||
-        string.IsNullOrWhiteSpace(GetSelectedGender()) ||
-        cmbCourse.SelectedIndex == -1)
+            string.IsNullOrWhiteSpace(txtName.Text) ||
+            string.IsNullOrWhiteSpace(txtAddress.Text) ||
+            string.IsNullOrWhiteSpace(txtPhoneNO.Text) ||
+            string.IsNullOrWhiteSpace(GetSelectedGender()) ||
+            cmbCourse.SelectedIndex == -1)
             {
                 MessageBox.Show("Please fill all fields.");
                 return false;
@@ -250,14 +134,64 @@ namespace UnicomTicManagementSystem.View
 
         }
 
-        private void btnSearch_Click_1(object sender, EventArgs e)
+        private async void btnSearch_Click_1(object sender, EventArgs e)
         {
+            
+                if (string.IsNullOrEmpty(txtUserId.Text))
+                {
+                    MessageBox.Show("Please enter User ID to search.");
+                    return;
+                }
+                var userId = txtUserId.Text.Trim();
+                if (string.IsNullOrEmpty(userId))
+                {
+                    MessageBox.Show("Please enter a valid User ID.");
+                    return;
+                }
 
-        }
 
-        private void btnDelete_Click_1(object sender, EventArgs e)
+                var student = await studentController.GetStudentByUserIdAsync(userId);
+                if (student != null)
+                {
+                    txtName.Text = student.Name;
+                    txtAddress.Text = student.Address;
+                    txtPhoneNO.Text = student.PhoneNumber;
+                    cmbCourse.SelectedValue = student.CourseID;
+
+                    if (student.Gender == "Male") rdoMale.Checked = true;
+                    else if (student.Gender == "Female") rdoFemale.Checked = true;
+                    else if (student.Gender == "Other") rdoOther.Checked = true;
+                }
+                else
+                {
+                    MessageBox.Show("Student not found.");
+                }
+         }
+
+        private async void btnDelete_Click_1(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(txtUserId.Text))
+            {
+                MessageBox.Show("Please enter User ID to search.");
+                return;
+            }
+            var userId = txtUserId.Text.Trim();
+            if (string.IsNullOrEmpty(userId))
+            {
+                MessageBox.Show("Please enter a valid User ID.");
+                return;
+            }
+            bool success = await studentController.DeleteStudentAsync(userId);
+            if (success)
+            {
+                MessageBox.Show("Student deleted successfully!");
+                ClearForm();
+                await LoadStudents();
+            }
+            else
+            {
+                MessageBox.Show("Failed to delete student.");
+            }
         }
 
         private void txtAddress_TextChanged(object sender, EventArgs e)
@@ -265,9 +199,32 @@ namespace UnicomTicManagementSystem.View
 
         }
 
-        private void btnUpdate_Click_1(object sender, EventArgs e)
+        private async void btnUpdate_Click_1(object sender, EventArgs e)
         {
 
+            if (!ValidateInput()) return;
+
+            var student = new Student
+            {
+                UserID = txtUserId.Text.Trim(),
+                Name = txtName.Text.Trim(),
+                Address = txtAddress.Text.Trim(),
+                PhoneNumber = txtPhoneNO.Text.Trim(),
+                Gender = GetSelectedGender(),
+                CourseID = (int)cmbCourse.SelectedValue
+            };
+
+            bool success = await studentController.UpdateStudentAsync(student);
+            if (success)
+            {
+                MessageBox.Show("Student updated successfully!");
+                ClearForm();
+                await LoadStudents();
+            }
+            else
+            {
+                MessageBox.Show("Failed to update student.");
+            }
         }
 
         private void lblCourse_Click(object sender, EventArgs e)
@@ -280,9 +237,32 @@ namespace UnicomTicManagementSystem.View
 
         }
 
-        private void btnAdd_Click_1(object sender, EventArgs e)
+        private async void btnAdd_Click_1(object sender, EventArgs e)
         {
 
+            if (!ValidateInput()) return;
+
+            var student = new Student
+            {
+                UserID = txtUserId.Text.Trim(),
+                Name = txtName.Text.Trim(),
+                Address = txtAddress.Text.Trim(),
+                PhoneNumber = txtPhoneNO.Text.Trim(),
+                Gender = GetSelectedGender(),
+                CourseID = (int)cmbCourse.SelectedValue
+            };
+
+            bool success = await studentController.AddStudentAsync(student);
+            if (success)
+            {
+                MessageBox.Show("Student added successfully!");
+                ClearForm();
+                await LoadStudents();
+            }
+            else
+            {
+                MessageBox.Show("Failed to add student.");
+            }
         }
 
         private void lblAddress_Click(object sender, EventArgs e)
@@ -316,6 +296,11 @@ namespace UnicomTicManagementSystem.View
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
