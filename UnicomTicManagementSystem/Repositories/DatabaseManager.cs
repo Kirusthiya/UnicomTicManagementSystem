@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
@@ -16,6 +15,7 @@ namespace UnicomTicManagementSystem.Repositories
         {
             SQLiteConnection conn = new SQLiteConnection(ConnectionString);
             conn.Open();
+            Console.WriteLine("Connection Opend");
             return conn;
         }
     }

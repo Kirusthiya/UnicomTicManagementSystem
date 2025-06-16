@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using UnicomTicManagementSystem.Model;
 using UnicomTicManagementSystem.Repositories;
 
@@ -41,42 +42,40 @@ namespace UnicomTicManagementSystem.Controller
         {
             try
             {
-                // Auto-add @gmail.com if missing
                 if (!user.UserName.EndsWith("@gmail.com"))
                 {
                     user.UserName += "@gmail.com";
                 }
 
-                // Validate email format
                 if (!user.UserName.EndsWith("@gmail.com") || user.UserName.Contains(" "))
                     throw new Exception("Invalid email format. Must be a valid Gmail address.");
 
-                // Check password
                 if (string.IsNullOrWhiteSpace(user.Password) || user.Password.Length < 8)
                     throw new Exception("Password must be at least 8 characters long.");
 
-                // Confirm password check
                 if (user.Password != confirmPassword)
                     throw new Exception("Passwords do not match.");
 
-                // Generate UserID
                 user.UserID = GenerateUserID(user.Role);
 
-                using (var conn = DatabaseManager.GetConnection())
+              
+                using (var connCheck = DatabaseManager.GetConnection())
                 {
-                    // Check duplicate username
                     string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
-                    using (var checkCmd = new SQLiteCommand(checkQuery, conn))
+                    using (var checkCmd = new SQLiteCommand(checkQuery, connCheck))
                     {
                         checkCmd.Parameters.AddWithValue("@Username", user.UserName);
-                        long count = (long)await checkCmd.ExecuteScalarAsync();
+                        long count = (long)(await checkCmd.ExecuteScalarAsync());
                         if (count > 0)
                             throw new Exception("A user with this email already exists.");
                     }
+                }
 
-                    // Insert new user
+               
+                using (var connInsert = DatabaseManager.GetConnection())
+                {
                     string insertQuery = "INSERT INTO Users (UserID, Username, Password, Role) VALUES (@UserID, @Username, @Password, @Role)";
-                    using (var insertCmd = new SQLiteCommand(insertQuery, conn))
+                    using (var insertCmd = new SQLiteCommand(insertQuery, connInsert))
                     {
                         insertCmd.Parameters.AddWithValue("@UserID", user.UserID);
                         insertCmd.Parameters.AddWithValue("@Username", user.UserName);
@@ -90,7 +89,7 @@ namespace UnicomTicManagementSystem.Controller
             }
             catch (Exception ex)
             {
-                Console.WriteLine("User creation error: " + ex.Message);
+                MessageBox.Show("User creation error: " + ex.Message);
                 return false;
             }
         }

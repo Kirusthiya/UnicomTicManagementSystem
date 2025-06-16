@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SQLite;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using UnicomTicManagementSystem.Model;
 using UnicomTicManagementSystem.Repositories;
 
@@ -88,8 +89,18 @@ namespace UnicomTicManagementSystem.Controller
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Update password error: " + ex.Message);
+                MessageBox.Show("Update password error: " + ex.Message);
                 return false;
+            }
+        }
+        public async Task<bool> IsAnyUSerExitsAsync()
+        {
+            using (var conn = DatabaseManager.GetConnection())
+            {
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT COUNT(*) FROM Users";
+                var result = await cmd.ExecuteScalarAsync();
+                return Convert.ToInt32(result) > 0;
             }
         }
     }

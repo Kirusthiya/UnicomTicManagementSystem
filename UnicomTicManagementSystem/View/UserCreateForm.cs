@@ -36,7 +36,7 @@ namespace UnicomTicManagementSystem.View
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            LoadForm(new LoginForm());
+            LoadForm(new AdminMenuForm());
         }
 
         private void panelMain_Paint(object sender, PaintEventArgs e)

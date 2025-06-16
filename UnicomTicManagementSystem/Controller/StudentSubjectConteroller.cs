@@ -67,11 +67,12 @@ namespace UnicomTicManagementSystem.Controller
                     using (var conn = DatabaseManager.GetConnection())
                     {
                         string query = @"
-                    SELECT ss.Id, ss.UserID, u.Name AS StudentName,
-                           ss.SubjectID, s.SubjectName
-                    FROM StudentSubjects ss
-                    JOIN Users u ON ss.UserID = u.UserID
-                    JOIN Subjects s ON ss.SubjectID = s.SubjectID";
+                            SELECT ss.Id, ss.UserID, u.Name AS StudentName,
+                                   ss.SubjectID, s.SubjectName
+                            FROM StudentSubjects ss
+                            JOIN Users u ON ss.UserID = u.UserID
+                            JOIN Subjects s ON ss.SubjectID = s.SubjectID"
+                        ;
 
                         using (var cmd = new SQLiteCommand(query, conn))
                         using (var reader = await cmd.ExecuteReaderAsync())
@@ -106,12 +107,13 @@ namespace UnicomTicManagementSystem.Controller
                     using (var conn = DatabaseManager.GetConnection())
                     {
                         string query = @"
-                    SELECT ss.Id, ss.UserID, u.Name AS StudentName,
-                           ss.SubjectID, s.SubjectName
-                    FROM StudentSubjects ss
-                    JOIN Users u ON ss.UserID = u.UserID
-                    JOIN Subjects s ON ss.SubjectID = s.SubjectID
-                    WHERE u.Name LIKE @Name";
+                            SELECT ss.Id, ss.UserID, u.Name AS StudentName,
+                                   ss.SubjectID, s.SubjectName
+                            FROM StudentSubjects ss
+                            JOIN Users u ON ss.UserID = u.UserID
+                            JOIN Subjects s ON ss.SubjectID = s.SubjectID
+                            WHERE u.Name LIKE @Name"
+                        ;
 
                         using (var cmd = new SQLiteCommand(query, conn))
                         {

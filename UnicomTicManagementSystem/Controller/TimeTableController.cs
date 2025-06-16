@@ -136,55 +136,7 @@ namespace UnicomTicManagementSystem.Controller
 
                 return timetables;
             }
-        //public async Task<List<Timetable>> GetTimetablesByUserIDAsync(string userID)
-        //{
-        //    var timetables = new List<Timetable>();
-        //    try
-        //    {
-        //        using (var conn = DatabaseManager.GetConnection())
-        //        {
-        //            string query = @"
-        //            SELECT t.TimetableID, t.SubjectID, s.SubjectName, 
-        //                t.RoomID, r.RoomName, t.TimeSlot, t.Day, 
-        //                t.UserID, l.LecturerName AS LecturerName
-        //                FROM Timetables t
-        //                JOIN Subjects s ON t.SubjectID = s.SubjectID
-        //                JOIN Rooms r ON t.RoomID = r.RoomID
-        //                JOIN Lecturers l ON t.UserID = l.UserID
-        //                WHERE t.UserID = @UserID";
-
-        //            using (var cmd = new SQLiteCommand(query, conn))
-        //            {
-        //                cmd.Parameters.AddWithValue("@UserID", userID);
-
-        //                using (var reader = await cmd.ExecuteReaderAsync())
-        //                {
-        //                    while (await reader.ReadAsync())
-        //                    {
-        //                        timetables.Add(new Timetable
-        //                        {
-        //                            TimetableID = Convert.ToInt32(reader["TimetableID"]),
-        //                            SubjectID = Convert.ToInt32(reader["SubjectID"]),
-        //                            SubjectName = reader["SubjectName"].ToString(),
-        //                            RoomID = Convert.ToInt32(reader["RoomID"]),
-        //                            RoomName = reader["RoomName"].ToString(),
-        //                            TimeSlot = reader["TimeSlot"].ToString(),
-        //                            Day = reader["Day"].ToString(),
-        //                            UserID = reader["UserID"].ToString(),
-        //                            LecturerName = reader["LecturerName"].ToString()
-        //                        });
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine("Error retrieving timetable by UserID: " + ex.Message);
-        //    }
-
-        //    return timetables;
-        //}
+     
         public async Task<List<Timetable>> GetTimetablesByUserIDAsync(string userId)
         {
             var list = new List<Timetable>();

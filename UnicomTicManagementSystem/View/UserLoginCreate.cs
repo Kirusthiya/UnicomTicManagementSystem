@@ -133,7 +133,7 @@ namespace UnicomTicManagementSystem.View
 
         private void txtConfirmpassword_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            if (string.IsNullOrWhiteSpace(txtConfirmpassword.Text))
             {
                 txtConfirmpassword.Text = "Confirm password";
                 txtConfirmpassword.UseSystemPasswordChar = true;

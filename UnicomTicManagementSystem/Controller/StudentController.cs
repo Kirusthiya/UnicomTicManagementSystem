@@ -46,10 +46,12 @@ namespace UnicomTicManagementSystem.Controller
             {
                 using (var conn = DatabaseManager.GetConnection())
                 {
-                    string query = @"UPDATE Students 
-                                 SET StudentName = @StudentName, Gender = @Gender, Address = @Address, 
-                                     PhoneNumber = @PhoneNumber, CourseID = @CourseID 
-                                 WHERE UserID = @UserID";
+                    string query = @"
+                        UPDATE Students 
+                        SET StudentName = @StudentName, Gender = @Gender, Address = @Address, 
+                        PhoneNumber = @PhoneNumber, CourseID = @CourseID 
+                        WHERE UserID = @UserID"
+                    ;
 
                     using (var cmd = new SQLiteCommand(query, conn))
                     {

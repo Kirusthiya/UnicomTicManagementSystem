@@ -244,6 +244,7 @@
             this.btnUpdate.TabIndex = 39;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
             // 
             // btnDelete
             // 
@@ -256,6 +257,7 @@
             this.btnDelete.TabIndex = 38;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
             // btnAdd
             // 
@@ -269,6 +271,7 @@
             this.btnAdd.TabIndex = 37;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
             // txtAddress
             // 
@@ -344,6 +347,7 @@
             this.dvgStaff.Name = "dvgStaff";
             this.dvgStaff.Size = new System.Drawing.Size(665, 150);
             this.dvgStaff.TabIndex = 29;
+            this.dvgStaff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgStaff_CellContentClick);
             // 
             // StaffManege
             // 

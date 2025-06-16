@@ -17,7 +17,6 @@ namespace UnicomTicManagementSystem.View
         private readonly LoginController loginController = new LoginController();
         public void LoadForm(Form form)
         {
-
             foreach (Control ctrl in panel1.Controls)
             {
                 ctrl.Dispose();
@@ -30,7 +29,6 @@ namespace UnicomTicManagementSystem.View
 
             panel1.Controls.Add(form);
             form.Show();
-
         }
         public void ClearForm()
         {
@@ -52,33 +50,33 @@ namespace UnicomTicManagementSystem.View
             {
                 MessageBox.Show("Logged in successfully with new password!");
 
-                // Navigate to dashboard based on role
                 if (user.Role == "Admin")
                 {
-                    new AdminMenuForm().Show();
+                    LoadForm(new AdminMenuForm()); 
                 }
                 else if (user.Role == "Student")
                 {
-                    new StaffMenuForm().Show();
+                    LoadForm(new StudentViewForm());
                 }
                 else if (user.Role == "Lecturer")
                 {
-                    var form = new LectureMenuForm(user.UserID);
-                    form.Show();
-                   
+                    LoadForm(new LectureMenuForm(user.UserID));
                 }
                 else if (user.Role == "Staff")
                 {
-                    new StaffMenuForm().Show();
+                    LoadForm(new StaffMenuForm());
                 }
 
-                this.Hide();
+                
             }
             else
             {
                 MessageBox.Show("Login failed.");
             }
         }
+            
+        
+       
         private void LoginForm_Load(object sender, EventArgs e)
         {
             txtUserName.Text = "Enter username";
@@ -93,77 +91,9 @@ namespace UnicomTicManagementSystem.View
         {
         }
 
-        private async void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
 
-            string username = txtForgotUsername.Text.Trim();
-            string newPassword = txtForgotPass.Text.Trim();
-            string confirmPassword = txtForcotConPass.Text.Trim();
-
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
-            {
-                MessageBox.Show("All fields are required.");
-                return;
-            }
-
-            if (newPassword.Length < 8)
-            {
-                MessageBox.Show("Password must be at least 8 characters.");
-                return;
-            }
-
-            if (newPassword != confirmPassword)
-            {
-                MessageBox.Show("Passwords do not match.");
-                return;
-            }
-
-            bool exists = await loginController.IsUserExistsAsync(username);
-            if (!exists)
-            {
-                MessageBox.Show("Username not found.");
-                return;
-            }
-
-            bool updated = await loginController.UpdatePasswordAsync(username, newPassword);
-            if (updated)
-            {
-                MessageBox.Show("Password changed successfully! Logging in...");
-
-                // Try to login with new password
-                var user = await loginController.AuthenticateUserAsync(username, newPassword);
-                if (user != null)
-                {
-                    // Navigate to dashboard
-                    if (user.Role == "Admin")
-                    {
-                        new AdminMenuForm().Show();
-                    }
-                    else if (user.Role == "Student")
-                    {
-                        new StudentViewForm().Show();
-                    }
-                    else if (user.Role == "Lecturer")
-                    {
-                        var form = new LectureMenuForm(user.UserID);
-                        form.Show();
-                    }
-                    else if (user.Role == "Staff")
-                    {
-                        new StaffMenuForm().Show();
-                    }
-
-                    this.Hide(); // Hide login form
-                }
-                else
-                {
-                    MessageBox.Show("Password updated but failed to login.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Failed to update password.");
-            }
 
         }
       
@@ -173,45 +103,9 @@ namespace UnicomTicManagementSystem.View
 
         }
 
-        private async void btnChange_Click(object sender, EventArgs e)
+        private void btnChange_Click(object sender, EventArgs e)
         {
-            // Assuming 'username' is already known from login or session
-            string username = currentForgotUser; // You need to assign this value when user clicks forgot
-
-            string newPassword = txtForgotPass.Text.Trim();
-            string confirmPassword = txtForcotConPass.Text.Trim();
-
-            if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
-            {
-                MessageBox.Show("Both fields are required.");
-                return;
-            }
-
-            if (newPassword.Length < 8)
-            {
-                MessageBox.Show("Password must be at least 8 characters.");
-                return;
-            }
-
-            if (newPassword != confirmPassword)
-            {
-                MessageBox.Show("Passwords do not match.");
-                return;
-            }
-
-            bool updated = await loginController.UpdatePasswordAsync(username, newPassword);
-            if (updated)
-            {
-                MessageBox.Show("Password changed successfully!");
-
-                ClearForm();
-                // Automatically log in the user
-                await LoginUserAsync(username, newPassword);
-            }
-            else
-            {
-                MessageBox.Show("Failed to update password.");
-            }
+           
 
         }
 
@@ -283,18 +177,24 @@ namespace UnicomTicManagementSystem.View
         public string currentForgotUser;
         private void btnForgotPassword_Click_1(object sender, EventArgs e)
         {
-            // Get username from login textbox
-           currentForgotUser = txtForgotUsername.Text.Trim();
+      
+            currentForgotUser = txtUserName.Text.Trim();
 
-            if (string.IsNullOrEmpty(currentForgotUser))
+            if (string.IsNullOrWhiteSpace(currentForgotUser) || currentForgotUser == "Enter username")
             {
-                MessageBox.Show("Please enter your username before resetting the password.");
+                MessageBox.Show("Please enter your username to reset password.");
                 return;
+            }
+
+            if (!currentForgotUser.EndsWith("@gmail.com"))
+            {
+                currentForgotUser += "@gmail.com";
             }
 
             ForgotPanel.Visible = true;
             btnLogin.Visible = false;
         }
+        
 
         private void txtForgotUsername_Enter(object sender, EventArgs e)
         {
@@ -352,7 +252,7 @@ namespace UnicomTicManagementSystem.View
             }
         }
 
-        private void txtForcotConPass_Leave(object sender, EventArgs e)
+        private  void txtForcotConPass_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtForcotConPass.Text))
             {
@@ -361,5 +261,87 @@ namespace UnicomTicManagementSystem.View
                 txtForcotConPass.UseSystemPasswordChar = false;
             }
         }
+     
+        private async void btnLogin_Click_1(object sender, EventArgs e)
+        {
+            string username = txtUserName.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password)
+                || username == "Enter username" || password == "Password")
+            {
+                MessageBox.Show("Please enter both username and password.");
+                return;
+            }
+
+            if (!username.EndsWith("@gmail.com"))
+            {
+                username += "@gmail.com";
+            }
+
+            var user = await loginController.AuthenticateUserAsync(username, password);
+            if (user != null)
+            {
+                MessageBox.Show("Login successful!");
+
+                if (user.Role == "Admin")
+                    LoadForm(new AdminMenuForm());
+                else if (user.Role == "Student")
+                    LoadForm(new StudentViewForm());
+                else if (user.Role == "Lecturer")
+                    LoadForm(new LectureMenuForm(user.UserID));
+                else if (user.Role == "Staff")
+                    LoadForm(new StaffMenuForm());
+
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password.");
+            }
+        }
+
+
+        
+
+        private async void btnChange_Click_1(object sender, EventArgs e)
+        {
+            string username = currentForgotUser;
+            string newPassword = txtForgotPass.Text.Trim();
+            string confirmPassword = txtForcotConPass.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(newPassword) || string.IsNullOrWhiteSpace(confirmPassword))
+            {
+                MessageBox.Show("Both password fields are required.");
+                return;
+            }
+
+            if (newPassword.Length < 8)
+            {
+                MessageBox.Show("Password must be at least 8 characters.");
+                return;
+            }
+
+            if (newPassword != confirmPassword)
+            {
+                MessageBox.Show("Passwords do not match.");
+                return;
+            }
+
+            bool updated = await loginController.UpdatePasswordAsync(username, newPassword);
+            if (updated)
+            {
+                MessageBox.Show("Password changed successfully!");
+
+                ClearForm();
+                await LoginUserAsync(username, newPassword);
+            }
+            else
+            {
+                MessageBox.Show("Failed to update password.");
+            }
+        }
+
     }
+    
 }

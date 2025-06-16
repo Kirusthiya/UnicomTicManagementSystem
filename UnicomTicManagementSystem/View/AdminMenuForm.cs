@@ -15,8 +15,6 @@ namespace UnicomTicManagementSystem.View
         public AdminMenuForm()
         {
             InitializeComponent();
-          
-            
         }
        
         

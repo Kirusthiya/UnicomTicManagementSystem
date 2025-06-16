@@ -30,18 +30,18 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtUserName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ForgotPanel = new System.Windows.Forms.Panel();
             this.btnChange = new System.Windows.Forms.Button();
             this.txtForcotConPass = new System.Windows.Forms.TextBox();
+            this.txtForgotUsername = new System.Windows.Forms.TextBox();
             this.txtForgotPass = new System.Windows.Forms.TextBox();
             this.btnForgotPassword = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtUserName = new System.Windows.Forms.TextBox();
-            this.txtForgotUsername = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.ForgotPanel.SuspendLayout();
@@ -72,6 +72,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(471, 533);
             this.panel2.TabIndex = 16;
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserName.Location = new System.Drawing.Point(46, 128);
+            this.txtUserName.Multiline = true;
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(338, 43);
+            this.txtUserName.TabIndex = 23;
+            this.txtUserName.Text = "Enter username";
+            this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);
+            this.txtUserName.Leave += new System.EventHandler(this.txtUserName_Leave);
             // 
             // label2
             // 
@@ -107,6 +119,7 @@
             this.btnChange.TabIndex = 14;
             this.btnChange.Text = "Change";
             this.btnChange.UseVisualStyleBackColor = false;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click_1);
             // 
             // txtForcotConPass
             // 
@@ -119,6 +132,18 @@
             this.txtForcotConPass.Text = "Confirm password";
             this.txtForcotConPass.Enter += new System.EventHandler(this.txtForcotConPass_Enter);
             this.txtForcotConPass.Leave += new System.EventHandler(this.txtForcotConPass_Leave);
+            // 
+            // txtForgotUsername
+            // 
+            this.txtForgotUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtForgotUsername.Location = new System.Drawing.Point(20, 15);
+            this.txtForgotUsername.Multiline = true;
+            this.txtForgotUsername.Name = "txtForgotUsername";
+            this.txtForgotUsername.Size = new System.Drawing.Size(338, 36);
+            this.txtForgotUsername.TabIndex = 12;
+            this.txtForgotUsername.Text = "Username";
+            this.txtForgotUsername.Enter += new System.EventHandler(this.txtForgotUsername_Enter);
+            this.txtForgotUsername.Leave += new System.EventHandler(this.txtForgotUsername_Leave);
             // 
             // txtForgotPass
             // 
@@ -156,6 +181,7 @@
             this.btnLogin.TabIndex = 20;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click_1);
             // 
             // txtPassword
             // 
@@ -189,30 +215,6 @@
             this.label3.Size = new System.Drawing.Size(79, 19);
             this.label3.TabIndex = 16;
             this.label3.Text = "Welcome!";
-            // 
-            // txtUserName
-            // 
-            this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(46, 128);
-            this.txtUserName.Multiline = true;
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(338, 43);
-            this.txtUserName.TabIndex = 23;
-            this.txtUserName.Text = "Enter username";
-            this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);
-            this.txtUserName.Leave += new System.EventHandler(this.txtUserName_Leave);
-            // 
-            // txtForgotUsername
-            // 
-            this.txtForgotUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtForgotUsername.Location = new System.Drawing.Point(20, 15);
-            this.txtForgotUsername.Multiline = true;
-            this.txtForgotUsername.Name = "txtForgotUsername";
-            this.txtForgotUsername.Size = new System.Drawing.Size(338, 36);
-            this.txtForgotUsername.TabIndex = 12;
-            this.txtForgotUsername.Text = "Username";
-            this.txtForgotUsername.Enter += new System.EventHandler(this.txtForgotUsername_Enter);
-            this.txtForgotUsername.Leave += new System.EventHandler(this.txtForgotUsername_Leave);
             // 
             // LoginForm
             // 
