@@ -167,7 +167,6 @@ namespace UnicomTicManagementSystem.View
 
         private async void btnDelete_Click_1(object sender, EventArgs e)
         {
-
             if (SelectedSubjectID == -1)
             {
                 MessageBox.Show("Please select a subject to delete.");

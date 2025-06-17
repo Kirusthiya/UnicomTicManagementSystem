@@ -98,7 +98,6 @@ namespace UnicomTicManagementSystem
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
-
             if (int.TryParse(txtMark.Text, out int markId))
             {
                 var success = await markController.DeleteMarkAsync(markId);

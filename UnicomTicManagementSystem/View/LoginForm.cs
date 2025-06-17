@@ -301,9 +301,6 @@ namespace UnicomTicManagementSystem.View
             }
         }
 
-
-        
-
         private async void btnChange_Click_1(object sender, EventArgs e)
         {
             string username = currentForgotUser;

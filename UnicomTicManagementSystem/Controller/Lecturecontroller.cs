@@ -19,8 +19,11 @@ namespace UnicomTicManagementSystem.Controller
             {
                 using (var conn = DatabaseManager.GetConnection())
                 {
-                    string query = @"INSERT INTO Lecturers (UserID, LecturerName, Address, Gender, Salary, PhoneNumber)
-                                     VALUES (@UserID, @LecturerName, @Address, @Gender, @Salary, @PhoneNumber)";
+                    string query = @"INSERT INTO Lecturers 
+                                    (UserID, LecturerName, Address, Gender, Salary, PhoneNumber)
+                                     VALUES 
+                                    (@UserID, @LecturerName, @Address, @Gender, @Salary, @PhoneNumber)";
+
                     using (var cmd = new SQLiteCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@UserID", lecturer.UserID);
@@ -54,7 +57,8 @@ namespace UnicomTicManagementSystem.Controller
                                          Gender = @Gender,
                                          Salary = @Salary,
                                          PhoneNumber = @PhoneNumber
-                                     WHERE UserID = @UserID";
+                                         WHERE UserID = @UserID";
+
                     using (var cmd = new SQLiteCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@LecturerName", lecturer.Name);
@@ -83,6 +87,7 @@ namespace UnicomTicManagementSystem.Controller
                 using (var conn = DatabaseManager.GetConnection())
                 {
                     string query = "DELETE FROM Lecturers WHERE UserID = @UserID";
+
                     using (var cmd = new SQLiteCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@UserID", userId);
@@ -101,15 +106,16 @@ namespace UnicomTicManagementSystem.Controller
         public async Task<List<Lecture>> GetAllLecturersAsync()
         {
             var list = new List<Lecture>();
+
             try
             {
                 using (var conn = DatabaseManager.GetConnection())
                 {
                     string query = @"
-                    SELECT l.UserID, l.LecturerName, l.Address, l.Gender, l.Salary, l.PhoneNumber,
-                           u.Username
-                    FROM Lecturers l
-                    JOIN Users u ON l.UserID = u.UserID";
+                        SELECT l.UserID, l.LecturerName, l.Address, l.Gender, l.Salary, l.PhoneNumber,
+                               u.Username
+                        FROM Lecturers l
+                        JOIN Users u ON l.UserID = u.UserID";
 
                     using (var cmd = new SQLiteCommand(query, conn))
                     using (var reader = await cmd.ExecuteReaderAsync())
@@ -141,16 +147,17 @@ namespace UnicomTicManagementSystem.Controller
         public async Task<List<Lecture>> SearchLecturersByNameAsync(string name)
         {
             var list = new List<Lecture>();
+
             try
             {
                 using (var conn = DatabaseManager.GetConnection())
                 {
                     string query = @"
-                    SELECT l.UserID, l.LecturerName, l.Address, l.Gender, l.Salary, l.PhoneNumber,
-                           u.Username
-                    FROM Lecturers l
-                    JOIN Users u ON l.UserID = u.UserID
-                    WHERE l.LecturerName LIKE @Name";
+                        SELECT l.UserID, l.LecturerName, l.Address, l.Gender, l.Salary, l.PhoneNumber,
+                               u.Username
+                        FROM Lecturers l
+                        JOIN Users u ON l.UserID = u.UserID
+                        WHERE l.LecturerName LIKE @Name";
 
                     using (var cmd = new SQLiteCommand(query, conn))
                     {
@@ -184,6 +191,6 @@ namespace UnicomTicManagementSystem.Controller
         }
     }
 }
-
+ 
   
 

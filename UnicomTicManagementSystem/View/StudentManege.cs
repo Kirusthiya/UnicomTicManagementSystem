@@ -201,7 +201,6 @@ namespace UnicomTicManagementSystem.View
 
         private async void btnUpdate_Click_1(object sender, EventArgs e)
         {
-
             if (!ValidateInput()) return;
 
             var student = new Student
@@ -239,7 +238,6 @@ namespace UnicomTicManagementSystem.View
 
         private async void btnAdd_Click_1(object sender, EventArgs e)
         {
-
             if (!ValidateInput()) return;
 
             var student = new Student

@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
@@ -160,7 +159,6 @@ namespace UnicomTicManagementSystem.Controller
             {
                 using (var connection = DatabaseManager.GetConnection())
                 {
-                    await connection.OpenAsync();
                     var command = connection.CreateCommand();
                     command.CommandText = @"
                 SELECT * FROM Subjects 

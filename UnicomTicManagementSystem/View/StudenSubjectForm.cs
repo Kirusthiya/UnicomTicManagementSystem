@@ -137,7 +137,6 @@ namespace UnicomTicManagementSystem.View
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
             ClearFields();
         }
         public void LoadForm(Form form)

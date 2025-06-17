@@ -22,7 +22,6 @@ namespace UnicomTicManagementSystem.View
             InitializeComponent();
             LoadStaffData();
             
-          
         }
         private async void LoadStaffData()
         {
@@ -57,15 +56,6 @@ namespace UnicomTicManagementSystem.View
         {
 
         }
-        
-        private async void btnSearch_Click(object sender, EventArgs e)
-        {
-            string name = txtName.Text;
-            var result = await staffController.SearchStaffByNameAsync(name);
-            dvgStaff.DataSource = result;
-        }
-
-      
         public void LoadForm(Form form)
         {
             // Remove any existing control (and dispose it properly)
@@ -84,7 +74,6 @@ namespace UnicomTicManagementSystem.View
 
         }
         
-
         private void btnlogout_Click_2(object sender, EventArgs e)
         {
 
@@ -180,6 +169,14 @@ namespace UnicomTicManagementSystem.View
             MessageBox.Show(result ? "Staff added successfully!" : "Failed to add staff.");
             LoadStaffData();
             ClearFields();
+        }
+
+        private async void btnSearch_Click_1(object sender, EventArgs e)
+        {
+
+            string name = txtName.Text;
+            var result = await staffController.SearchStaffByNameAsync(name);
+            dvgStaff.DataSource = result;
         }
     }
 }

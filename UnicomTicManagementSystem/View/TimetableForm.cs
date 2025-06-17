@@ -62,75 +62,6 @@ namespace UnicomTicManagementSystem.View
         {
 
         }
-
-       
-
-        private async void btnUpdate_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                if (dgvTimetable.CurrentRow != null)
-                {
-                    int id = Convert.ToInt32(dgvTimetable.CurrentRow.Cells["TimetableID"].Value);
-                    var timetable = new Timetable
-                    {
-                        TimetableID = id,
-                        SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
-                        RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
-                        TimeSlot = txtTime.Text,
-                        Day = cmbDay.Text,
-                        UserID = Convert.ToString(cmbLEcture.SelectedValue)
-                    };
-
-                    bool result = await controller.UpdateTimetableAsync(timetable);
-                    MessageBox.Show(result ? "Timetable updated!" : "Update failed.");
-                    LoadData();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Update Error: " + ex.Message);
-            }
-        }
-
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvTimetable.CurrentRow != null)
-                {
-                    int id = Convert.ToInt32(dgvTimetable.CurrentRow.Cells["TimetableID"].Value);
-                    bool result = await controller.DeleteTimetableAsync(id);
-                    MessageBox.Show(result ? "Deleted successfully." : "Delete failed.");
-                    LoadData();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Delete Error: " + ex.Message);
-            }
-        }
-
-        private void dgvTimetable_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.RowIndex >= 0 && e.RowIndex < dgvTimetable.Rows.Count)
-                {
-                    var row = dgvTimetable.Rows[e.RowIndex];
-                    cmbSubject.SelectedValue = row.Cells["SubjectID"].Value;
-                    cmbRoom.SelectedValue = row.Cells["RoomID"].Value;
-                    txtTime.Text = row.Cells["TimeSlot"].Value.ToString();
-                    cmbDay.Text = row.Cells["Day"].Value.ToString();
-                    cmbLEcture.SelectedValue = row.Cells["UserID"].Value;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Selection Error: " + ex.Message);
-            }
-        }
         public void LoadForm(Form form)
         {
             // Remove any existing control (and dispose it properly)
@@ -148,10 +79,7 @@ namespace UnicomTicManagementSystem.View
             form.Show();
 
         }
-        private void btnlogout_Click(object sender, EventArgs e)
-        {
-          
-        }
+        
 
         private void btnlogout_Click_1(object sender, EventArgs e)
         {
@@ -163,14 +91,69 @@ namespace UnicomTicManagementSystem.View
             }
         }
 
-        private void btnUpdate_Click_1(object sender, EventArgs e)
+        private async void btnUpdate_Click_1(object sender, EventArgs e)
+        {
+                try
+                {
+                    if (dgvTimetable.CurrentRow != null)
+                    {
+                        int id = Convert.ToInt32(dgvTimetable.CurrentRow.Cells["TimetableID"].Value);
+
+                        var updatedTimetable = new Timetable
+                        {
+                            TimetableID = id,
+                            SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
+                            RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
+                            TimeSlot = txtTime.Text.Trim(),
+                            Day = cmbDay.Text,
+                            UserID = Convert.ToString(cmbLEcture.SelectedValue)
+                        };
+
+                       
+                        var existingTimetables = await controller.GetAllTimetablesAsync();
+
+                        bool conflict = existingTimetables.Any(t =>
+                            t.TimetableID != id && 
+                            t.Day == updatedTimetable.Day &&
+                            t.TimeSlot == updatedTimetable.TimeSlot &&
+                            (t.UserID == updatedTimetable.UserID || t.RoomID == updatedTimetable.RoomID)
+                        );
+
+                        if (conflict)
+                        {
+                            MessageBox.Show("Conflict Detected:\nLecturer or Room already assigned at this time.");
+                            return;
+                        }
+
+                       
+                        bool result = await controller.UpdateTimetableAsync(updatedTimetable);
+                        MessageBox.Show(result ? "Timetable updated!" : "Update failed.");
+                        LoadData();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Update Error: " + ex.Message);
+                }
+         }
+
+        private async void btnDelete_Click_1(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnDelete_Click_1(object sender, EventArgs e)
-        {
-
+            try
+            {
+                if (dgvTimetable.CurrentRow != null)
+                {
+                    int id = Convert.ToInt32(dgvTimetable.CurrentRow.Cells["TimetableID"].Value);
+                    bool result = await controller.DeleteTimetableAsync(id);
+                    MessageBox.Show(result ? "Deleted successfully." : "Delete failed.");
+                    LoadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Delete Error: " + ex.Message);
+            }
         }
 
         private void cmbDay_SelectedIndexChanged(object sender, EventArgs e)
@@ -220,30 +203,62 @@ namespace UnicomTicManagementSystem.View
 
         private void dgvTimetable_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-
+            try
+            {
+                if (e.RowIndex >= 0 && e.RowIndex < dgvTimetable.Rows.Count)
+                {
+                    var row = dgvTimetable.Rows[e.RowIndex];
+                    cmbSubject.SelectedValue = row.Cells["SubjectID"].Value;
+                    cmbRoom.SelectedValue = row.Cells["RoomID"].Value;
+                    txtTime.Text = row.Cells["TimeSlot"].Value.ToString();
+                    cmbDay.Text = row.Cells["Day"].Value.ToString();
+                    cmbLEcture.SelectedValue = row.Cells["UserID"].Value;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Selection Error: " + ex.Message);
+            }
         }
 
         private async void btnAdd_Click_1(object sender, EventArgs e)
         {
-            try
-            {
-                var timetable = new Timetable
+                try
                 {
-                    SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
-                    RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
-                    TimeSlot = txtTime.Text,
-                    Day = cmbDay.Text,
-                    UserID = Convert.ToString(cmbLEcture.SelectedValue)
-                };
+                    var newTimetable = new Timetable
+                    {
+                        SubjectID = Convert.ToInt32(cmbSubject.SelectedValue),
+                        RoomID = Convert.ToInt32(cmbRoom.SelectedValue),
+                        TimeSlot = txtTime.Text.Trim(),
+                        Day = cmbDay.Text,
+                        UserID = Convert.ToString(cmbLEcture.SelectedValue)
+                    };
 
-                bool result = await controller.AddTimetableAsync(timetable);
-                MessageBox.Show(result ? "Timetable added!" : "Failed to add.");
-                LoadData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Add Error: " + ex.Message);
-            }
+                    // Validation Check
+                    var existingTimetables = await controller.GetAllTimetablesAsync();
+
+                    bool conflict = existingTimetables.Any(t =>
+                        t.Day == newTimetable.Day &&
+                        t.TimeSlot == newTimetable.TimeSlot &&
+                        (t.UserID == newTimetable.UserID || t.RoomID == newTimetable.RoomID)
+                    );
+
+                    if (conflict)
+                    {
+                        MessageBox.Show("Conflict Detected:\nLecturer or Room already assigned at this time.");
+                        return;
+                    }
+
+                    // If no conflict, proceed to add
+                    bool result = await controller.AddTimetableAsync(newTimetable);
+                    MessageBox.Show(result ? "Timetable added!" : "Failed to add.");
+                    LoadData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Add Error: " + ex.Message);
+                }
+            
         }
 
         private void txtTime_TextChanged(object sender, EventArgs e)

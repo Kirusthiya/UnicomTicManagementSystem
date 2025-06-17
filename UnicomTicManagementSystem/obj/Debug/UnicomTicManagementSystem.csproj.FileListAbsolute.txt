@@ -160,3 +160,45 @@ C:\Users\admin\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementS
 C:\Users\admin\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.exe
 C:\Users\admin\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.pdb
 C:\Users\admin\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.exe.config
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\UnicomTicManagementSystem.exe.config
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\UnicomTicManagementSystem.exe
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\UnicomTicManagementSystem.pdb
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\Microsoft.Data.Sqlite.dll
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\SQLitePCLRaw.core.dll
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\System.Buffers.dll
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\System.Data.SQLite.dll
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\System.Memory.dll
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\System.Numerics.Vectors.dll
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\Microsoft.Data.Sqlite.xml
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\System.Buffers.xml
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\System.Data.SQLite.xml
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\System.Memory.xml
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\System.Numerics.Vectors.xml
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.csproj.AssemblyReference.cache
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.Properties.Resources.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.AdminMenuForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.CourseForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.ExamForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.LeactureManage.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.LectureMenuForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.LectureSubjectForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.LoginForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.MainDashboad.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.Form1.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.RoomForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StaffManege.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StudentViewForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StudenSubjectForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StudentManege.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StaffMenuForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.SubjectForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.TimetableForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.UserCreateForm.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.UserLoginCreate.resources
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.csproj.GenerateResource.cache
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.csproj.CoreCompileInputs.cache
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTi.5B6226AA.Up2Date
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.exe
+Z:\Project\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.pdb

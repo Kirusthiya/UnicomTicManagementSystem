@@ -30,7 +30,7 @@ namespace UnicomTicManagementSystem.Repositories
                  CREATE TABLE IF NOT EXISTS Subjects (
                       SubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
                       SubjectName TEXT NOT NULL,
-                      CourseID INTEGER,
+                      CourseID INTEGER NOT NULL,
                       FOREIGN KEY(CourseID) REFERENCES Courses(CourseID)
                  );
 
@@ -55,10 +55,9 @@ namespace UnicomTicManagementSystem.Repositories
                         PhoneNumber TEXT,
                         FOREIGN KEY (UserID) REFERENCES Users(UserID)
                     );
-
                     CREATE TABLE IF NOT EXISTS Lecturers (
                         UserID TEXT PRIMARY KEY,
-                        Name TEXT NOT NULL,
+                        LecturerName TEXT NOT NULL,
                         Address TEXT,
                         Gender TEXT,
                         Salary REAL,
@@ -71,14 +70,13 @@ namespace UnicomTicManagementSystem.Repositories
                         RoomName TEXT NOT NULL,
                         RoomType TEXT NOT NULL
                     );
-
                     CREATE TABLE IF NOT EXISTS Timetables (
                         TimetableID INTEGER PRIMARY KEY AUTOINCREMENT,
                         SubjectID INTEGER NOT NULL,
-                        UserID TEXT NOT NULL, 
+                        UserID TEXT NOT NULL,
                         TimeSlot TEXT NOT NULL,
                         RoomID INTEGER NOT NULL,
-                        Day INTEGER NOT NULL,
+                        Day TEXT NOT NULL,  -- Changed from INTEGER to TEXT
                         FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID),
                         FOREIGN KEY (UserID) REFERENCES Users(UserID),
                         FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID)
