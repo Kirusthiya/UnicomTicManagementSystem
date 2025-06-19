@@ -9,6 +9,6 @@ namespace UnicomTicManagementSystem.Model
     public class Lecture:Person
     {
       public decimal Salary { get; set; }
-        public string UserName { get; set; }
+      public string UserName { get; set; }
     }
 }

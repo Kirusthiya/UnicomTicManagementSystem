@@ -19,13 +19,13 @@ namespace UnicomTicManagementSystem.Controller
             {
                 using (var conn = DatabaseManager.GetConnection())
                 {
-                    string query = @"INSERT INTO Staff (UserID, StaffName, Address, Gender, Position, Salary, PhoneNumber)
-                                     VALUES (@UserID, @StaffName, @Address, @Gender, @Position, @Salary, @PhoneNumber)";
+                    string query = @"INSERT INTO Staff (UserID, Name, Address, Gender, Position, Salary, PhoneNumber)
+                                     VALUES (@UserID, @Name, @Address, @Gender, @Position, @Salary, @PhoneNumber)";
 
                     using (var cmd = new SQLiteCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@UserID", staff.UserID);
-                        cmd.Parameters.AddWithValue("@StaffName", staff.Name);
+                        cmd.Parameters.AddWithValue("@Name", staff.Name);
                         cmd.Parameters.AddWithValue("@Address", staff.Address);
                         cmd.Parameters.AddWithValue("@Gender", staff.Gender);
                         cmd.Parameters.AddWithValue("@Position", staff.Position);
@@ -51,13 +51,13 @@ namespace UnicomTicManagementSystem.Controller
                 using (var conn = DatabaseManager.GetConnection())
                 {
                     string query = @"UPDATE Staff
-                                     SET StaffName = @StaffName, Address = @Address, Gender = @Gender,
+                                     SET StaffName = @Name, Address = @Address, Gender = @Gender,
                                          Position = @Position, Salary = @Salary, PhoneNumber = @PhoneNumber
                                      WHERE UserID = @UserID";
 
                     using (var cmd = new SQLiteCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@StaffName", staff.Name);
+                        cmd.Parameters.AddWithValue("@Name", staff.Name);
                         cmd.Parameters.AddWithValue("@Address", staff.Address);
                         cmd.Parameters.AddWithValue("@Gender", staff.Gender);
                         cmd.Parameters.AddWithValue("@Position", staff.Position);
@@ -108,7 +108,7 @@ namespace UnicomTicManagementSystem.Controller
                 using (var conn = DatabaseManager.GetConnection())
                 {
                     string query = @"
-                        SELECT s.UserID, s.StaffName, s.Address, s.Gender, s.Position,
+                        SELECT s.UserID, s.Name, s.Address, s.Gender, s.Position,
                                s.Salary, s.PhoneNumber, u.Username AS UserName
                         FROM Staff s
                         JOIN Users u ON s.UserID = u.UserID";
@@ -121,7 +121,7 @@ namespace UnicomTicManagementSystem.Controller
                             list.Add(new Staff
                             {
                                 UserID = reader["UserID"].ToString(),
-                                Name = reader["StaffName"].ToString(),
+                                Name = reader["Name"].ToString(),
                                 Address = reader["Address"].ToString(),
                                 Gender = reader["Gender"].ToString(),
                                 Position = reader["Position"].ToString(),
@@ -149,11 +149,11 @@ namespace UnicomTicManagementSystem.Controller
                 using (var conn = DatabaseManager.GetConnection())
                 {
                     string query = @"
-                        SELECT s.UserID, s.StaffName, s.Address, s.Gender, s.Position,
+                        SELECT s.UserID, s.Name, s.Address, s.Gender, s.Position,
                                s.Salary, s.PhoneNumber, u.Username AS UserName
                         FROM Staff s
                         JOIN Users u ON s.UserID = u.UserID
-                        WHERE s.StaffName LIKE @Name";
+                        WHERE s.Name LIKE @Name";
 
                     using (var cmd = new SQLiteCommand(query, conn))
                     {
@@ -166,7 +166,7 @@ namespace UnicomTicManagementSystem.Controller
                                 list.Add(new Staff
                                 {
                                     UserID = reader["UserID"].ToString(),
-                                    Name = reader["StaffName"].ToString(),
+                                    Name = reader["Name"].ToString(),
                                     Address = reader["Address"].ToString(),
                                     Gender = reader["Gender"].ToString(),
                                     Position = reader["Position"].ToString(),

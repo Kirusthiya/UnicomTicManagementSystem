@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtsearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtUserId = new System.Windows.Forms.TextBox();
@@ -50,7 +51,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.btnlogout = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.grbGender.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLecturer)).BeginInit();
@@ -59,7 +59,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel1.Controls.Add(this.btnlogout);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.txtsearch);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtUserId);
@@ -84,9 +84,23 @@
             this.panel1.Size = new System.Drawing.Size(665, 596);
             this.panel1.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(552, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 29);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // txtsearch
             // 
-            this.txtsearch.Location = new System.Drawing.Point(439, 153);
+            this.txtsearch.Location = new System.Drawing.Point(439, 171);
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.Size = new System.Drawing.Size(213, 20);
             this.txtsearch.TabIndex = 21;
@@ -96,7 +110,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(361, 157);
+            this.label3.Location = new System.Drawing.Point(361, 175);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 16);
             this.label3.TabIndex = 20;
@@ -104,7 +118,7 @@
             // 
             // txtUserId
             // 
-            this.txtUserId.Location = new System.Drawing.Point(439, 115);
+            this.txtUserId.Location = new System.Drawing.Point(439, 128);
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.Size = new System.Drawing.Size(200, 20);
             this.txtUserId.TabIndex = 19;
@@ -115,9 +129,9 @@
             this.grbGender.Controls.Add(this.rdoFemale);
             this.grbGender.Controls.Add(this.rdoMale);
             this.grbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbGender.Location = new System.Drawing.Point(45, 281);
+            this.grbGender.Location = new System.Drawing.Point(24, 278);
             this.grbGender.Name = "grbGender";
-            this.grbGender.Size = new System.Drawing.Size(377, 60);
+            this.grbGender.Size = new System.Drawing.Size(342, 60);
             this.grbGender.TabIndex = 18;
             this.grbGender.TabStop = false;
             this.grbGender.Text = "Gender";
@@ -125,7 +139,7 @@
             // rdoOthers
             // 
             this.rdoOthers.AutoSize = true;
-            this.rdoOthers.Location = new System.Drawing.Point(311, 21);
+            this.rdoOthers.Location = new System.Drawing.Point(258, 21);
             this.rdoOthers.Name = "rdoOthers";
             this.rdoOthers.Size = new System.Drawing.Size(64, 20);
             this.rdoOthers.TabIndex = 2;
@@ -136,7 +150,7 @@
             // rdoFemale
             // 
             this.rdoFemale.AutoSize = true;
-            this.rdoFemale.Location = new System.Drawing.Point(215, 21);
+            this.rdoFemale.Location = new System.Drawing.Point(168, 21);
             this.rdoFemale.Name = "rdoFemale";
             this.rdoFemale.Size = new System.Drawing.Size(71, 20);
             this.rdoFemale.TabIndex = 1;
@@ -147,7 +161,7 @@
             // rdoMale
             // 
             this.rdoMale.AutoSize = true;
-            this.rdoMale.Location = new System.Drawing.Point(102, 21);
+            this.rdoMale.Location = new System.Drawing.Point(83, 21);
             this.rdoMale.Name = "rdoMale";
             this.rdoMale.Size = new System.Drawing.Size(55, 20);
             this.rdoMale.TabIndex = 0;
@@ -168,9 +182,9 @@
             // 
             // txtPhoneNo
             // 
-            this.txtPhoneNo.Location = new System.Drawing.Point(112, 232);
+            this.txtPhoneNo.Location = new System.Drawing.Point(107, 232);
             this.txtPhoneNo.Name = "txtPhoneNo";
-            this.txtPhoneNo.Size = new System.Drawing.Size(220, 20);
+            this.txtPhoneNo.Size = new System.Drawing.Size(226, 20);
             this.txtPhoneNo.TabIndex = 16;
             // 
             // btnUpdate
@@ -203,7 +217,7 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(112, 149);
+            this.txtAddress.Location = new System.Drawing.Point(107, 149);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(226, 20);
             this.txtAddress.TabIndex = 11;
@@ -212,14 +226,14 @@
             // 
             this.txtSalary.Location = new System.Drawing.Point(107, 188);
             this.txtSalary.Name = "txtSalary";
-            this.txtSalary.Size = new System.Drawing.Size(225, 20);
+            this.txtSalary.Size = new System.Drawing.Size(226, 20);
             this.txtSalary.TabIndex = 10;
             // 
             // lblRole
             // 
             this.lblRole.AutoSize = true;
             this.lblRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRole.Location = new System.Drawing.Point(361, 119);
+            this.lblRole.Location = new System.Drawing.Point(361, 132);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(50, 16);
             this.lblRole.TabIndex = 9;
@@ -297,19 +311,6 @@
             this.txtName.Size = new System.Drawing.Size(226, 20);
             this.txtName.TabIndex = 2;
             // 
-            // btnlogout
-            // 
-            this.btnlogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnlogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnlogout.Location = new System.Drawing.Point(564, 28);
-            this.btnlogout.Name = "btnlogout";
-            this.btnlogout.Size = new System.Drawing.Size(75, 27);
-            this.btnlogout.TabIndex = 25;
-            this.btnlogout.Text = "Logout";
-            this.btnlogout.UseVisualStyleBackColor = false;
-            this.btnlogout.Click += new System.EventHandler(this.btnlogout_Click);
-            // 
             // LeactureManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,6 +353,6 @@
         private System.Windows.Forms.TextBox txtsearch;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton rdoOthers;
-        private System.Windows.Forms.Button btnlogout;
+        private System.Windows.Forms.Button button1;
     }
 }

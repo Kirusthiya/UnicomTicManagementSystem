@@ -55,7 +55,7 @@ namespace UnicomTicManagementSystem.View
             DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                LoadForm(new LoginForm());
+                LoadForm(new LoginForm("Staff"));
 
             }
           

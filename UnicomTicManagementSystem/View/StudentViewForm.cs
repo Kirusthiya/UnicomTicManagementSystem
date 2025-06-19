@@ -23,6 +23,8 @@ namespace UnicomTicManagementSystem.View
             InitializeComponent();
         }
 
+      
+
         private async void btnDetails_Click(object sender, EventArgs e)
         {
             string userId = textBox1.Text.Trim();
@@ -76,14 +78,11 @@ namespace UnicomTicManagementSystem.View
                 return;
             }
 
-            var markList = await markController.GetMarksByUserIDAsync(userId);
+            var markList = await markController.GetAllMarksAsync();
             dataGridView1.DataSource = markList;
         }
 
-        private void btnlogout_Click(object sender, EventArgs e)
-        {
-
-        }
+       
         public void LoadForm(Form form)
         {
 
@@ -107,8 +106,28 @@ namespace UnicomTicManagementSystem.View
             DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                LoadForm(new LoginForm());
+                LoadForm(new LoginForm("Student"));
 
+            }
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+        }
+        
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            
+
+        }
+        
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                var value = dataGridView1[e.ColumnIndex, e.RowIndex].Value;
+                if (value != null)
+                    MessageBox.Show(value.ToString(), "Cell Content");
             }
         }
     }

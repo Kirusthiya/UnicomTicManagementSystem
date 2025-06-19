@@ -16,22 +16,15 @@ namespace UnicomTicManagementSystem
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static async Task Main()
+        static void Main()
         {
-           TableCreateQuery.CreateTables();
+           
             Application.EnableVisualStyles();
+            TableCreateQuery.CreateTables();
             Application.SetCompatibleTextRenderingDefault(false);
-            var loginController = new LoginController();
-            bool hasUser = await loginController.IsAnyUSerExitsAsync();
-            if (hasUser)
-            {
-            Application.Run(new UserCreateForm());
+            Application.Run(new FirstForm());
 
-            }
-            else
-            {
-                Application.Run(new UserLoginCreate());
-            }
+           
         }
     }
 }

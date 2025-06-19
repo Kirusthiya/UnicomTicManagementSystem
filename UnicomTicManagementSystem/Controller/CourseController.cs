@@ -136,7 +136,7 @@ namespace UnicomTicManagementSystem.Controller
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error retrieving courses: " + ex.Message);
+                Console.WriteLine("Error loading courses: " + ex.Message);
             }
 
             return courses;

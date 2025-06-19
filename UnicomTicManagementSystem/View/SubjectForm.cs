@@ -14,51 +14,36 @@ namespace UnicomTicManagementSystem.View
 {
     public partial class SubjectForm : Form
     {
-        private SubjectController subjectController = new SubjectController();
-        private CourseController CourseController = new CourseController();
-        private int SelectedSubjectID=-1;
-        
-
+        private readonly SubjectController subjectController = new SubjectController();
+        private readonly CourseController courseController = new CourseController();
+        private List<Subject> subjectList = new List<Subject>();
         public SubjectForm()
         {
             InitializeComponent();
+            LoadData();
         }
-
-        private async void SubjectForm_Load(object sender, EventArgs e)
-        {
-            await LoadSubjectsAsyns();
-            await LoadCoursesAsync();
-            await LoadSubjectsAsyns();
-            txtSubject.Clear();
-        }
-        private async Task LoadCoursesAsync()
+        private async void LoadData()
         {
             try
             {
-                var courses = await CourseController.GetAllCoursesAsync();
+                // Load DataGridView
+                subjectList = await subjectController.GetAllSubjectsAsync();
+                dataGridView1.DataSource = subjectList;
+
+                // Load Courses into ComboBox
+                var courses = await courseController.GetAllCoursesAsync();
                 cmbCourse.DataSource = courses;
                 cmbCourse.DisplayMember = "CourseName";
                 cmbCourse.ValueMember = "CourseID";
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error Loading Course ");
+                MessageBox.Show("Error loading data: " + ex.Message);
             }
-          
         }
-        private async Task LoadSubjectsAsyns()
-        {
-            var subjects = await subjectController.GetAllSubjectsAsync();
-            dataGridView1.DataSource = subjects;
-        }
-      
-        private void ClearForm()
-        {
-            txtSubject.Clear();
-            cmbCourse.SelectedIndex = 0;
-            SelectedSubjectID = -1;
-        }
-         public void LoadForm(Form form)
+
+
+        public void LoadForm(Form form)
          {
             // Remove any existing control (and dispose it properly)
             foreach (Control ctrl in panel1.Controls)
@@ -75,10 +60,7 @@ namespace UnicomTicManagementSystem.View
             form.Show();
 
          }
-        private void btnlogout_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void btnlogout_Click_1(object sender, EventArgs e)
         {
@@ -86,7 +68,6 @@ namespace UnicomTicManagementSystem.View
             if (result == DialogResult.Yes)
             {
                 LoadForm(new AdminMenuForm());
-
             }
         }
 
@@ -94,117 +75,90 @@ namespace UnicomTicManagementSystem.View
         {
             try
             {
-                if (e.RowIndex >= 0)
+                if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
                 {
                     var row = dataGridView1.Rows[e.RowIndex];
-                    SelectedSubjectID = Convert.ToInt32(row.Cells["SubjectID"].Value);
                     txtSubject.Text = row.Cells["SubjectName"].Value.ToString();
                     cmbCourse.SelectedValue = Convert.ToInt32(row.Cells["CourseID"].Value);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error selecting subject: " + ex.Message);
+                MessageBox.Show("Selection Error: " + ex.Message);
             }
         }
+       
 
         private async void btnSearch_Click_1(object sender, EventArgs e)
         {
             try
             {
-                string searchTerm = txtSubject.Text.Trim();
-                if (string.IsNullOrWhiteSpace(searchTerm))
+                string search = txtSearch.Text.Trim();
+                if (string.IsNullOrEmpty(search))
                 {
-                    await LoadSubjectsAsyns();
+                    LoadData();
                     return;
                 }
 
-                var results = await subjectController.SearchSubjectsAsync(searchTerm);
-                dataGridView1.DataSource = results;
+                var result = await subjectController.SearchSubjectsByNameAsync(search);
+                dataGridView1.DataSource = result;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error searching subject: " + ex.Message);
+                MessageBox.Show("Search Error: " + ex.Message);
             }
+
+
         }
 
         private async void btnUpdate_Click_1(object sender, EventArgs e)
         {
-            if (SelectedSubjectID == -1)
-            {
-                MessageBox.Show("Please select a subject to update.");
-                return;
-            }
-
             try
             {
-                var subject = new Subject
+                if (dataGridView1.CurrentRow != null)
                 {
-                    SubjectID = SelectedSubjectID,
-                    SubjectName = txtSubject.Text.Trim(),
-                    CourseID = Convert.ToInt32(cmbCourse.SelectedValue)
-                };
+                    int subjectId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["SubjectID"].Value);
 
-                bool success = await subjectController.UpdateSubjectAsync(subject);
-                if (success)
-                {
-                    MessageBox.Show("Subject updated successfully.");
-                    ClearForm();
-                    await LoadSubjectsAsyns();
-                }
-                else
-                {
-                    MessageBox.Show("Failed to update subject.");
+                    var subject = new Subject
+                    {
+                        SubjectID = subjectId,
+                        SubjectName = txtSubject.Text.Trim(),
+                        CourseID = Convert.ToInt32(cmbCourse.SelectedValue)
+                    };
+
+                    bool result = await subjectController.UpdateSubjectAsync(subject);
+                    MessageBox.Show(result ? "Subject updated." : "Update failed.");
+                    LoadData();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error updating subject: " + ex.Message);
+                MessageBox.Show("Update Error: " + ex.Message);
             }
-
-
         }
+        
 
         private async void btnDelete_Click_1(object sender, EventArgs e)
         {
-            if (SelectedSubjectID == -1)
-            {
-                MessageBox.Show("Please select a subject to delete.");
-                return;
-            }
 
             try
             {
-                var confirm = MessageBox.Show("Are you sure you want to delete?", "Confirm", MessageBoxButtons.YesNo);
-                if (confirm == DialogResult.Yes)
+                if (dataGridView1.CurrentRow != null)
                 {
-                    bool success = await subjectController.DeleteSubjectAsync(SelectedSubjectID);
-                    if (success)
-                    {
-                        MessageBox.Show("Subject deleted successfully.");
-                        ClearForm();
-                        await LoadSubjectsAsyns();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to delete subject.");
-                    }
+                    int subjectId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["SubjectID"].Value);
+                    bool result = await subjectController.DeleteSubjectAsync(subjectId);
+                    MessageBox.Show(result ? "Deleted successfully." : "Delete failed.");
+                    LoadData();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error deleting subject: " + ex.Message);
+                MessageBox.Show("Delete Error: " + ex.Message);
             }
         }
 
         private async void btnAdd_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtSubject.Text))
-            {
-                MessageBox.Show("Please enter subject name.");
-                return;
-            }
-
             try
             {
                 var subject = new Subject
@@ -213,24 +167,17 @@ namespace UnicomTicManagementSystem.View
                     CourseID = Convert.ToInt32(cmbCourse.SelectedValue)
                 };
 
-                bool success = await subjectController.AddSubjectAsync(subject);
-                if (success)
-                {
-                    MessageBox.Show("Subject added successfully.");
-                    ClearForm();
-                    await LoadSubjectsAsyns();
-                }
-                else
-                {
-                    MessageBox.Show("Failed to add subject.");
-                }
+                bool result = await subjectController.AddSubjectAsync(subject);
+                MessageBox.Show(result ? "Subject added!" : "Failed to add.");
+                LoadData();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error adding subject: " + ex.Message);
+                MessageBox.Show("Add Error: " + ex.Message);
             }
 
         }
+        
 
         private void label3_Click(object sender, EventArgs e)
         {

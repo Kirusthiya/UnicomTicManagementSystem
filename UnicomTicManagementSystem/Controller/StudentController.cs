@@ -17,12 +17,12 @@ namespace UnicomTicManagementSystem.Controller
             {
                 using (var conn = DatabaseManager.GetConnection())
                 {
-                    string query = @"INSERT INTO Students (UserID, StudentName, Gender, Address, PhoneNumber, CourseID) VALUES (@UserID, @StudentName, @Gender, @Address, @PhoneNumber, @CourseID)";
+                    string query = @"INSERT INTO Students (UserID, Name, Gender, Address, PhoneNumber, CourseID) VALUES (@UserID, @Name, @Gender, @Address, @PhoneNumber, @CourseID)";
 
                     using (var cmd = new SQLiteCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@UserID", student.UserID);
-                        cmd.Parameters.AddWithValue("@StudentName", student.Name);
+                        cmd.Parameters.AddWithValue("@Name", student.Name);
                         cmd.Parameters.AddWithValue("@Gender", student.Gender);
                         cmd.Parameters.AddWithValue("@Address", student.Address);
                         cmd.Parameters.AddWithValue("@PhoneNumber", student.PhoneNumber);
@@ -48,14 +48,14 @@ namespace UnicomTicManagementSystem.Controller
                 {
                     string query = @"
                         UPDATE Students 
-                        SET StudentName = @StudentName, Gender = @Gender, Address = @Address, 
+                        SET Name = @Name, Gender = @Gender, Address = @Address, 
                         PhoneNumber = @PhoneNumber, CourseID = @CourseID 
                         WHERE UserID = @UserID"
                     ;
 
                     using (var cmd = new SQLiteCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@StudentName", student.Name);
+                        cmd.Parameters.AddWithValue("@Name", student.Name);
                         cmd.Parameters.AddWithValue("@Gender", student.Gender);
                         cmd.Parameters.AddWithValue("@Address", student.Address);
                         cmd.Parameters.AddWithValue("@PhoneNumber", student.PhoneNumber);
@@ -116,7 +116,7 @@ namespace UnicomTicManagementSystem.Controller
                                 return new Student
                                 {
                                     UserID = reader["UserID"].ToString(),
-                                    Name = reader["StudentName"].ToString(),
+                                    Name = reader["Name"].ToString(),
                                     Gender = reader["Gender"].ToString(),
                                     Address = reader["Address"].ToString(),
                                     PhoneNumber = reader["PhoneNumber"].ToString(),
@@ -151,7 +151,7 @@ namespace UnicomTicManagementSystem.Controller
                             students.Add(new Student
                             {
                                 UserID = reader["UserID"].ToString(),
-                                Name = reader["StudentName"].ToString(),
+                                Name = reader["Name"].ToString(),
                                 Gender = reader["Gender"].ToString(),
                                 Address = reader["Address"].ToString(),
                                 PhoneNumber = reader["PhoneNumber"].ToString(),

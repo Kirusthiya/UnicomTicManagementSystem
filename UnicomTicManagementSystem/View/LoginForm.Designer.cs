@@ -72,6 +72,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(471, 533);
             this.panel2.TabIndex = 16;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // txtUserName
             // 
@@ -82,6 +83,7 @@
             this.txtUserName.Size = new System.Drawing.Size(338, 43);
             this.txtUserName.TabIndex = 23;
             this.txtUserName.Text = "Enter username";
+            this.txtUserName.TextChanged += new System.EventHandler(this.txtUserName_TextChanged);
             this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);
             this.txtUserName.Leave += new System.EventHandler(this.txtUserName_Leave);
             // 

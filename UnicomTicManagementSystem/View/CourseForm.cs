@@ -125,12 +125,13 @@ namespace UnicomTicManagementSystem.View
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0 && dataGridView1.Rows[e.RowIndex].Cells["CourseID"].Value != null)
             {
                 selectedCourseID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CourseID"].Value);
                 txtCourse.Text = dataGridView1.Rows[e.RowIndex].Cells["CourseName"].Value.ToString();
             }
         }
+        
         public void LoadForm(Form form)
         {
             // Remove any existing control (and dispose it properly)

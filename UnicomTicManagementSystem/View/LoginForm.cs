@@ -15,6 +15,7 @@ namespace UnicomTicManagementSystem.View
     public partial class LoginForm : Form
     {
         private readonly LoginController loginController = new LoginController();
+        private string expectedRole = " ";
         public void LoadForm(Form form)
         {
             foreach (Control ctrl in panel1.Controls)
@@ -38,16 +39,27 @@ namespace UnicomTicManagementSystem.View
             txtForgotPass.Clear();
             txtForcotConPass.Clear();
         }
-        public LoginForm()
+        public LoginForm(string role)
         {
             InitializeComponent();
             ForgotPanel.Visible = false;
+            expectedRole = role;
+        }
+        public LoginForm()
+        {
+
         }
         private async Task LoginUserAsync(string username, string password)
         {
             var user = await loginController.AuthenticateUserAsync(username, password);
             if (user != null)
             {
+                if (!string.Equals(user.Role, expectedRole, StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show($"Invalid role.This account is a '{user.Role}'account. plese login form correct pannel. ");
+                    return;
+                }
+
                 MessageBox.Show("Logged in successfully with new password!");
 
                 if (user.Role == "Admin")
@@ -282,24 +294,38 @@ namespace UnicomTicManagementSystem.View
             var user = await loginController.AuthenticateUserAsync(username, password);
             if (user != null)
             {
+                // ✅ Check role match
+                if (user.Role != expectedRole)
+                {
+                    MessageBox.Show($"Access denied! You are not authorized to login as {expectedRole}.");
+                    return;
+                }
+
                 MessageBox.Show("Login successful!");
 
                 if (user.Role == "Admin")
+                {
                     LoadForm(new AdminMenuForm());
+                }
                 else if (user.Role == "Student")
+                {
                     LoadForm(new StudentViewForm());
+                }
                 else if (user.Role == "Lecturer")
+                {
                     LoadForm(new LectureMenuForm(user.UserID));
+                }
                 else if (user.Role == "Staff")
+                {
                     LoadForm(new StaffMenuForm());
-
-                this.Hide();
+                }
             }
             else
             {
                 MessageBox.Show("Invalid username or password.");
             }
         }
+        
 
         private async void btnChange_Click_1(object sender, EventArgs e)
         {
@@ -339,6 +365,15 @@ namespace UnicomTicManagementSystem.View
             }
         }
 
+        private void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
     
 }

@@ -58,20 +58,30 @@ namespace UnicomTicManagementSystem.View
                 return;
             }
 
-            var timetableController = new TimeTableController();
-            var timetableList = await timetableController.GetAllTimetablesAsync();
+            var allLecturers = await lectureController.GetAllLecturersAsync();
+            var lecturer = allLecturers.FirstOrDefault(l => l.UserID == userId);
 
-            if (timetableList.Any())
+            if (lecturer != null)
             {
-                dgvLectureMenu.DataSource = timetableList;
+                dgvLectureMenu.DataSource = new List<Lecture> { lecturer };
+
+                // Check if "ViewDetails" column exists
+                if (!dgvLectureMenu.Columns.Contains("ViewDetails"))
+                {
+                    DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                    btn.Name = "ViewDetails";
+                    btn.HeaderText = "Action";
+                    btn.Text = "View";
+                    btn.UseColumnTextForButtonValue = true;
+                    dgvLectureMenu.Columns.Add(btn);
+                }
             }
             else
             {
-                MessageBox.Show("No timetable found.");
+                MessageBox.Show("Lecturer not found.");
                 dgvLectureMenu.DataSource = null;
             }
         }
-        
 
         private void btnMark_Click(object sender, EventArgs e)
         {
@@ -104,30 +114,65 @@ namespace UnicomTicManagementSystem.View
                 return;
             }
 
-            var controller = new Lecturecontroller();
-            var allLecturers = await controller.GetAllLecturersAsync();
-            var lecturer = allLecturers.FirstOrDefault(l => l.UserID == userId);
+            var timetableList = await timetableController.GetAllTimetablesAsync();
+            var lecturerTimetable = timetableList.Where(t => t.UserID == userId).ToList();
 
-            if (lecturer != null)
+            if (lecturerTimetable.Any())
             {
-                dgvLectureMenu.DataSource = new List<Lecture> { lecturer };
+                dgvLectureMenu.DataSource = lecturerTimetable;
             }
             else
             {
-                MessageBox.Show("Lecturer not found.");
+                MessageBox.Show("No timetable found for this lecturer.");
                 dgvLectureMenu.DataSource = null;
             }
         }
-     
-
+        
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Application.Restart();
+            DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                LoadForm(new LoginForm("Lecturer"));
+
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+        private void dgvLectureMenu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Row and Column click check
+            if (e.RowIndex >= 0)
+            {
+                // Row edukkuthu
+                DataGridViewRow selectedRow = dgvLectureMenu.Rows[e.RowIndex];
+
+                // Cell la 'UserID' column irundha value edukkuthu
+                object userIdValue = selectedRow.Cells["UserID"].Value;
+                string userId = "";
+
+                if (userIdValue != null)
+                {
+                    userId = userIdValue.ToString();
+                }
+
+                // Column name check
+                DataGridViewColumn clickedColumn = dgvLectureMenu.Columns[e.ColumnIndex];
+
+                if (clickedColumn != null)
+                {
+                    if (clickedColumn.Name == "ViewDetails")
+                    {
+                        MessageBox.Show("Show details for UserID: " + userId);
+                    }
+                }
+            }
+        }
+
     }
+    
 }

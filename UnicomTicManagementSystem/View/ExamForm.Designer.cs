@@ -29,7 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtExamId = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.lblfile = new System.Windows.Forms.Label();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.file = new System.Windows.Forms.Label();
             this.cmbSubject = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -42,15 +46,17 @@
             this.cmbCourse = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtExamname = new System.Windows.Forms.TextBox();
-            this.btnlogout = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExam)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnlogout);
-            this.panel1.Controls.Add(this.txtExamId);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.lblfile);
+            this.panel1.Controls.Add(this.btnBrowse);
+            this.panel1.Controls.Add(this.file);
             this.panel1.Controls.Add(this.cmbSubject);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnAdd);
@@ -69,27 +75,71 @@
             this.panel1.Size = new System.Drawing.Size(649, 557);
             this.panel1.TabIndex = 0;
             // 
-            // txtExamId
+            // label6
             // 
-            this.txtExamId.Location = new System.Drawing.Point(154, 226);
-            this.txtExamId.Multiline = true;
-            this.txtExamId.Name = "txtExamId";
-            this.txtExamId.Size = new System.Drawing.Size(260, 20);
-            this.txtExamId.TabIndex = 23;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(349, 99);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 18);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Search";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(413, 97);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(188, 20);
+            this.txtSearch.TabIndex = 31;
+            // 
+            // lblfile
+            // 
+            this.lblfile.AutoSize = true;
+            this.lblfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfile.Location = new System.Drawing.Point(151, 213);
+            this.lblfile.Name = "lblfile";
+            this.lblfile.Size = new System.Drawing.Size(31, 18);
+            this.lblfile.TabIndex = 28;
+            this.lblfile.Text = "File";
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowse.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBrowse.Location = new System.Drawing.Point(50, 285);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(75, 36);
+            this.btnBrowse.TabIndex = 27;
+            this.btnBrowse.Text = "file";
+            this.btnBrowse.UseVisualStyleBackColor = false;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // file
+            // 
+            this.file.AutoSize = true;
+            this.file.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.file.Location = new System.Drawing.Point(79, 213);
+            this.file.Name = "file";
+            this.file.Size = new System.Drawing.Size(31, 18);
+            this.file.TabIndex = 25;
+            this.file.Text = "File";
+            this.file.Click += new System.EventHandler(this.label5_Click);
             // 
             // cmbSubject
             // 
             this.cmbSubject.FormattingEnabled = true;
-            this.cmbSubject.Location = new System.Drawing.Point(154, 187);
+            this.cmbSubject.Location = new System.Drawing.Point(154, 176);
             this.cmbSubject.Name = "cmbSubject";
-            this.cmbSubject.Size = new System.Drawing.Size(260, 21);
+            this.cmbSubject.Size = new System.Drawing.Size(135, 21);
             this.cmbSubject.TabIndex = 22;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(79, 190);
+            this.label4.Location = new System.Drawing.Point(79, 175);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 18);
             this.label4.TabIndex = 21;
@@ -112,7 +162,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(79, 142);
+            this.label3.Location = new System.Drawing.Point(79, 135);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 18);
             this.label3.TabIndex = 19;
@@ -135,9 +185,9 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSearch.Location = new System.Drawing.Point(447, 96);
+            this.btnSearch.Location = new System.Drawing.Point(463, 285);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 27);
+            this.btnSearch.Size = new System.Drawing.Size(75, 29);
             this.btnSearch.TabIndex = 17;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -183,9 +233,9 @@
             // cmbCourse
             // 
             this.cmbCourse.FormattingEnabled = true;
-            this.cmbCourse.Location = new System.Drawing.Point(154, 143);
+            this.cmbCourse.Location = new System.Drawing.Point(154, 135);
             this.cmbCourse.Name = "cmbCourse";
-            this.cmbCourse.Size = new System.Drawing.Size(260, 21);
+            this.cmbCourse.Size = new System.Drawing.Size(135, 21);
             this.cmbCourse.TabIndex = 13;
             // 
             // label1
@@ -203,21 +253,8 @@
             this.txtExamname.Location = new System.Drawing.Point(154, 97);
             this.txtExamname.Multiline = true;
             this.txtExamname.Name = "txtExamname";
-            this.txtExamname.Size = new System.Drawing.Size(260, 20);
+            this.txtExamname.Size = new System.Drawing.Size(135, 20);
             this.txtExamname.TabIndex = 11;
-            // 
-            // btnlogout
-            // 
-            this.btnlogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnlogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnlogout.Location = new System.Drawing.Point(538, 18);
-            this.btnlogout.Name = "btnlogout";
-            this.btnlogout.Size = new System.Drawing.Size(75, 27);
-            this.btnlogout.TabIndex = 24;
-            this.btnlogout.Text = "Logout";
-            this.btnlogout.UseVisualStyleBackColor = false;
-            this.btnlogout.Click += new System.EventHandler(this.btnlogout_Click);
             // 
             // ExamForm
             // 
@@ -250,7 +287,10 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ComboBox cmbSubject;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtExamId;
-        private System.Windows.Forms.Button btnlogout;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.Label file;
+        private System.Windows.Forms.Label lblfile;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

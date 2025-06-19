@@ -28,11 +28,11 @@ namespace UnicomTicManagementSystem.Repositories
                 );
 
                  CREATE TABLE IF NOT EXISTS Subjects (
-                      SubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
-                      SubjectName TEXT NOT NULL,
-                      CourseID INTEGER NOT NULL,
-                      FOREIGN KEY(CourseID) REFERENCES Courses(CourseID)
-                 );
+                    SubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    SubjectName TEXT NOT NULL,
+                    CourseID INTEGER,
+                    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+                );
 
                  CREATE TABLE IF NOT EXISTS Students (
                      UserID TEXT PRIMARY KEY,
@@ -57,7 +57,7 @@ namespace UnicomTicManagementSystem.Repositories
                     );
                     CREATE TABLE IF NOT EXISTS Lecturers (
                         UserID TEXT PRIMARY KEY,
-                        LecturerName TEXT NOT NULL,
+                        Name TEXT NOT NULL,
                         Address TEXT,
                         Gender TEXT,
                         Salary REAL,
@@ -76,7 +76,7 @@ namespace UnicomTicManagementSystem.Repositories
                         UserID TEXT NOT NULL,
                         TimeSlot TEXT NOT NULL,
                         RoomID INTEGER NOT NULL,
-                        Day TEXT NOT NULL,  -- Changed from INTEGER to TEXT
+                        Day TEXT NOT NULL, 
                         FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID),
                         FOREIGN KEY (UserID) REFERENCES Users(UserID),
                         FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID)
@@ -87,6 +87,7 @@ namespace UnicomTicManagementSystem.Repositories
                         ExamName TEXT NOT NULL,
                         SubjectID INTEGER NOT NULL,
                         CourseID INTEGER NOT NULL,
+                        FileName TEXT,
                         FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID),
                         FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
                     );
@@ -103,7 +104,7 @@ namespace UnicomTicManagementSystem.Repositories
                     );
 
                     CREATE TABLE IF NOT EXISTS StudentSubjects (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        ID INTEGER PRIMARY KEY AUTOINCREMENT,
                         UserID TEXT NOT NULL,
                         SubjectID INTEGER NOT NULL,
                         FOREIGN KEY (UserID) REFERENCES Users(UserID),
@@ -111,7 +112,7 @@ namespace UnicomTicManagementSystem.Repositories
                     );
 
                     CREATE TABLE IF NOT EXISTS LecturerSubjects (
-                        LecturerSubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
+                        ID INTEGER PRIMARY KEY AUTOINCREMENT,
                         UserID TEXT NOT NULL,
                         SubjectID INTEGER NOT NULL,
                         FOREIGN KEY (UserID) REFERENCES Users(UserID),

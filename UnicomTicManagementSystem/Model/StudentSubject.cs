@@ -8,7 +8,7 @@ namespace UnicomTicManagementSystem.Model
 {
     public class StudentSubject
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string UserID { get; set; }
         public string StudentName { get; set; }
         public int SubjectID { get; set; }

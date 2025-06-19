@@ -126,6 +126,14 @@
             // cmbDay
             // 
             this.cmbDay.FormattingEnabled = true;
+            this.cmbDay.Items.AddRange(new object[] {
+            "Monday",
+            "Tuesday",
+            "wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Friday"});
             this.cmbDay.Location = new System.Drawing.Point(468, 142);
             this.cmbDay.Name = "cmbDay";
             this.cmbDay.Size = new System.Drawing.Size(151, 21);

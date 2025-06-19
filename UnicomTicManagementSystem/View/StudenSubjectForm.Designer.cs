@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtSubject = new System.Windows.Forms.TextBox();
+            this.cmbsubjectID = new System.Windows.Forms.ComboBox();
+            this.cmbUserId = new System.Windows.Forms.ComboBox();
+            this.btnsearch = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -38,17 +40,16 @@
             this.txtSearch = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvStudentSubject = new System.Windows.Forms.DataGridView();
-            this.txtStudent = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnlogout = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentSubject)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnlogout);
-            this.panel1.Controls.Add(this.txtSubject);
+            this.panel1.Controls.Add(this.cmbsubjectID);
+            this.panel1.Controls.Add(this.cmbUserId);
+            this.panel1.Controls.Add(this.btnsearch);
             this.panel1.Controls.Add(this.textBox4);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnUpdate);
@@ -57,7 +58,6 @@
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.dgvStudentSubject);
-            this.panel1.Controls.Add(this.txtStudent);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -65,13 +65,34 @@
             this.panel1.Size = new System.Drawing.Size(649, 557);
             this.panel1.TabIndex = 0;
             // 
-            // txtSubject
+            // cmbsubjectID
             // 
-            this.txtSubject.Location = new System.Drawing.Point(174, 155);
-            this.txtSubject.Multiline = true;
-            this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(225, 25);
-            this.txtSubject.TabIndex = 12;
+            this.cmbsubjectID.FormattingEnabled = true;
+            this.cmbsubjectID.Location = new System.Drawing.Point(174, 159);
+            this.cmbsubjectID.Name = "cmbsubjectID";
+            this.cmbsubjectID.Size = new System.Drawing.Size(225, 21);
+            this.cmbsubjectID.TabIndex = 28;
+            // 
+            // cmbUserId
+            // 
+            this.cmbUserId.FormattingEnabled = true;
+            this.cmbUserId.Location = new System.Drawing.Point(174, 117);
+            this.cmbUserId.Name = "cmbUserId";
+            this.cmbUserId.Size = new System.Drawing.Size(225, 21);
+            this.cmbUserId.TabIndex = 27;
+            // 
+            // btnsearch
+            // 
+            this.btnsearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnsearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsearch.ForeColor = System.Drawing.Color.White;
+            this.btnsearch.Location = new System.Drawing.Point(528, 65);
+            this.btnsearch.Name = "btnsearch";
+            this.btnsearch.Size = new System.Drawing.Size(75, 32);
+            this.btnsearch.TabIndex = 26;
+            this.btnsearch.Text = "Search";
+            this.btnsearch.UseVisualStyleBackColor = false;
+            this.btnsearch.Click += new System.EventHandler(this.btnsearch_Click);
             // 
             // textBox4
             // 
@@ -162,14 +183,6 @@
             this.dgvStudentSubject.TabIndex = 2;
             this.dgvStudentSubject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudentSubject_CellContentClick);
             // 
-            // txtStudent
-            // 
-            this.txtStudent.Location = new System.Drawing.Point(174, 109);
-            this.txtStudent.Multiline = true;
-            this.txtStudent.Name = "txtStudent";
-            this.txtStudent.Size = new System.Drawing.Size(225, 25);
-            this.txtStudent.TabIndex = 1;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -179,19 +192,6 @@
             this.label1.Size = new System.Drawing.Size(225, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Student Subject Details";
-            // 
-            // btnlogout
-            // 
-            this.btnlogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnlogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnlogout.Location = new System.Drawing.Point(550, 23);
-            this.btnlogout.Name = "btnlogout";
-            this.btnlogout.Size = new System.Drawing.Size(75, 27);
-            this.btnlogout.TabIndex = 25;
-            this.btnlogout.Text = "Logout";
-            this.btnlogout.UseVisualStyleBackColor = false;
-            this.btnlogout.Click += new System.EventHandler(this.btnlogout_Click);
             // 
             // StudenSubjectForm
             // 
@@ -213,7 +213,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvStudentSubject;
-        private System.Windows.Forms.TextBox txtStudent;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
@@ -221,8 +220,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label txtSearch;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.TextBox txtSubject;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button btnlogout;
+        private System.Windows.Forms.Button btnsearch;
+        private System.Windows.Forms.ComboBox cmbsubjectID;
+        private System.Windows.Forms.ComboBox cmbUserId;
     }
 }

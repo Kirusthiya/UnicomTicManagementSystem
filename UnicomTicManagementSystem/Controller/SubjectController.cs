@@ -11,125 +11,133 @@ namespace UnicomTicManagementSystem.Controller
 {
     public class SubjectController
     {
-            public async Task<bool> AddSubjectAsync(Subject subject)
+        public async Task<bool> AddSubjectAsync(Subject subject)
+        {
+            try
             {
-                try
+                using (var conn = DatabaseManager.GetConnection())
                 {
-                    using (var conn = DatabaseManager.GetConnection())
+                    string query = @"INSERT INTO Subjects (SubjectName, CourseID)
+                                     VALUES (@SubjectName, @CourseID)";
+                    using (var cmd = new SQLiteCommand(query, conn))
                     {
-                        string query = @"INSERT INTO Subjects (SubjectName, CourseID) VALUES (@SubjectName, @CourseID)";
+                        cmd.Parameters.AddWithValue("@SubjectName", subject.SubjectName);
+                        cmd.Parameters.AddWithValue("@CourseID", subject.CourseID);
 
-                        using (var cmd = new SQLiteCommand(query, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@SubjectName", subject.SubjectName);
-                            cmd.Parameters.AddWithValue("@CourseID", subject.CourseID);
-
-                            int rows = await cmd.ExecuteNonQueryAsync();
-                            return rows > 0;
-                        }
+                        int result = await cmd.ExecuteNonQueryAsync();
+                        return result > 0;
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error adding subject: " + ex.Message);
-                    return false;
-                }
             }
-
-            public async Task<bool> UpdateSubjectAsync(Subject subject)
+            catch (Exception ex)
             {
-                try
+                Console.WriteLine("Error adding subject: " + ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdateSubjectAsync(Subject subject)
+        {
+            try
+            {
+                using (var conn = DatabaseManager.GetConnection())
                 {
-                    using (var conn = DatabaseManager.GetConnection())
+                    string query = @"UPDATE Subjects 
+                                     SET SubjectName = @SubjectName, CourseID = @CourseID
+                                     WHERE SubjectID = @SubjectID";
+                    using (var cmd = new SQLiteCommand(query, conn))
                     {
-                        string query = @"UPDATE Subjects SET SubjectName = @SubjectName, CourseID = @CourseID WHERE SubjectID = @SubjectID";
+                        cmd.Parameters.AddWithValue("@SubjectName", subject.SubjectName);
+                        cmd.Parameters.AddWithValue("@CourseID", subject.CourseID);
+                        cmd.Parameters.AddWithValue("@SubjectID", subject.SubjectID);
 
-                        using (var cmd = new SQLiteCommand(query, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@SubjectName", subject.SubjectName);
-                            cmd.Parameters.AddWithValue("@CourseID", subject.CourseID);
-                            cmd.Parameters.AddWithValue("@SubjectID", subject.SubjectID);
-
-                            int rows = await cmd.ExecuteNonQueryAsync();
-                            return rows > 0;
-                        }
+                        int result = await cmd.ExecuteNonQueryAsync();
+                        return result > 0;
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error updating subject: " + ex.Message);
-                    return false;
-                }
             }
-
-            public async Task<bool> DeleteSubjectAsync(int subjectId)
+            catch (Exception ex)
             {
-                try
-                {
-                    using (var conn = DatabaseManager.GetConnection())
-                    {
-                        string query = "DELETE FROM Subjects WHERE SubjectID = @SubjectID";
+                Console.WriteLine("Error updating subject: " + ex.Message);
+                return false;
+            }
+        }
 
-                        using (var cmd = new SQLiteCommand(query, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@SubjectID", subjectId);
-                            int rows = await cmd.ExecuteNonQueryAsync();
-                            return rows > 0;
-                        }
+        public async Task<bool> DeleteSubjectAsync(int subjectId)
+        {
+            try
+            {
+                using (var conn = DatabaseManager.GetConnection())
+                {
+                    string query = @"DELETE FROM Subjects WHERE SubjectID = @SubjectID";
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@SubjectID", subjectId);
+                        int result = await cmd.ExecuteNonQueryAsync();
+                        return result > 0;
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error deleting subject: " + ex.Message);
-                    return false;
-                }
             }
-
-            public async Task<Subject> GetSubjectByIdAsync(int subjectId)
+            catch (Exception ex)
             {
-                try
+                Console.WriteLine("Error deleting subject: " + ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<List<Subject>> GetAllSubjectsAsync()
+        {
+            var subjects = new List<Subject>();
+            try
+            {
+                using (var conn = DatabaseManager.GetConnection())
                 {
-                    using (var conn = DatabaseManager.GetConnection())
+                    string query = @"
+                        SELECT s.SubjectID, s.SubjectName, s.CourseID, c.CourseName
+                        FROM Subjects s
+                        JOIN Courses c ON s.CourseID = c.CourseID";
+
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    using (var reader = await cmd.ExecuteReaderAsync())
                     {
-                        string query = "SELECT * FROM Subjects WHERE SubjectID = @SubjectID";
-
-                        using (var cmd = new SQLiteCommand(query, conn))
+                        while (await reader.ReadAsync())
                         {
-                            cmd.Parameters.AddWithValue("@SubjectID", subjectId);
-
-                            using (var reader = await cmd.ExecuteReaderAsync())
+                            subjects.Add(new Subject
                             {
-                                if (await reader.ReadAsync())
-                                {
-                                    return new Subject
-                                    {
-                                        SubjectID = Convert.ToInt32(reader["SubjectID"]),
-                                        SubjectName = reader["SubjectName"].ToString(),
-                                        CourseID = Convert.ToInt32(reader["CourseID"])
-                                    };
-                                }
-                            }
+                                SubjectID = Convert.ToInt32(reader["SubjectID"]),
+                                SubjectName = reader["SubjectName"].ToString(),
+                                CourseID = Convert.ToInt32(reader["CourseID"]),
+                                CourseName = reader["CourseName"].ToString()
+                            });
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error fetching subject: " + ex.Message);
-                }
-                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving subjects: " + ex.Message);
             }
 
-            public async Task<List<Subject>> GetAllSubjectsAsync()
+            return subjects;
+        }
+
+        public async Task<List<Subject>> SearchSubjectsByNameAsync(string name)
+        {
+            var subjects = new List<Subject>();
+            try
             {
-                var subjects = new List<Subject>();
-
-                try
+                using (var conn = DatabaseManager.GetConnection())
                 {
-                    using (var conn = DatabaseManager.GetConnection())
-                    {
-                        string query = "SELECT * FROM Subjects";
+                    string query = @"
+                        SELECT s.SubjectID, s.SubjectName, s.CourseID, c.CourseName
+                        FROM Subjects s
+                        JOIN Courses c ON s.CourseID = c.CourseID
+                        WHERE s.SubjectName LIKE @Name";
 
-                        using (var cmd = new SQLiteCommand(query, conn))
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", $"%{name}%");
+
                         using (var reader = await cmd.ExecuteReaderAsync())
                         {
                             while (await reader.ReadAsync())
@@ -138,44 +146,10 @@ namespace UnicomTicManagementSystem.Controller
                                 {
                                     SubjectID = Convert.ToInt32(reader["SubjectID"]),
                                     SubjectName = reader["SubjectName"].ToString(),
-                                    CourseID = Convert.ToInt32(reader["CourseID"])
+                                    CourseID = Convert.ToInt32(reader["CourseID"]),
+                                    CourseName = reader["CourseName"].ToString()
                                 });
                             }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error retrieving subjects: " + ex.Message);
-                }
-
-                return subjects;
-            }
-        public async Task<List<Subject>> SearchSubjectsAsync(string keyword)
-        {
-            var subjects = new List<Subject>();
-
-            try
-            {
-                using (var connection = DatabaseManager.GetConnection())
-                {
-                    var command = connection.CreateCommand();
-                    command.CommandText = @"
-                SELECT * FROM Subjects 
-                WHERE SubjectName LIKE @Keyword
-            ";
-                    command.Parameters.AddWithValue("@Keyword", $"%{keyword}%");
-
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            subjects.Add(new Subject
-                            {
-                                SubjectID = Convert.ToInt32(reader["SubjectID"]),
-                                SubjectName = reader["SubjectName"].ToString(),
-                                CourseID = Convert.ToInt32(reader["CourseID"])
-                            });
                         }
                     }
                 }
@@ -188,4 +162,6 @@ namespace UnicomTicManagementSystem.Controller
             return subjects;
         }
     }
- }
+}
+  
+     

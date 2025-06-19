@@ -8,126 +8,114 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnicomTicManagementSystem.Controller;
+using UnicomTicManagementSystem.Model;
 
 namespace UnicomTicManagementSystem.View
 {
     public partial class LectureSubjectForm : Form
     {
+
         private readonly LecturerSubjectController controller = new LecturerSubjectController();
+        private List<LecturerSubject> lecturerSubjectList = new List<LecturerSubject>();
+
         public LectureSubjectForm()
         {
             InitializeComponent();
-            _ = LoadDataAsync();
+            LoadData();
+
         }
-        private async Task LoadDataAsync()
-        {
-            try
-            {
-                var list = await controller.GetAllLecturerSubjectsAsync();
-                dgvLectureSubject.DataSource = list;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to load data: " + ex.Message);
-            }
-        }
+      
 
         private void label4_Click(object sender, EventArgs e)
         {
 
         }
+        private async void LoadData()
+        {
+            try
+            {
+                // Load table
+                lecturerSubjectList = await controller.GetAllLecturerSubjectsAsync();
+                dgvLectureSubject.DataSource = lecturerSubjectList;
 
+                // Load lecturers
+                var users = await new UserController().GetAllUsersAsync();
+                var lecturers = users.Where(u => u.Role == "Lecturer").ToList();
+                cmbUserId.DataSource = lecturers;
+                cmbUserId.DisplayMember = "Name";
+                cmbUserId.ValueMember = "UserID";
+
+                // Load subjects
+                var subjects = await new SubjectController().GetAllSubjectsAsync();
+                cmbSubject.DataSource = subjects;
+                cmbSubject.DisplayMember = "SubjectName";
+                cmbSubject.ValueMember = "SubjectID";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading data: " + ex.Message);
+            }
+        }
         private async void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtUserId.Text) || string.IsNullOrWhiteSpace(txtSubjectId.Text))
+                var lecturerSubject = new LecturerSubject
                 {
-                    MessageBox.Show("Please fill all fields.");
-                    return;
-                }
+                    UserID = cmbUserId.SelectedValue.ToString(),
+                    SubjectID = Convert.ToInt32(cmbSubject.SelectedValue)
+                };
 
-                string userId = txtUserId.Text.Trim();
-                if (!int.TryParse(txtSubjectId.Text.Trim(), out int subjectId))
-                {
-                    MessageBox.Show("Invalid Subject ID.");
-                    return;
-                }
-
-                bool result = await controller.AddLecturerSubjectAsync(userId, subjectId);
-                if (result)
-                {
-                    MessageBox.Show("Lecturer subject added successfully.");
-                    await LoadDataAsync();
-                    ClearInputs();
-                }
-                else
-                {
-                    MessageBox.Show("Failed to add lecturer subject.");
-                }
+                bool result = await controller.AddLecturerSubjectAsync(lecturerSubject);
+                MessageBox.Show(result ? "Lecturer subject added." : "Already exists or failed to add.");
+                LoadData();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Add Error: " + ex.Message);
             }
+
         }
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
-                if (dgvLectureSubject.SelectedRows.Count == 0)
+                if (dgvLectureSubject.CurrentRow != null)
                 {
-                    MessageBox.Show("Please select a row to delete.");
-                    return;
-                }
-
-                int id = Convert.ToInt32(dgvLectureSubject.SelectedRows[0].Cells["LecturerSubjectID"].Value);
-                var confirm = MessageBox.Show("Are you sure you want to delete?", "Confirm", MessageBoxButtons.YesNo);
-                if (confirm == DialogResult.Yes)
-                {
+                    int id = Convert.ToInt32(dgvLectureSubject.CurrentRow.Cells["ID"].Value);
                     bool result = await controller.DeleteLecturerSubjectAsync(id);
-                    if (result)
-                    {
-                        MessageBox.Show("Deleted successfully.");
-                        await LoadDataAsync();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to delete.");
-                    }
+                    MessageBox.Show(result ? "Deleted successfully." : "Delete failed.");
+                    LoadData();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error while deleting: " + ex.Message);
+                MessageBox.Show("Delete Error: " + ex.Message);
             }
+
         }
 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
-                string name = txtSearch.Text.Trim();
-                if (string.IsNullOrWhiteSpace(name))
+                string search = txtSearch.Text.Trim();
+                if (string.IsNullOrEmpty(search))
                 {
-                    await LoadDataAsync();
+                    LoadData();
                     return;
                 }
 
-                var list = await controller.SearchByLecturerNameAsync(name);
-                dgvLectureSubject.DataSource = list;
+                var result = await controller.SearchByLecturerNameAsync(search);
+                dgvLectureSubject.DataSource = result;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Search error: " + ex.Message);
+                MessageBox.Show("Search Error: " + ex.Message);
             }
         }
-        private void ClearInputs()
-        {
-            txtUserId.Clear();
-            txtSubjectId.Clear();
-        }
+       
         public void LoadForm(Form form)
         {
             // Remove any existing control (and dispose it properly)
@@ -155,7 +143,48 @@ namespace UnicomTicManagementSystem.View
             }
         }
 
-        
+        private void dgvLectureSubject_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && e.RowIndex < dgvLectureSubject.Rows.Count)
+                {
+                    var row = dgvLectureSubject.Rows[e.RowIndex];
+                    cmbUserId.SelectedValue = row.Cells["UserID"].Value.ToString();
+                    cmbSubject.SelectedValue = Convert.ToInt32(row.Cells["SubjectID"].Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Select Error: " + ex.Message);
+            }
+
+        }
+
+        private async void btnupdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvLectureSubject.CurrentRow != null)
+                {
+                    int id = Convert.ToInt32(dgvLectureSubject.CurrentRow.Cells["ID"].Value);
+                    var lecturerSubject = new LecturerSubject
+                    {
+                        ID = id,
+                        UserID = cmbUserId.SelectedValue.ToString(),
+                        SubjectID = Convert.ToInt32(cmbSubject.SelectedValue)
+                    };
+
+                    bool result = await controller.UpdateLecturerSubjectAsync(lecturerSubject);
+                    MessageBox.Show(result ? "Updated successfully." : "Update failed.");
+                    LoadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Update Error: " + ex.Message);
+            }
+        }
     }
     
 }

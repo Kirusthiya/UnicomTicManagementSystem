@@ -15,7 +15,6 @@ namespace UnicomTicManagementSystem.Repositories
         {
             SQLiteConnection conn = new SQLiteConnection(ConnectionString);
             conn.Open();
-            Console.WriteLine("Connection Opend");
             return conn;
         }
     }

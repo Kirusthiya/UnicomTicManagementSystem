@@ -86,39 +86,7 @@ namespace UnicomTicManagementSystem.View
 
 
         }
-        public void LoadForm(Form form)
-        {
-            // Remove any existing control (and dispose it properly)
-            foreach (Control ctrl in panel1.Controls)
-            {
-                ctrl.Dispose();
-            }
-            panel1.Controls.Clear();
-
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-
-            panel1.Controls.Add(form);
-            form.Show();
-
-        }
-        private void btnlogout_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnlogout_Click_1(object sender, EventArgs e)
-        {
-
-            DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                LoadForm(new AdminMenuForm());
-
-            }
-        }
-
+     
         private void txtPhoneNO_TextChanged(object sender, EventArgs e)
         {
 
@@ -285,8 +253,23 @@ namespace UnicomTicManagementSystem.View
 
         private void dgvStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvStudent.Rows[e.RowIndex];
 
+                txtUserId.Text = row.Cells["UserID"].Value.ToString();
+                txtName.Text = row.Cells["Name"].Value.ToString();
+                txtAddress.Text = row.Cells["Address"].Value.ToString();
+                txtPhoneNO.Text = row.Cells["PhoneNumber"].Value.ToString();
+                cmbCourse.SelectedValue = Convert.ToInt32(row.Cells["CourseID"].Value);
+
+                string gender = row.Cells["Gender"].Value.ToString();
+                if (gender == "Male") rdoMale.Checked = true;
+                else if (gender == "Female") rdoFemale.Checked = true;
+                else if (gender == "Other") rdoOther.Checked = true;
+            }
         }
+        
 
         private void grbGender_Enter(object sender, EventArgs e)
         {

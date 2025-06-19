@@ -60,17 +60,20 @@
             // 
             // btnTimetable
             // 
-            this.btnTimetable.Location = new System.Drawing.Point(429, 275);
+            this.btnTimetable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnTimetable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimetable.ForeColor = System.Drawing.Color.White;
+            this.btnTimetable.Location = new System.Drawing.Point(344, 287);
             this.btnTimetable.Name = "btnTimetable";
-            this.btnTimetable.Size = new System.Drawing.Size(75, 23);
+            this.btnTimetable.Size = new System.Drawing.Size(106, 38);
             this.btnTimetable.TabIndex = 7;
             this.btnTimetable.Text = "Timetable";
-            this.btnTimetable.UseVisualStyleBackColor = true;
+            this.btnTimetable.UseVisualStyleBackColor = false;
             this.btnTimetable.Click += new System.EventHandler(this.btnTimetable_Click);
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(167, 275);
+            this.btnLogout.Location = new System.Drawing.Point(466, 81);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(75, 23);
             this.btnLogout.TabIndex = 6;
@@ -80,58 +83,69 @@
             // 
             // btnMark
             // 
-            this.btnMark.Location = new System.Drawing.Point(295, 287);
+            this.btnMark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMark.ForeColor = System.Drawing.Color.White;
+            this.btnMark.Location = new System.Drawing.Point(191, 287);
             this.btnMark.Name = "btnMark";
-            this.btnMark.Size = new System.Drawing.Size(75, 23);
+            this.btnMark.Size = new System.Drawing.Size(106, 38);
             this.btnMark.TabIndex = 5;
             this.btnMark.Text = "Add mark";
-            this.btnMark.UseVisualStyleBackColor = true;
+            this.btnMark.UseVisualStyleBackColor = false;
             this.btnMark.Click += new System.EventHandler(this.btnMark_Click);
             // 
             // dgvLectureMenu
             // 
+            this.dgvLectureMenu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvLectureMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLectureMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvLectureMenu.Location = new System.Drawing.Point(0, 446);
+            this.dgvLectureMenu.Location = new System.Drawing.Point(0, 401);
             this.dgvLectureMenu.Name = "dgvLectureMenu";
-            this.dgvLectureMenu.Size = new System.Drawing.Size(665, 150);
+            this.dgvLectureMenu.Size = new System.Drawing.Size(665, 195);
             this.dgvLectureMenu.TabIndex = 4;
+            this.dgvLectureMenu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLectureMenu_CellContentClick);
             // 
             // btnview
             // 
-            this.btnview.Location = new System.Drawing.Point(65, 255);
+            this.btnview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnview.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnview.ForeColor = System.Drawing.Color.White;
+            this.btnview.Location = new System.Drawing.Point(39, 287);
             this.btnview.Name = "btnview";
-            this.btnview.Size = new System.Drawing.Size(75, 23);
+            this.btnview.Size = new System.Drawing.Size(106, 38);
             this.btnview.TabIndex = 3;
             this.btnview.Text = "View details";
-            this.btnview.UseVisualStyleBackColor = true;
+            this.btnview.UseVisualStyleBackColor = false;
             this.btnview.Click += new System.EventHandler(this.btnview_Click);
             // 
             // txtUserId
             // 
-            this.txtUserId.Location = new System.Drawing.Point(142, 132);
+            this.txtUserId.Location = new System.Drawing.Point(142, 120);
+            this.txtUserId.Multiline = true;
             this.txtUserId.Name = "txtUserId";
-            this.txtUserId.Size = new System.Drawing.Size(100, 20);
+            this.txtUserId.Size = new System.Drawing.Size(155, 31);
             this.txtUserId.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(62, 123);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(72, 127);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(52, 16);
             this.label2.TabIndex = 1;
-            this.label2.Text = "User id";
+            this.label2.Text = "User ID";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(248, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(156, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "Lecturer View";
             // 
             // LectureMenuForm
             // 

@@ -36,7 +36,7 @@ namespace UnicomTicManagementSystem.View
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            LoadForm(new AdminMenuForm());
+            LoadForm(new LoginForm("Admin"));
         }
 
         private void panelMain_Paint(object sender, PaintEventArgs e)
@@ -46,13 +46,13 @@ namespace UnicomTicManagementSystem.View
 
         private void btnLecture_Click(object sender, EventArgs e)
         {
-            LoadForm(new LoginForm());
+            LoadForm(new LoginForm("Lecturer"));
 
         }
 
         private void btnStudent_Click(object sender, EventArgs e)
         {
-            LoadForm(new StudentViewForm());
+            LoadForm(new LoginForm("Student"));
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace UnicomTicManagementSystem.View
 
         private void btnStaff_Click(object sender, EventArgs e)
         {
-            LoadForm(new StaffMenuForm());
+            LoadForm(new LoginForm("Staff"));
         }
     }
 }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAddStudent = new System.Windows.Forms.Button();
-            this.btnAddLecture = new System.Windows.Forms.Button();
-            this.btneditMark = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btneditMark = new System.Windows.Forms.Button();
+            this.btnAddLecture = new System.Windows.Forms.Button();
+            this.btnAddStudent = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,45 +48,53 @@
             this.panel1.Size = new System.Drawing.Size(665, 596);
             this.panel1.TabIndex = 0;
             // 
-            // btnAddStudent
+            // btnLogout
             // 
-            this.btnAddStudent.Location = new System.Drawing.Point(255, 96);
-            this.btnAddStudent.Name = "btnAddStudent";
-            this.btnAddStudent.Size = new System.Drawing.Size(75, 23);
-            this.btnAddStudent.TabIndex = 0;
-            this.btnAddStudent.Text = "Add Student";
-            this.btnAddStudent.UseVisualStyleBackColor = true;
-            this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
-            // 
-            // btnAddLecture
-            // 
-            this.btnAddLecture.Location = new System.Drawing.Point(295, 287);
-            this.btnAddLecture.Name = "btnAddLecture";
-            this.btnAddLecture.Size = new System.Drawing.Size(75, 23);
-            this.btnAddLecture.TabIndex = 1;
-            this.btnAddLecture.Text = "Add Lecture";
-            this.btnAddLecture.UseVisualStyleBackColor = true;
-            this.btnAddLecture.Click += new System.EventHandler(this.btnAddLecture_Click);
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnLogout.Location = new System.Drawing.Point(38, 362);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(191, 60);
+            this.btnLogout.TabIndex = 3;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btneditMark
             // 
-            this.btneditMark.Location = new System.Drawing.Point(384, 204);
+            this.btneditMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneditMark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btneditMark.Location = new System.Drawing.Point(38, 267);
             this.btneditMark.Name = "btneditMark";
-            this.btneditMark.Size = new System.Drawing.Size(75, 23);
+            this.btneditMark.Size = new System.Drawing.Size(191, 61);
             this.btneditMark.TabIndex = 2;
             this.btneditMark.Text = "Edit Mark";
             this.btneditMark.UseVisualStyleBackColor = true;
             this.btneditMark.Click += new System.EventHandler(this.btneditMark_Click);
             // 
-            // btnLogout
+            // btnAddLecture
             // 
-            this.btnLogout.Location = new System.Drawing.Point(145, 204);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(75, 23);
-            this.btnLogout.TabIndex = 3;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnAddLecture.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddLecture.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnAddLecture.Location = new System.Drawing.Point(38, 167);
+            this.btnAddLecture.Name = "btnAddLecture";
+            this.btnAddLecture.Size = new System.Drawing.Size(191, 58);
+            this.btnAddLecture.TabIndex = 1;
+            this.btnAddLecture.Text = "Add Lecture";
+            this.btnAddLecture.UseVisualStyleBackColor = true;
+            this.btnAddLecture.Click += new System.EventHandler(this.btnAddLecture_Click);
+            // 
+            // btnAddStudent
+            // 
+            this.btnAddStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnAddStudent.Location = new System.Drawing.Point(38, 67);
+            this.btnAddStudent.Name = "btnAddStudent";
+            this.btnAddStudent.Size = new System.Drawing.Size(191, 62);
+            this.btnAddStudent.TabIndex = 0;
+            this.btnAddStudent.Text = "Add Student";
+            this.btnAddStudent.UseVisualStyleBackColor = true;
+            this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
             // 
             // StaffMenuForm
             // 

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnlogout = new System.Windows.Forms.Button();
             this.txtPhoneNO = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUserId = new System.Windows.Forms.TextBox();
@@ -57,7 +56,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnlogout);
             this.panel1.Controls.Add(this.txtPhoneNO);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtUserId);
@@ -82,22 +80,9 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // btnlogout
-            // 
-            this.btnlogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnlogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnlogout.Location = new System.Drawing.Point(567, 6);
-            this.btnlogout.Name = "btnlogout";
-            this.btnlogout.Size = new System.Drawing.Size(75, 27);
-            this.btnlogout.TabIndex = 43;
-            this.btnlogout.Text = "Logout";
-            this.btnlogout.UseVisualStyleBackColor = false;
-            this.btnlogout.Click += new System.EventHandler(this.btnlogout_Click_1);
-            // 
             // txtPhoneNO
             // 
-            this.txtPhoneNO.Location = new System.Drawing.Point(171, 183);
+            this.txtPhoneNO.Location = new System.Drawing.Point(171, 163);
             this.txtPhoneNO.Multiline = true;
             this.txtPhoneNO.Name = "txtPhoneNO";
             this.txtPhoneNO.Size = new System.Drawing.Size(250, 20);
@@ -108,7 +93,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(73, 184);
+            this.label2.Location = new System.Drawing.Point(73, 167);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 16);
             this.label2.TabIndex = 41;
@@ -117,7 +102,7 @@
             // 
             // txtUserId
             // 
-            this.txtUserId.Location = new System.Drawing.Point(171, 141);
+            this.txtUserId.Location = new System.Drawing.Point(171, 128);
             this.txtUserId.Multiline = true;
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.Size = new System.Drawing.Size(250, 20);
@@ -180,7 +165,7 @@
             // 
             this.lblCourse.AutoSize = true;
             this.lblCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCourse.Location = new System.Drawing.Point(73, 222);
+            this.lblCourse.Location = new System.Drawing.Point(73, 208);
             this.lblCourse.Name = "lblCourse";
             this.lblCourse.Size = new System.Drawing.Size(50, 16);
             this.lblCourse.TabIndex = 35;
@@ -227,7 +212,7 @@
             // 
             this.lblRole.AutoSize = true;
             this.lblRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRole.Location = new System.Drawing.Point(73, 141);
+            this.lblRole.Location = new System.Drawing.Point(73, 132);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(49, 16);
             this.lblRole.TabIndex = 32;
@@ -237,7 +222,7 @@
             // cmbCourse
             // 
             this.cmbCourse.FormattingEnabled = true;
-            this.cmbCourse.Location = new System.Drawing.Point(171, 214);
+            this.cmbCourse.Location = new System.Drawing.Point(171, 203);
             this.cmbCourse.Name = "cmbCourse";
             this.cmbCourse.Size = new System.Drawing.Size(250, 21);
             this.cmbCourse.TabIndex = 31;
@@ -271,7 +256,7 @@
             this.grbGender.Controls.Add(this.rdoMale);
             this.grbGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbGender.Location = new System.Drawing.Point(67, 251);
+            this.grbGender.Location = new System.Drawing.Point(67, 247);
             this.grbGender.Name = "grbGender";
             this.grbGender.Size = new System.Drawing.Size(354, 80);
             this.grbGender.TabIndex = 27;
@@ -344,7 +329,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnlogout;
         private System.Windows.Forms.TextBox txtPhoneNO;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUserId;

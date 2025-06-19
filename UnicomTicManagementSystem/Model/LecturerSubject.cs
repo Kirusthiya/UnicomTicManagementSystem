@@ -8,8 +8,10 @@ namespace UnicomTicManagementSystem.Model
 {
     public class LecturerSubject
     {
-        public int LecturerSubjectID { get; set; }
+        public int ID { get; set; }
         public string UserID { get; set; }
         public int SubjectID { get; set; }
+        public string SubjectName { get; set; }
+        public string LecturerName { get; set; }
     }
 }

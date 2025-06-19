@@ -12,125 +12,114 @@ namespace UnicomTicManagementSystem.Controller
 {
     public class ExamController
     {
-        public async Task<bool> AddExamAsync(Exam exam)
+        public async Task<List<Exam>> GetAllExamsAsync()
         {
-            try
-            {
-                using (var conn = DatabaseManager.GetConnection())
-                {
-                    string query = @"INSERT INTO Exams (ExamName, SubjectID, CourseID) 
-                                     VALUES (@ExamName, @SubjectID, @CourseID)";
-                    using (var cmd = new SQLiteCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@ExamName", exam.ExamName);
-                        cmd.Parameters.AddWithValue("@SubjectID", exam.SubjectID);
-                        cmd.Parameters.AddWithValue("@CourseID", exam.CourseID);
+            var exams = new List<Exam>();
 
-                        int rows = await cmd.ExecuteNonQueryAsync();
-                        return rows > 0;
+            using (var conn = DatabaseManager.GetConnection())
+            {
+                string query = @"SELECT e.ExamID, e.ExamName, e.SubjectID, e.CourseID, e.FileName,
+                                 s.SubjectName, c.CourseName
+                                 FROM Exams e
+                                 JOIN Subjects s ON e.SubjectID = s.SubjectID
+                                 JOIN Courses c ON e.CourseID = c.CourseID";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        exams.Add(new Exam
+                        {
+                            ExamID = Convert.ToInt32(reader["ExamID"]),
+                            ExamName = reader["ExamName"].ToString(),
+                            SubjectID = Convert.ToInt32(reader["SubjectID"]),
+                            CourseID = Convert.ToInt32(reader["CourseID"]),
+                            FileName = reader["FileName"].ToString(),
+                            SubjectName = reader["SubjectName"].ToString(),
+                            CourseName = reader["CourseName"].ToString()
+                        });
                     }
                 }
             }
-            catch (Exception ex)
+
+            return exams;
+        }
+
+        public async Task<bool> AddExamAsync(Exam exam)
+        {
+            using (var conn = DatabaseManager.GetConnection())
             {
-                Console.WriteLine("Error adding exam: " + ex.Message);
-                return false;
+                string query = @"INSERT INTO Exams (ExamName, SubjectID, CourseID, FileName) 
+                                 VALUES (@ExamName, @SubjectID, @CourseID, @FileName)";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ExamName", exam.ExamName);
+                    cmd.Parameters.AddWithValue("@SubjectID", exam.SubjectID);
+                    cmd.Parameters.AddWithValue("@CourseID", exam.CourseID);
+                    cmd.Parameters.AddWithValue("@FileName", exam.FileName ?? "");
+
+                    return await cmd.ExecuteNonQueryAsync() > 0;
+                }
             }
         }
 
         public async Task<bool> UpdateExamAsync(Exam exam)
         {
-            try
+            using (var conn = DatabaseManager.GetConnection())
             {
-                using (var conn = DatabaseManager.GetConnection())
-                {
-                    string query = @"UPDATE Exams 
-                                     SET ExamName = @ExamName, SubjectID = @SubjectID, CourseID = @CourseID 
-                                     WHERE ExamID = @ExamID";
-                    using (var cmd = new SQLiteCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@ExamName", exam.ExamName);
-                        cmd.Parameters.AddWithValue("@SubjectID", exam.SubjectID);
-                        cmd.Parameters.AddWithValue("@CourseID", exam.CourseID);
-                        cmd.Parameters.AddWithValue("@ExamID", exam.ExamID);
+                string query = @"UPDATE Exams 
+                                 SET ExamName = @ExamName, SubjectID = @SubjectID, 
+                                     CourseID = @CourseID, FileName = @FileName 
+                                 WHERE ExamID = @ExamID";
 
-                        int rows = await cmd.ExecuteNonQueryAsync();
-                        return rows > 0;
-                    }
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ExamName", exam.ExamName);
+                    cmd.Parameters.AddWithValue("@SubjectID", exam.SubjectID);
+                    cmd.Parameters.AddWithValue("@CourseID", exam.CourseID);
+                    cmd.Parameters.AddWithValue("@FileName", exam.FileName ?? "");
+                    cmd.Parameters.AddWithValue("@ExamID", exam.ExamID);
+
+                    return await cmd.ExecuteNonQueryAsync() > 0;
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error updating exam: " + ex.Message);
-                return false;
             }
         }
 
         public async Task<bool> DeleteExamAsync(int examID)
         {
-            try
+            using (var conn = DatabaseManager.GetConnection())
             {
-                using (var conn = DatabaseManager.GetConnection())
+                string query = "DELETE FROM Exams WHERE ExamID = @ExamID";
+
+                using (var cmd = new SQLiteCommand(query, conn))
                 {
-                    string query = "DELETE FROM Exams WHERE ExamID = @ExamID";
-                    using (var cmd = new SQLiteCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@ExamID", examID);
-                        int rows = await cmd.ExecuteNonQueryAsync();
-                        return rows > 0;
-                    }
+                    cmd.Parameters.AddWithValue("@ExamID", examID);
+                    return await cmd.ExecuteNonQueryAsync() > 0;
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error deleting exam: " + ex.Message);
-                return false;
             }
         }
 
-        public async Task<Exam> GetExamByIdAsync(int examID)
-        {
-            try
-            {
-                using (var conn = DatabaseManager.GetConnection())
-                {
-                    string query = "SELECT * FROM Exams WHERE ExamID = @ExamID";
-                    using (var cmd = new SQLiteCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@ExamID", examID);
-                        using (var reader = await cmd.ExecuteReaderAsync())
-                        {
-                            if (await reader.ReadAsync())
-                            {
-                                return new Exam
-                                {
-                                    ExamID = Convert.ToInt32(reader["ExamID"]),
-                                    ExamName = reader["ExamName"].ToString(),
-                                    SubjectID = Convert.ToInt32(reader["SubjectID"]),
-                                    CourseID = Convert.ToInt32(reader["CourseID"])
-                                };
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error fetching exam: " + ex.Message);
-            }
-
-            return null;
-        }
-
-        public async Task<List<Exam>> GetAllExamsAsync()
+        public async Task<List<Exam>> SearchExamAsync(string keyword)
         {
             var exams = new List<Exam>();
-            try
+
+            using (var conn = DatabaseManager.GetConnection())
             {
-                using (var conn = DatabaseManager.GetConnection())
+                string query = @"SELECT e.ExamID, e.ExamName, e.SubjectID, e.CourseID, e.FileName,
+                                 s.SubjectName, c.CourseName
+                                 FROM Exams e
+                                 JOIN Subjects s ON e.SubjectID = s.SubjectID
+                                 JOIN Courses c ON e.CourseID = c.CourseID
+                                 WHERE e.ExamName LIKE @keyword 
+                                 OR s.SubjectName LIKE @keyword 
+                                 OR c.CourseName LIKE @keyword";
+
+                using (var cmd = new SQLiteCommand(query, conn))
                 {
-                    string query = "SELECT * FROM Exams";
-                    using (var cmd = new SQLiteCommand(query, conn))
+                    cmd.Parameters.AddWithValue("@keyword", $"%{keyword}%");
+
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
@@ -140,58 +129,60 @@ namespace UnicomTicManagementSystem.Controller
                                 ExamID = Convert.ToInt32(reader["ExamID"]),
                                 ExamName = reader["ExamName"].ToString(),
                                 SubjectID = Convert.ToInt32(reader["SubjectID"]),
-                                CourseID = Convert.ToInt32(reader["CourseID"])
+                                CourseID = Convert.ToInt32(reader["CourseID"]),
+                                FileName = reader["FileName"].ToString(),
+                                SubjectName = reader["SubjectName"].ToString(),
+                                CourseName = reader["CourseName"].ToString()
                             });
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error loading exams: " + ex.Message);
             }
 
             return exams;
         }
 
-        public async Task<List<Subject>> SearchSubjectsAsync(string keyword)
+        public async Task<Dictionary<int, string>> GetCoursesAsync()
         {
-            var subjects = new List<Subject>();
+            var courses = new Dictionary<int, string>();
 
-            try
+            using (var conn = DatabaseManager.GetConnection())
             {
-                using (var connection = DatabaseManager.GetConnection())
-                {
-                    await connection.OpenAsync();
-                    var command = connection.CreateCommand();
-                    command.CommandText = @"
-                SELECT * FROM Subjects 
-                WHERE SubjectName LIKE @Keyword
-            ";
-                    command.Parameters.AddWithValue("@Keyword", $"%{keyword}%");
+                string query = "SELECT CourseID, CourseName FROM Courses";
 
-                    using (var reader = await command.ExecuteReaderAsync())
+                using (var cmd = new SQLiteCommand(query, conn))
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
                     {
-                        while (await reader.ReadAsync())
-                        {
-                            subjects.Add(new Subject
-                            {
-                                SubjectID = Convert.ToInt32(reader["SubjectID"]),
-                                SubjectName = reader["SubjectName"].ToString(),
-                                CourseID = Convert.ToInt32(reader["CourseID"])
-                            });
-                        }
+                        courses.Add(Convert.ToInt32(reader["CourseID"]), reader["CourseName"].ToString());
                     }
                 }
             }
-            catch (Exception ex)
+
+            return courses;
+        }
+
+        public async Task<Dictionary<int, string>> GetSubjectsAsync()
+        {
+            var subjects = new Dictionary<int, string>();
+
+            using (var conn = DatabaseManager.GetConnection())
             {
-                Console.WriteLine("Error searching subjects: " + ex.Message);
+                string query = "SELECT SubjectID, SubjectName FROM Subjects";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        subjects.Add(Convert.ToInt32(reader["SubjectID"]), reader["SubjectName"].ToString());
+                    }
+                }
             }
 
             return subjects;
         }
     }
 }
-        
-    
+ 

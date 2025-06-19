@@ -76,7 +76,6 @@ namespace UnicomTicManagementSystem.View
         
         private void btnlogout_Click_2(object sender, EventArgs e)
         {
-
             DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
@@ -177,6 +176,11 @@ namespace UnicomTicManagementSystem.View
             string name = txtName.Text;
             var result = await staffController.SearchStaffByNameAsync(name);
             dvgStaff.DataSource = result;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

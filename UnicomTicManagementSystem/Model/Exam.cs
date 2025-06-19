@@ -12,5 +12,8 @@ namespace UnicomTicManagementSystem.Model
         public string ExamName { get; set; }
         public int SubjectID { get; set; }
         public int CourseID { get; set; }
+        public string SubjectName { get; set; }
+        public string CourseName { get; set; }
+        public string FileName { get; set; }
     }
 }

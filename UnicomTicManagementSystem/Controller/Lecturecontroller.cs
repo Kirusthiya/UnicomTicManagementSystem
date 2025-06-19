@@ -13,184 +13,151 @@ namespace UnicomTicManagementSystem.Controller
 {
     public class Lecturecontroller
     {
+
         public async Task<bool> AddLecturerAsync(Lecture lecturer)
         {
-            try
+            using (var conn = DatabaseManager.GetConnection())
             {
-                using (var conn = DatabaseManager.GetConnection())
+                string query = @"INSERT INTO Lecturers (UserID, Name, Address, Gender, Salary, PhoneNumber)
+                                 VALUES (@UserID, @Name, @Address, @Gender, @Salary, @PhoneNumber)";
+                using (var cmd = new SQLiteCommand(query, conn))
                 {
-                    string query = @"INSERT INTO Lecturers 
-                                    (UserID, LecturerName, Address, Gender, Salary, PhoneNumber)
-                                     VALUES 
-                                    (@UserID, @LecturerName, @Address, @Gender, @Salary, @PhoneNumber)";
+                    cmd.Parameters.AddWithValue("@UserID", lecturer.UserID);
+                    cmd.Parameters.AddWithValue("@Name", lecturer.Name);
+                    cmd.Parameters.AddWithValue("@Address", lecturer.Address);
+                    cmd.Parameters.AddWithValue("@Gender", lecturer.Gender);
+                    cmd.Parameters.AddWithValue("@Salary", lecturer.Salary);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", lecturer.PhoneNumber);
 
-                    using (var cmd = new SQLiteCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@UserID", lecturer.UserID);
-                        cmd.Parameters.AddWithValue("@LecturerName", lecturer.Name);
-                        cmd.Parameters.AddWithValue("@Address", lecturer.Address);
-                        cmd.Parameters.AddWithValue("@Gender", lecturer.Gender);
-                        cmd.Parameters.AddWithValue("@Salary", lecturer.Salary);
-                        cmd.Parameters.AddWithValue("@PhoneNumber", lecturer.PhoneNumber);
-
-                        int rows = await cmd.ExecuteNonQueryAsync();
-                        return rows > 0;
-                    }
+                    return await cmd.ExecuteNonQueryAsync() > 0;
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error adding lecturer: " + ex.Message);
-                return false;
             }
         }
 
         public async Task<bool> UpdateLecturerAsync(Lecture lecturer)
         {
-            try
+            using (var conn = DatabaseManager.GetConnection())
             {
-                using (var conn = DatabaseManager.GetConnection())
+                string query = @"UPDATE Lecturers SET Name = @Name, Address = @Address, 
+                                 Gender = @Gender, Salary = @Salary, PhoneNumber = @PhoneNumber 
+                                 WHERE UserID = @UserID";
+                using (var cmd = new SQLiteCommand(query, conn))
                 {
-                    string query = @"UPDATE Lecturers
-                                     SET LecturerName = @LecturerName,
-                                         Address = @Address,
-                                         Gender = @Gender,
-                                         Salary = @Salary,
-                                         PhoneNumber = @PhoneNumber
-                                         WHERE UserID = @UserID";
+                    cmd.Parameters.AddWithValue("@UserID", lecturer.UserID);
+                    cmd.Parameters.AddWithValue("@Name", lecturer.Name);
+                    cmd.Parameters.AddWithValue("@Address", lecturer.Address);
+                    cmd.Parameters.AddWithValue("@Gender", lecturer.Gender);
+                    cmd.Parameters.AddWithValue("@Salary", lecturer.Salary);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", lecturer.PhoneNumber);
 
-                    using (var cmd = new SQLiteCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@LecturerName", lecturer.Name);
-                        cmd.Parameters.AddWithValue("@Address", lecturer.Address);
-                        cmd.Parameters.AddWithValue("@Gender", lecturer.Gender);
-                        cmd.Parameters.AddWithValue("@Salary", lecturer.Salary);
-                        cmd.Parameters.AddWithValue("@PhoneNumber", lecturer.PhoneNumber);
-                        cmd.Parameters.AddWithValue("@UserID", lecturer.UserID);
-
-                        int rows = await cmd.ExecuteNonQueryAsync();
-                        return rows > 0;
-                    }
+                    return await cmd.ExecuteNonQueryAsync() > 0;
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error updating lecturer: " + ex.Message);
-                return false;
             }
         }
 
         public async Task<bool> DeleteLecturerAsync(string userId)
         {
-            try
+            using (var conn = DatabaseManager.GetConnection())
             {
-                using (var conn = DatabaseManager.GetConnection())
+                string query = "DELETE FROM Lecturers WHERE UserID = @UserID";
+                using (var cmd = new SQLiteCommand(query, conn))
                 {
-                    string query = "DELETE FROM Lecturers WHERE UserID = @UserID";
-
-                    using (var cmd = new SQLiteCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@UserID", userId);
-                        int rows = await cmd.ExecuteNonQueryAsync();
-                        return rows > 0;
-                    }
+                    cmd.Parameters.AddWithValue("@UserID", userId);
+                    return await cmd.ExecuteNonQueryAsync() > 0;
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error deleting lecturer: " + ex.Message);
-                return false;
             }
         }
 
         public async Task<List<Lecture>> GetAllLecturersAsync()
         {
-            var list = new List<Lecture>();
+            var lecturers = new List<Lecture>();
 
-            try
+            using (var conn = DatabaseManager.GetConnection())
             {
-                using (var conn = DatabaseManager.GetConnection())
+                string query = "SELECT * FROM Lecturers";
+                using (var cmd = new SQLiteCommand(query, conn))
+                using (var reader = await cmd.ExecuteReaderAsync())
                 {
-                    string query = @"
-                        SELECT l.UserID, l.LecturerName, l.Address, l.Gender, l.Salary, l.PhoneNumber,
-                               u.Username
-                        FROM Lecturers l
-                        JOIN Users u ON l.UserID = u.UserID";
+                    while (await reader.ReadAsync())
+                    {
+                        lecturers.Add(new Lecture
+                        {
+                            UserID = reader["UserID"].ToString(),
+                            Name = reader["Name"].ToString(),
+                            Address = reader["Address"].ToString(),
+                            Gender = reader["Gender"].ToString(),
+                            Salary = Convert.ToDecimal(reader["Salary"]),
+                            PhoneNumber = reader["PhoneNumber"].ToString()
+                        });
+                    }
+                }
+            }
 
-                    using (var cmd = new SQLiteCommand(query, conn))
+            return lecturers;
+        }
+
+        public async Task<Lecture> GetLecturerByUserIdAsync(string userId)
+        {
+            using (var conn = DatabaseManager.GetConnection())
+            {
+                string query = "SELECT * FROM Lecturers WHERE UserID = @UserID";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserID", userId);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new Lecture
+                            {
+                                UserID = reader["UserID"].ToString(),
+                                Name = reader["Name"].ToString(),
+                                Address = reader["Address"].ToString(),
+                                Gender = reader["Gender"].ToString(),
+                                Salary = Convert.ToDecimal(reader["Salary"]),
+                                PhoneNumber = reader["PhoneNumber"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        // ✅ Search by Name (partial match)
+        public async Task<List<Lecture>> GetLecturerByNameAsync(string name)
+        {
+            var lecturers = new List<Lecture>();
+
+            using (var conn = DatabaseManager.GetConnection())
+            {
+                string query = "SELECT * FROM Lecturers WHERE Name LIKE @Name";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Name", $"%{name}%");
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
-                            list.Add(new Lecture
+                            lecturers.Add(new Lecture
                             {
                                 UserID = reader["UserID"].ToString(),
-                                Name = reader["LecturerName"].ToString(),
+                                Name = reader["Name"].ToString(),
                                 Address = reader["Address"].ToString(),
                                 Gender = reader["Gender"].ToString(),
                                 Salary = Convert.ToDecimal(reader["Salary"]),
-                                PhoneNumber = reader["PhoneNumber"].ToString(),
-                                UserName = reader["Username"].ToString()
+                                PhoneNumber = reader["PhoneNumber"].ToString()
                             });
                         }
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error retrieving lecturers: " + ex.Message);
-            }
 
-            return list;
-        }
-
-        public async Task<List<Lecture>> SearchLecturersByNameAsync(string name)
-        {
-            var list = new List<Lecture>();
-
-            try
-            {
-                using (var conn = DatabaseManager.GetConnection())
-                {
-                    string query = @"
-                        SELECT l.UserID, l.LecturerName, l.Address, l.Gender, l.Salary, l.PhoneNumber,
-                               u.Username
-                        FROM Lecturers l
-                        JOIN Users u ON l.UserID = u.UserID
-                        WHERE l.LecturerName LIKE @Name";
-
-                    using (var cmd = new SQLiteCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Name", $"%{name}%");
-
-                        using (var reader = await cmd.ExecuteReaderAsync())
-                        {
-                            while (await reader.ReadAsync())
-                            {
-                                list.Add(new Lecture
-                                {
-                                    UserID = reader["UserID"].ToString(),
-                                    Name = reader["LecturerName"].ToString(),
-                                    Address = reader["Address"].ToString(),
-                                    Gender = reader["Gender"].ToString(),
-                                    Salary = Convert.ToDecimal(reader["Salary"]),
-                                    PhoneNumber = reader["PhoneNumber"].ToString(),
-                                    UserName = reader["Username"].ToString()
-                                });
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error searching lecturers: " + ex.Message);
-            }
-
-            return list;
+            return lecturers;
         }
     }
 }
- 
+  
   
 
