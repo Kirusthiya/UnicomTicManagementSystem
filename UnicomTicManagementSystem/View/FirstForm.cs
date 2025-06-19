@@ -21,7 +21,11 @@ namespace UnicomTicManagementSystem.View
 
         private void FirstForm_Load(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(245, 245, 245);
+            cmbRole.Items.Add("Admin"); 
+            cmbRole.Items.Add("Staff"); 
+            cmbRole.Items.Add("Lecture"); 
+            cmbRole.Items.Add("Student"); 
+            
         }
 
        
@@ -32,22 +36,54 @@ namespace UnicomTicManagementSystem.View
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var loginController = new LoginController();
-            bool hasUser = loginController.IsAnyUSerExitsAsync().GetAwaiter().GetResult();
-            if (hasUser)
+            if (cmbRole.SelectedItem == null)
             {
-                this.Hide();
-                var usercreateform = new UserCreateForm();
-                usercreateform.ShowDialog();
-                //Application.Run(new UserCreateForm());
+                MessageBox.Show("Please select a role.");
+                return;
+            }
 
-            }
-            else
-            {
-                this.Hide();
-                var urercreateform = new UserLoginCreate();
-                urercreateform.ShowDialog();
-            }
+            string selectedRole = cmbRole.SelectedItem.ToString();
+
+            // Show LoginForm with role
+            LoginForm loginForm = new LoginForm(selectedRole);
+            loginForm.TopLevel = false;
+            loginForm.FormBorderStyle = FormBorderStyle.None;
+            loginForm.Dock = DockStyle.Fill;
+
+            this.Controls.Clear();            // remove current form controls
+            this.Controls.Add(loginForm);     // add login form
+            loginForm.Show();                 // display login form
         }
     }
+        //private void btnAdmin_Click(object sender, EventArgs e)
+        //{
+        //    LoadForm(new LoginForm("Admin"));
+        //}
+
+        //private void panelMain_Paint(object sender, PaintEventArgs e)
+        //{
+
+        //}
+
+        //private void btnLecture_Click(object sender, EventArgs e)
+        //{
+        //    LoadForm(new LoginForm("Lecturer"));
+
+        //}
+
+        //private void btnStudent_Click(object sender, EventArgs e)
+        //{
+        //    LoadForm(new LoginForm("Student"));
+        //}
+
+        //private void btnLogout_Click(object sender, EventArgs e)
+        //{
+        //    Application.Exit();
+        //}
+
+        //private void btnStaff_Click(object sender, EventArgs e)
+        //{
+        //    LoadForm(new LoginForm("Staff"));
+        //}
+    
 }

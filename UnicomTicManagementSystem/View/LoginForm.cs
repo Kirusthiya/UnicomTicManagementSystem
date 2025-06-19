@@ -44,6 +44,7 @@ namespace UnicomTicManagementSystem.View
             InitializeComponent();
             ForgotPanel.Visible = false;
             expectedRole = role;
+            MessageBox.Show("Role received: " + expectedRole);
         }
         public LoginForm()
         {
@@ -273,7 +274,7 @@ namespace UnicomTicManagementSystem.View
                 txtForcotConPass.UseSystemPasswordChar = false;
             }
         }
-     
+      
         private async void btnLogin_Click_1(object sender, EventArgs e)
         {
             string username = txtUserName.Text.Trim();
