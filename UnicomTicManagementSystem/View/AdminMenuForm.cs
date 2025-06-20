@@ -15,8 +15,8 @@ namespace UnicomTicManagementSystem.View
         public AdminMenuForm()
         {
             InitializeComponent();
+            LoadForm(new MainDashboad());
         }
-       
         
         public void LoadForm(Form form)
         {
@@ -35,67 +35,10 @@ namespace UnicomTicManagementSystem.View
             form.Show();
 
         }
-
-        private void btnAddUser_Click(object sender, EventArgs e)
-        {
-            LoadForm(new UserLoginCreate());
-        }
-
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
             LoadForm(new StudentManege());
         }
-
-        private void BtnAddLecture_Click(object sender, EventArgs e)
-        {
-          LoadForm(new LeactureManage());
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            LoadForm(new StaffManege());
-        }
-
-        private void btnCourse_Click(object sender, EventArgs e)
-        {
-            LoadForm(new CourseForm());
-        }
-
-        private void btnSubject_Click(object sender, EventArgs e)
-        {
-            LoadForm(new SubjectForm());
-        }
-
-        private void btnExam_Click(object sender, EventArgs e)
-        {
-            LoadForm(new ExamForm());
-        }
-
-        private void btnMark_Click(object sender, EventArgs e)
-        {
-            LoadForm(new Form1());
-        }
-
-        private void btnTimetable_Click(object sender, EventArgs e)
-        {
-            LoadForm(new TimetableForm());
-        }
-
-        private void btnstudenrSubject_Click(object sender, EventArgs e)
-        {
-            LoadForm(new StudenSubjectForm());
-        }
-
-        private void btnRoom_Click(object sender, EventArgs e)
-        {
-            LoadForm(new RoomForm());
-        }
-
-        private void LectureSubject_Click(object sender, EventArgs e)
-        {
-            LoadForm(new LectureSubjectForm());
-        }
-
         private void btnLogout_Click(object sender, EventArgs e)
         {
             LoginForm loginForm = new LoginForm("Admin");
@@ -107,6 +50,61 @@ namespace UnicomTicManagementSystem.View
             this.Controls.Add(loginForm);
             loginForm.Show();
            
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            LoadForm(new UserLoginCreate());
+        }
+
+        private void btnlecture_Click(object sender, EventArgs e)
+        {
+            LoadForm(new LeactureManage());
+        }
+
+        private void btnstaff_Click(object sender, EventArgs e)
+        {
+            LoadForm(new StaffManege());
+        }
+
+        private void btnRoomManage_Click(object sender, EventArgs e)
+        {
+            LoadForm(new RoomForm());
+        }
+
+        private void btnSubjectmanage_Click(object sender, EventArgs e)
+        {
+            LoadForm(new SubjectForm());
+        }
+
+        private void btnCourseMansge_Click(object sender, EventArgs e)
+        {
+            LoadForm(new CourseForm());
+        }
+
+        private void btnMarkManage_Click(object sender, EventArgs e)
+        {
+            LoadForm(new MarkForm());
+        }
+
+        private void btntimetableManege_Click(object sender, EventArgs e)
+        {
+            LoadForm(new TimetableForm());
+        }
+
+        private void btnExamManage_Click(object sender, EventArgs e)
+        {
+            LoadForm(new ExamForm());
+        }
+
+        private void btnLectureassigen_Click(object sender, EventArgs e)
+        {
+            LoadForm(new LectureSubjectForm());
+        }
+
+        private void btnStudentSubjectmanege_Click(object sender, EventArgs e)
+        {
+            LoadForm(new StudenSubjectForm());
         }
     }
 }

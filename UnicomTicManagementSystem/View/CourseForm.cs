@@ -134,7 +134,6 @@ namespace UnicomTicManagementSystem.View
         
         public void LoadForm(Form form)
         {
-            // Remove any existing control (and dispose it properly)
             foreach (Control ctrl in panel1.Controls)
             {
                 ctrl.Dispose();

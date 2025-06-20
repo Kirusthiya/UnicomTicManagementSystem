@@ -24,7 +24,7 @@ namespace UnicomTicManagementSystem.Controller
                             cmd.Parameters.AddWithValue("@UserID", mark.UserID);
                             cmd.Parameters.AddWithValue("@ExamID", mark.ExamID);
                             cmd.Parameters.AddWithValue("@SubjectID", mark.SubjectID);
-                            cmd.Parameters.AddWithValue("@Score", mark.Socre);
+                            cmd.Parameters.AddWithValue("@Score", mark.Score);
 
                             int rows = await cmd.ExecuteNonQueryAsync();
                             return rows > 0;
@@ -50,7 +50,7 @@ namespace UnicomTicManagementSystem.Controller
 
                         using (var cmd = new SQLiteCommand(query, conn))
                         {
-                            cmd.Parameters.AddWithValue("@Score", mark.Socre);
+                            cmd.Parameters.AddWithValue("@Score", mark.Score);
                             cmd.Parameters.AddWithValue("@MarkID", mark.MarkID);
 
                             int rows = await cmd.ExecuteNonQueryAsync();
@@ -95,12 +95,13 @@ namespace UnicomTicManagementSystem.Controller
                     using (var conn = DatabaseManager.GetConnection())
                     {
                         string query = @"
-                    SELECT m.MarkID, m.UserID, u.Name AS StudentName, m.ExamID, e.ExamName, 
-                           m.SubjectID, s.SubjectName, m.Score 
-                    FROM Marks m
-                    JOIN Users u ON m.UserID = u.UserID
-                    JOIN Exams e ON m.ExamID = e.ExamID
-                    JOIN Subjects s ON m.SubjectID = s.SubjectID";
+                            SELECT m.MarkID, m.UserID, u.Name AS StudentName, m.ExamID, e.ExamName, 
+                                   m.SubjectID, s.SubjectName, m.Score 
+                            FROM Marks m
+                            JOIN Users u ON m.UserID = u.UserID
+                            JOIN Exams e ON m.ExamID = e.ExamID
+                            JOIN Subjects s ON m.SubjectID = s.SubjectID"
+                        ;
 
                         using (var cmd = new SQLiteCommand(query, conn))
                         using (var reader = await cmd.ExecuteReaderAsync())
@@ -116,7 +117,7 @@ namespace UnicomTicManagementSystem.Controller
                                     ExamName = reader["ExamName"].ToString(),
                                     SubjectID = Convert.ToInt32(reader["SubjectID"]),
                                     SubjectName = reader["SubjectName"].ToString(),
-                                    Socre = Convert.ToInt32(reader["Score"])
+                                    Score = Convert.ToInt32(reader["Score"])
                                 });
                             }
                         }
@@ -138,13 +139,14 @@ namespace UnicomTicManagementSystem.Controller
                     using (var conn = DatabaseManager.GetConnection())
                     {
                         string query = @"
-                    SELECT m.MarkID, m.UserID, u.Name AS StudentName, m.ExamID, e.ExamName, 
-                           m.SubjectID, s.SubjectName, m.Score 
-                    FROM Marks m
-                    JOIN Users u ON m.UserID = u.UserID
-                    JOIN Exams e ON m.ExamID = e.ExamID
-                    JOIN Subjects s ON m.SubjectID = s.SubjectID
-                    WHERE u.Name LIKE @Name";
+                            SELECT m.MarkID, m.UserID, u.Name AS StudentName, m.ExamID, e.ExamName, 
+                                   m.SubjectID, s.SubjectName, m.Score 
+                            FROM Marks m
+                            JOIN Users u ON m.UserID = u.UserID
+                            JOIN Exams e ON m.ExamID = e.ExamID
+                            JOIN Subjects s ON m.SubjectID = s.SubjectID
+                            WHERE u.Name LIKE @Name"
+                        ;
 
                         using (var cmd = new SQLiteCommand(query, conn))
                         {
@@ -163,7 +165,7 @@ namespace UnicomTicManagementSystem.Controller
                                         ExamName = reader["ExamName"].ToString(),
                                         SubjectID = Convert.ToInt32(reader["SubjectID"]),
                                         SubjectName = reader["SubjectName"].ToString(),
-                                        Socre = Convert.ToInt32(reader["Score"])
+                                        Score = Convert.ToInt32(reader["Score"])
                                     });
                                 }
                             }
@@ -209,7 +211,7 @@ namespace UnicomTicManagementSystem.Controller
                                     ExamName = reader["ExamName"].ToString(),
                                     SubjectID = Convert.ToInt32(reader["SubjectID"]),
                                     SubjectName = reader["SubjectName"].ToString(),
-                                    Socre = Convert.ToInt32(reader["Score"])
+                                    Score = Convert.ToInt32(reader["Score"])
                                 });
                             }
                         }

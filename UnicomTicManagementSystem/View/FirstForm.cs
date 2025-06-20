@@ -23,7 +23,7 @@ namespace UnicomTicManagementSystem.View
         {
             cmbRole.Items.Add("Admin"); 
             cmbRole.Items.Add("Staff"); 
-            cmbRole.Items.Add("Lecture"); 
+            cmbRole.Items.Add("Lecturer"); 
             cmbRole.Items.Add("Student"); 
             
         }
@@ -44,17 +44,13 @@ namespace UnicomTicManagementSystem.View
 
             string selectedRole = cmbRole.SelectedItem.ToString();
 
-           
+            this.Hide();
             LoginForm loginForm = new LoginForm(selectedRole);
-            loginForm.TopLevel = false;
-            loginForm.FormBorderStyle = FormBorderStyle.None;
-            loginForm.Dock = DockStyle.Fill;
-
-            this.Controls.Clear();            
-            this.Controls.Add(loginForm);     
-            loginForm.Show();                 
+            loginForm.ShowDialog();  
+            this.Close();  
         }
+
     }
-       
-    
+
+
 }

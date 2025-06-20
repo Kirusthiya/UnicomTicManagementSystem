@@ -74,17 +74,18 @@ namespace UnicomTicManagementSystem.View
                 MessageBox.Show("Please fill all fields.");
                 return false;
             }
+            bool IsValidPhone(string phone)
+            {
+                return System.Text.RegularExpressions.Regex.IsMatch(phone, @"^07\d{8}$");
+            }
 
-            // Phone number validation (starts with 07 and has 10 digits)
-            if (!System.Text.RegularExpressions.Regex.IsMatch(txtPhoneNO.Text, @"^07\d{8}$"))
+            
+            if (!IsValidPhone(txtPhoneNO.Text))
             {
                 MessageBox.Show("Phone number must start with 07 and contain exactly 10 digits.");
                 return false;
             }
-
             return true;
-
-
         }
      
         private void txtPhoneNO_TextChanged(object sender, EventArgs e)

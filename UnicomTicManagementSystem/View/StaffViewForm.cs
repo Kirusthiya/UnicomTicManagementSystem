@@ -7,58 +7,61 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UnicomTicManagementSystem;
+using UnicomTicManagementSystem.View;
 
 namespace UnicomTicManagementSystem.View
 {
-    public partial class StaffMenuForm : Form
+    public partial class StaffViewForm : Form
     {
-
-        public StaffMenuForm()
+        public StaffViewForm()
         {
             InitializeComponent();
         }
         public void LoadForm(Form form)
         {
 
-            foreach (Control ctrl in panel1.Controls)
+            foreach (Control ctrl in Staffpanel.Controls)
             {
                 ctrl.Dispose();
             }
-            panel1.Controls.Clear();
+            Staffpanel.Controls.Clear();
 
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
 
-            panel1.Controls.Add(form);
+            Staffpanel.Controls.Add(form);
             form.Show();
 
         }
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
-           LoadForm(new StudentManege());
+            LoadForm(new StudentManege());
+        }
 
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm("Staff");
+            loginForm.TopLevel = false;
+            loginForm.FormBorderStyle = FormBorderStyle.None;
+            loginForm.Dock = DockStyle.Fill;
+
+            this.Controls.Clear();
+            this.Controls.Add(loginForm);
+            loginForm.Show();
         }
 
         private void btneditMark_Click(object sender, EventArgs e)
         {
-            LoadForm(new Form1());
+            LoadForm(new MarkForm());
         }
 
         private void btnAddLecture_Click(object sender, EventArgs e)
         {
             LoadForm(new LeactureManage());
         }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                LoadForm(new LoginForm("Staff"));
-
-            }
-          
-        }
     }
 }
+
+

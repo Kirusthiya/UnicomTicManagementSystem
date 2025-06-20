@@ -320,6 +320,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LeactureManage";
             this.Text = "LeactureManage";
+            this.Load += new System.EventHandler(this.LeactureManage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.grbGender.ResumeLayout(false);

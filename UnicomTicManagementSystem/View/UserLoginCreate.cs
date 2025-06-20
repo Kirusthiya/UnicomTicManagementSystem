@@ -56,7 +56,7 @@ namespace UnicomTicManagementSystem.View
             txtUsername.Text = "Email address";
             txtPassword.Text = "Password";
             txtConfirmpassword.Text = "Confirm password";
-           
+
 
         }
 
@@ -191,7 +191,7 @@ namespace UnicomTicManagementSystem.View
                 Role = role
             };
 
-            bool success = await userController.CreateUserAsync(user,confirmPassword);
+            bool success = await userController.CreateUserAsync(user, confirmPassword);
             if (success)
             {
                 MessageBox.Show("User created successfully!");
@@ -209,32 +209,10 @@ namespace UnicomTicManagementSystem.View
             txtConfirmpassword.Clear();
             cmbRole.SelectedIndex = 0;
         }
-        public void LoadForm(Form form)
-        {
-            // Remove any existing control (and dispose it properly)
-            foreach (Control ctrl in panel1.Controls)
-            {
-                ctrl.Dispose();
-            }
-            panel1.Controls.Clear();
-
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-
-            panel1.Controls.Add(form);
-            form.Show();
-
-        }
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure want to logout?","Confirm Logout",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                LoadForm(new AdminMenuForm());
-
-            }
-        }
+      
     }
-
 }
+       
+        
+
+

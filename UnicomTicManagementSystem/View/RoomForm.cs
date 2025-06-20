@@ -161,31 +161,6 @@ namespace UnicomTicManagementSystem.View
             dgvRoom.ClearSelection();
         }
 
-        public void LoadForm(Form form)
-        {
-            // Remove any existing control (and dispose it properly)
-            foreach (Control ctrl in panel1.Controls)
-            {
-                ctrl.Dispose();
-            }
-            panel1.Controls.Clear();
-
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-
-            panel1.Controls.Add(form);
-            form.Show();
-
-        }
-        private void btnlogout_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                LoadForm(new AdminMenuForm());
-
-            }
-        }
+       
     }
 }

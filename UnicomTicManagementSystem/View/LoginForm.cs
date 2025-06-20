@@ -44,7 +44,6 @@ namespace UnicomTicManagementSystem.View
             InitializeComponent();
             ForgotPanel.Visible = false;
             expectedRole = role;
-            MessageBox.Show("Role received: " + expectedRole);
         }
         public LoginForm()
         {
@@ -62,30 +61,36 @@ namespace UnicomTicManagementSystem.View
                 }
 
                 MessageBox.Show("Logged in successfully with new password!");
-                this.Hide();
+              
 
                 if (user.Role == "Admin")
                 {
+                    this.Hide();
                     var adminmenuform = new AdminMenuForm();
-                    adminmenuform.Show();
+                    adminmenuform.ShowDialog();
+
                 }
                 else if (user.Role == "Student")
                 {
+                    this.Hide();
                     var studetviewform = new StudentViewForm();
-                    studetviewform.Show();
+                    studetviewform.ShowDialog();
                 }
                 else if (user.Role == "Lecturer")
                 {
-                    var lectureMenuform = new LectureMenuForm(user.UserID);
-                    lectureMenuform.Show();
+                    this.Hide();
+                    var lectureViewform = new LecturerVireForm(user.UserID);
+                    lectureViewform.ShowDialog();
                 }
                 else if (user.Role == "Staff")
                 {
-                   var staffMenuForm = new StaffMenuForm();
-                    staffMenuForm.Show();
+                    this.Hide();
+                    var staffViewform = new StaffViewForm();
+                    staffViewform.ShowDialog();
+
                 }
 
-                
+
             }
             else
             {
@@ -261,31 +266,35 @@ namespace UnicomTicManagementSystem.View
                     MessageBox.Show($"Access denied! You are not authorized to login as {expectedRole}.");
                     return;
                 }
-               
+              
                 MessageBox.Show("Login successful!");
-                this.Hide();
-
+            
                 if (user.Role == "Admin")
                 {
-                    AdminMenuForm adminMenuForm = new AdminMenuForm();
-                    adminMenuForm.Show();
-              
+                    this.Hide();
+                    var adminmenuform=new AdminMenuForm();
+                    adminmenuform.ShowDialog();
+                    
                 }
                 else if (user.Role == "Student")
                 {
+                    this.Hide();
                     var studetviewform = new StudentViewForm();
-                    studetviewform.Show();
+                    studetviewform.ShowDialog();
                 }
                 else if (user.Role == "Lecturer")
                 {
-                    var lectureMenuform = new LectureMenuForm(user.UserID);
-                    lectureMenuform.Show();
+                    this.Hide();
+                    var lectureViewform = new LecturerVireForm(user.UserID);
+                    lectureViewform.ShowDialog();
+                    
                     
                 }
                 else if (user.Role == "Staff")
                 {
-                    var staffMenuForm = new StaffMenuForm();
-                    staffMenuForm.Show();
+                    this.Hide();
+                    var staffViewform = new StaffViewForm();
+                    staffViewform.ShowDialog();
                    
                 }
             }
@@ -346,10 +355,13 @@ namespace UnicomTicManagementSystem.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
-            FirstForm firstForm = new FirstForm();
+            this.Hide();
+            var firstForm = new FirstForm();
+            firstForm.FormClosed += (s, args) => this.Close();  
             firstForm.ShowDialog();
         }
+
     }
-    
 }
+    
+

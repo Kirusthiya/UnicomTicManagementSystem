@@ -34,18 +34,17 @@ namespace UnicomTicManagementSystem.View
         {
             try
             {
-                // Load table
+              
                 lecturerSubjectList = await controller.GetAllLecturerSubjectsAsync();
                 dgvLectureSubject.DataSource = lecturerSubjectList;
 
-                // Load lecturers
                 var users = await new UserController().GetAllUsersAsync();
                 var lecturers = users.Where(u => u.Role == "Lecturer").ToList();
                 cmbUserId.DataSource = lecturers;
                 cmbUserId.DisplayMember = "Name";
                 cmbUserId.ValueMember = "UserID";
 
-                // Load subjects
+               
                 var subjects = await new SubjectController().GetAllSubjectsAsync();
                 cmbSubject.DataSource = subjects;
                 cmbSubject.DisplayMember = "SubjectName";
@@ -116,32 +115,6 @@ namespace UnicomTicManagementSystem.View
             }
         }
        
-        public void LoadForm(Form form)
-        {
-            // Remove any existing control (and dispose it properly)
-            foreach (Control ctrl in panel1.Controls)
-            {
-                ctrl.Dispose();
-            }
-            panel1.Controls.Clear();
-
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-
-            panel1.Controls.Add(form);
-            form.Show();
-
-        }
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                LoadForm(new AdminMenuForm());
-
-            }
-        }
 
         private void dgvLectureSubject_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

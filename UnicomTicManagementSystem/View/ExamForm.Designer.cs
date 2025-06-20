@@ -52,6 +52,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.lblfile);

@@ -60,6 +60,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);

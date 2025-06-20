@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -126,5 +127,11 @@ namespace UnicomTicManagementSystem.Controller
 
             return userList;
         }
+        public async Task<List<User>> GetAllStudentsAsync()
+        {
+            var allUsers = await GetAllUsersAsync();
+            return allUsers.Where(u => u.Role == "Student").ToList();
+        }
+
     }
 }

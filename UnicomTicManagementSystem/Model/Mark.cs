@@ -15,6 +15,6 @@ namespace UnicomTicManagementSystem.Model
         public string ExamName { get; set; }
         public int SubjectID { get; set; }
         public string SubjectName { get; set; }
-        public int Socre {  get; set; }
+        public int Score {  get; set; }
     }
 }

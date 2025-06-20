@@ -28,114 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnExam = new System.Windows.Forms.Button();
-            this.btnSubject = new System.Windows.Forms.Button();
-            this.btnRoom = new System.Windows.Forms.Button();
-            this.btnMark = new System.Windows.Forms.Button();
-            this.btnCourse = new System.Windows.Forms.Button();
-            this.BtnAddLecture = new System.Windows.Forms.Button();
             this.btnAddStudent = new System.Windows.Forms.Button();
-            this.btnstudenrSubject = new System.Windows.Forms.Button();
-            this.LectureSubject = new System.Windows.Forms.Button();
-            this.btnTimetable = new System.Windows.Forms.Button();
-            this.btnAddUser = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnStudentSubjectmanege = new System.Windows.Forms.Button();
+            this.btnExamManage = new System.Windows.Forms.Button();
+            this.btnLectureassigen = new System.Windows.Forms.Button();
+            this.btntimetableManege = new System.Windows.Forms.Button();
+            this.btnMarkManage = new System.Windows.Forms.Button();
+            this.btnCourseMansge = new System.Windows.Forms.Button();
+            this.btnstaff = new System.Windows.Forms.Button();
+            this.btnlecture = new System.Windows.Forms.Button();
+            this.btnSubjectmanage = new System.Windows.Forms.Button();
+            this.btnRoomManage = new System.Windows.Forms.Button();
+            this.btnUser = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.adminpanel = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnAdd.Location = new System.Drawing.Point(27, 141);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(195, 28);
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "Add staff";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnExam
-            // 
-            this.btnExam.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnExam.Location = new System.Drawing.Point(27, 430);
-            this.btnExam.Name = "btnExam";
-            this.btnExam.Size = new System.Drawing.Size(195, 33);
-            this.btnExam.TabIndex = 8;
-            this.btnExam.Text = "Exam";
-            this.btnExam.UseVisualStyleBackColor = true;
-            this.btnExam.Click += new System.EventHandler(this.btnExam_Click);
-            // 
-            // btnSubject
-            // 
-            this.btnSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnSubject.Location = new System.Drawing.Point(27, 232);
-            this.btnSubject.Name = "btnSubject";
-            this.btnSubject.Size = new System.Drawing.Size(195, 30);
-            this.btnSubject.TabIndex = 6;
-            this.btnSubject.Text = "Subject";
-            this.btnSubject.UseVisualStyleBackColor = true;
-            this.btnSubject.Click += new System.EventHandler(this.btnSubject_Click);
-            // 
-            // btnRoom
-            // 
-            this.btnRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnRoom.Location = new System.Drawing.Point(27, 184);
-            this.btnRoom.Name = "btnRoom";
-            this.btnRoom.Size = new System.Drawing.Size(195, 29);
-            this.btnRoom.TabIndex = 11;
-            this.btnRoom.Text = "Room";
-            this.btnRoom.UseVisualStyleBackColor = true;
-            this.btnRoom.Click += new System.EventHandler(this.btnRoom_Click);
-            // 
-            // btnMark
-            // 
-            this.btnMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnMark.Location = new System.Drawing.Point(27, 330);
-            this.btnMark.Name = "btnMark";
-            this.btnMark.Size = new System.Drawing.Size(195, 28);
-            this.btnMark.TabIndex = 9;
-            this.btnMark.Text = "Mark";
-            this.btnMark.UseVisualStyleBackColor = true;
-            this.btnMark.Click += new System.EventHandler(this.btnMark_Click);
-            // 
-            // btnCourse
-            // 
-            this.btnCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCourse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnCourse.Location = new System.Drawing.Point(27, 278);
-            this.btnCourse.Name = "btnCourse";
-            this.btnCourse.Size = new System.Drawing.Size(195, 31);
-            this.btnCourse.TabIndex = 7;
-            this.btnCourse.Text = "Course";
-            this.btnCourse.UseVisualStyleBackColor = true;
-            this.btnCourse.Click += new System.EventHandler(this.btnCourse_Click);
-            // 
-            // BtnAddLecture
-            // 
-            this.BtnAddLecture.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAddLecture.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.BtnAddLecture.Location = new System.Drawing.Point(27, 99);
-            this.BtnAddLecture.Name = "BtnAddLecture";
-            this.BtnAddLecture.Size = new System.Drawing.Size(195, 28);
-            this.BtnAddLecture.TabIndex = 1;
-            this.BtnAddLecture.Text = "Add lecturer";
-            this.BtnAddLecture.UseVisualStyleBackColor = true;
-            this.BtnAddLecture.Click += new System.EventHandler(this.BtnAddLecture_Click);
-            // 
             // btnAddStudent
             // 
             this.btnAddStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnAddStudent.Location = new System.Drawing.Point(27, 55);
+            this.btnAddStudent.Location = new System.Drawing.Point(27, 49);
             this.btnAddStudent.Name = "btnAddStudent";
             this.btnAddStudent.Size = new System.Drawing.Size(195, 30);
             this.btnAddStudent.TabIndex = 1;
@@ -143,81 +59,165 @@
             this.btnAddStudent.UseVisualStyleBackColor = true;
             this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
             // 
-            // btnstudenrSubject
-            // 
-            this.btnstudenrSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnstudenrSubject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnstudenrSubject.Location = new System.Drawing.Point(27, 529);
-            this.btnstudenrSubject.Name = "btnstudenrSubject";
-            this.btnstudenrSubject.Size = new System.Drawing.Size(195, 31);
-            this.btnstudenrSubject.TabIndex = 13;
-            this.btnstudenrSubject.Text = "Student Subject Details";
-            this.btnstudenrSubject.UseVisualStyleBackColor = true;
-            this.btnstudenrSubject.Click += new System.EventHandler(this.btnstudenrSubject_Click);
-            // 
-            // LectureSubject
-            // 
-            this.LectureSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LectureSubject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.LectureSubject.Location = new System.Drawing.Point(27, 480);
-            this.LectureSubject.Name = "LectureSubject";
-            this.LectureSubject.Size = new System.Drawing.Size(195, 31);
-            this.LectureSubject.TabIndex = 12;
-            this.LectureSubject.Text = "Lecture assigen Subject";
-            this.LectureSubject.UseVisualStyleBackColor = true;
-            this.LectureSubject.Click += new System.EventHandler(this.LectureSubject_Click);
-            // 
-            // btnTimetable
-            // 
-            this.btnTimetable.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimetable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnTimetable.Location = new System.Drawing.Point(27, 379);
-            this.btnTimetable.Name = "btnTimetable";
-            this.btnTimetable.Size = new System.Drawing.Size(195, 28);
-            this.btnTimetable.TabIndex = 10;
-            this.btnTimetable.Text = "Timetable";
-            this.btnTimetable.UseVisualStyleBackColor = true;
-            this.btnTimetable.Click += new System.EventHandler(this.btnTimetable_Click);
-            // 
-            // btnAddUser
-            // 
-            this.btnAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnAddUser.Location = new System.Drawing.Point(27, 12);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(195, 37);
-            this.btnAddUser.TabIndex = 0;
-            this.btnAddUser.Text = "Add user";
-            this.btnAddUser.UseVisualStyleBackColor = true;
-            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.btnStudentSubjectmanege);
+            this.panel2.Controls.Add(this.btnExamManage);
+            this.panel2.Controls.Add(this.btnLectureassigen);
+            this.panel2.Controls.Add(this.btntimetableManege);
+            this.panel2.Controls.Add(this.btnMarkManage);
+            this.panel2.Controls.Add(this.btnCourseMansge);
+            this.panel2.Controls.Add(this.btnstaff);
+            this.panel2.Controls.Add(this.btnlecture);
+            this.panel2.Controls.Add(this.btnSubjectmanage);
+            this.panel2.Controls.Add(this.btnRoomManage);
+            this.panel2.Controls.Add(this.btnUser);
             this.panel2.Controls.Add(this.btnLogout);
-            this.panel2.Controls.Add(this.btnstudenrSubject);
-            this.panel2.Controls.Add(this.btnExam);
-            this.panel2.Controls.Add(this.btnAddUser);
-            this.panel2.Controls.Add(this.LectureSubject);
-            this.panel2.Controls.Add(this.btnTimetable);
             this.panel2.Controls.Add(this.btnAddStudent);
-            this.panel2.Controls.Add(this.btnAdd);
-            this.panel2.Controls.Add(this.BtnAddLecture);
-            this.panel2.Controls.Add(this.btnMark);
-            this.panel2.Controls.Add(this.btnCourse);
-            this.panel2.Controls.Add(this.btnRoom);
-            this.panel2.Controls.Add(this.btnSubject);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(258, 632);
             this.panel2.TabIndex = 1;
             // 
+            // btnStudentSubjectmanege
+            // 
+            this.btnStudentSubjectmanege.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStudentSubjectmanege.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnStudentSubjectmanege.Location = new System.Drawing.Point(27, 542);
+            this.btnStudentSubjectmanege.Name = "btnStudentSubjectmanege";
+            this.btnStudentSubjectmanege.Size = new System.Drawing.Size(195, 30);
+            this.btnStudentSubjectmanege.TabIndex = 17;
+            this.btnStudentSubjectmanege.Text = "Student Subject";
+            this.btnStudentSubjectmanege.UseVisualStyleBackColor = true;
+            this.btnStudentSubjectmanege.Click += new System.EventHandler(this.btnStudentSubjectmanege_Click);
+            // 
+            // btnExamManage
+            // 
+            this.btnExamManage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExamManage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnExamManage.Location = new System.Drawing.Point(27, 497);
+            this.btnExamManage.Name = "btnExamManage";
+            this.btnExamManage.Size = new System.Drawing.Size(195, 30);
+            this.btnExamManage.TabIndex = 24;
+            this.btnExamManage.Text = "Exam";
+            this.btnExamManage.UseVisualStyleBackColor = true;
+            this.btnExamManage.Click += new System.EventHandler(this.btnExamManage_Click);
+            // 
+            // btnLectureassigen
+            // 
+            this.btnLectureassigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLectureassigen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnLectureassigen.Location = new System.Drawing.Point(27, 452);
+            this.btnLectureassigen.Name = "btnLectureassigen";
+            this.btnLectureassigen.Size = new System.Drawing.Size(195, 39);
+            this.btnLectureassigen.TabIndex = 16;
+            this.btnLectureassigen.Text = "Lecture assigen";
+            this.btnLectureassigen.UseVisualStyleBackColor = true;
+            this.btnLectureassigen.Click += new System.EventHandler(this.btnLectureassigen_Click);
+            // 
+            // btntimetableManege
+            // 
+            this.btntimetableManege.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntimetableManege.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btntimetableManege.Location = new System.Drawing.Point(27, 407);
+            this.btntimetableManege.Name = "btntimetableManege";
+            this.btntimetableManege.Size = new System.Drawing.Size(195, 30);
+            this.btntimetableManege.TabIndex = 23;
+            this.btntimetableManege.Text = "Timetable";
+            this.btntimetableManege.UseVisualStyleBackColor = true;
+            this.btntimetableManege.Click += new System.EventHandler(this.btntimetableManege_Click);
+            // 
+            // btnMarkManage
+            // 
+            this.btnMarkManage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarkManage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnMarkManage.Location = new System.Drawing.Point(27, 359);
+            this.btnMarkManage.Name = "btnMarkManage";
+            this.btnMarkManage.Size = new System.Drawing.Size(195, 30);
+            this.btnMarkManage.TabIndex = 22;
+            this.btnMarkManage.Text = "Mark";
+            this.btnMarkManage.UseVisualStyleBackColor = true;
+            this.btnMarkManage.Click += new System.EventHandler(this.btnMarkManage_Click);
+            // 
+            // btnCourseMansge
+            // 
+            this.btnCourseMansge.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCourseMansge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnCourseMansge.Location = new System.Drawing.Point(27, 313);
+            this.btnCourseMansge.Name = "btnCourseMansge";
+            this.btnCourseMansge.Size = new System.Drawing.Size(195, 30);
+            this.btnCourseMansge.TabIndex = 21;
+            this.btnCourseMansge.Text = "Course";
+            this.btnCourseMansge.UseVisualStyleBackColor = true;
+            this.btnCourseMansge.Click += new System.EventHandler(this.btnCourseMansge_Click);
+            // 
+            // btnstaff
+            // 
+            this.btnstaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnstaff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnstaff.Location = new System.Drawing.Point(27, 186);
+            this.btnstaff.Name = "btnstaff";
+            this.btnstaff.Size = new System.Drawing.Size(195, 30);
+            this.btnstaff.TabIndex = 20;
+            this.btnstaff.Text = "Add staff";
+            this.btnstaff.UseVisualStyleBackColor = true;
+            this.btnstaff.Click += new System.EventHandler(this.btnstaff_Click);
+            // 
+            // btnlecture
+            // 
+            this.btnlecture.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnlecture.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnlecture.Location = new System.Drawing.Point(27, 141);
+            this.btnlecture.Name = "btnlecture";
+            this.btnlecture.Size = new System.Drawing.Size(195, 30);
+            this.btnlecture.TabIndex = 19;
+            this.btnlecture.Text = "Add lecturer";
+            this.btnlecture.UseVisualStyleBackColor = true;
+            this.btnlecture.Click += new System.EventHandler(this.btnlecture_Click);
+            // 
+            // btnSubjectmanage
+            // 
+            this.btnSubjectmanage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubjectmanage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnSubjectmanage.Location = new System.Drawing.Point(27, 268);
+            this.btnSubjectmanage.Name = "btnSubjectmanage";
+            this.btnSubjectmanage.Size = new System.Drawing.Size(195, 30);
+            this.btnSubjectmanage.TabIndex = 18;
+            this.btnSubjectmanage.Text = "Subject";
+            this.btnSubjectmanage.UseVisualStyleBackColor = true;
+            this.btnSubjectmanage.Click += new System.EventHandler(this.btnSubjectmanage_Click);
+            // 
+            // btnRoomManage
+            // 
+            this.btnRoomManage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoomManage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnRoomManage.Location = new System.Drawing.Point(27, 222);
+            this.btnRoomManage.Name = "btnRoomManage";
+            this.btnRoomManage.Size = new System.Drawing.Size(195, 30);
+            this.btnRoomManage.TabIndex = 17;
+            this.btnRoomManage.Text = "Room";
+            this.btnRoomManage.UseVisualStyleBackColor = true;
+            this.btnRoomManage.Click += new System.EventHandler(this.btnRoomManage_Click);
+            // 
+            // btnUser
+            // 
+            this.btnUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnUser.Location = new System.Drawing.Point(27, 94);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(195, 30);
+            this.btnUser.TabIndex = 15;
+            this.btnUser.Text = "Add User";
+            this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            // 
             // btnLogout
             // 
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnLogout.Location = new System.Drawing.Point(27, 577);
+            this.btnLogout.Location = new System.Drawing.Point(27, 587);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(195, 33);
             this.btnLogout.TabIndex = 14;
@@ -236,6 +236,7 @@
             // 
             // adminpanel
             // 
+            this.adminpanel.BackColor = System.Drawing.Color.White;
             this.adminpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.adminpanel.Location = new System.Drawing.Point(258, 49);
             this.adminpanel.Name = "adminpanel";
@@ -246,6 +247,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(891, 632);
             this.Controls.Add(this.adminpanel);
             this.Controls.Add(this.panel1);
@@ -259,22 +262,21 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnExam;
-        private System.Windows.Forms.Button btnSubject;
-        private System.Windows.Forms.Button btnRoom;
-        private System.Windows.Forms.Button btnMark;
-        private System.Windows.Forms.Button btnCourse;
-        private System.Windows.Forms.Button BtnAddLecture;
         private System.Windows.Forms.Button btnAddStudent;
-        private System.Windows.Forms.Button btnstudenrSubject;
-        private System.Windows.Forms.Button LectureSubject;
-        private System.Windows.Forms.Button btnTimetable;
-        private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel adminpanel;
+        private System.Windows.Forms.Button btnUser;
+        private System.Windows.Forms.Button btnStudentSubjectmanege;
+        private System.Windows.Forms.Button btnExamManage;
+        private System.Windows.Forms.Button btnLectureassigen;
+        private System.Windows.Forms.Button btntimetableManege;
+        private System.Windows.Forms.Button btnMarkManage;
+        private System.Windows.Forms.Button btnCourseMansge;
+        private System.Windows.Forms.Button btnstaff;
+        private System.Windows.Forms.Button btnlecture;
+        private System.Windows.Forms.Button btnSubjectmanage;
+        private System.Windows.Forms.Button btnRoomManage;
     }
 }

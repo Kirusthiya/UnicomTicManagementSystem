@@ -32,7 +32,6 @@
             this.btnupdate = new System.Windows.Forms.Button();
             this.cmbSubject = new System.Windows.Forms.ComboBox();
             this.cmbUserId = new System.Windows.Forms.ComboBox();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -48,10 +47,10 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnupdate);
             this.panel1.Controls.Add(this.cmbSubject);
             this.panel1.Controls.Add(this.cmbUserId);
-            this.panel1.Controls.Add(this.btnLogout);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.txtSearch);
@@ -95,19 +94,6 @@
             this.cmbUserId.Name = "cmbUserId";
             this.cmbUserId.Size = new System.Drawing.Size(206, 21);
             this.cmbUserId.TabIndex = 15;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnLogout.Location = new System.Drawing.Point(512, 31);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(75, 24);
-            this.btnLogout.TabIndex = 14;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnSearch
             // 
@@ -236,7 +222,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.ComboBox cmbSubject;
         private System.Windows.Forms.ComboBox cmbUserId;
         private System.Windows.Forms.Button btnupdate;

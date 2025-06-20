@@ -90,17 +90,17 @@
     <Compile Include="View\FirstForm.Designer.cs">
       <DependentUpon>FirstForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\LecturerVireForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LecturerVireForm.Designer.cs">
+      <DependentUpon>LecturerVireForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LectureSubjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\LectureSubjectForm.Designer.cs">
       <DependentUpon>LectureSubjectForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Mark.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Mark.Designer.cs">
-      <DependentUpon>Mark.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\Exam.cs" />
@@ -142,12 +142,6 @@
     <Compile Include="View\LeactureManage.Designer.cs">
       <DependentUpon>LeactureManage.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\LectureMenuForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\LectureMenuForm.Designer.cs">
-      <DependentUpon>LectureMenuForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +154,12 @@
     <Compile Include="View\MainDashboad.Designer.cs">
       <DependentUpon>MainDashboad.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MarkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MarkForm.Designer.cs">
+      <DependentUpon>MarkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RoomForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +171,12 @@
     </Compile>
     <Compile Include="View\StaffManege.Designer.cs">
       <DependentUpon>StaffManege.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaffViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StaffViewForm.Designer.cs">
+      <DependentUpon>StaffViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\StudentViewForm.cs">
       <SubType>Form</SubType>
@@ -190,12 +196,6 @@
     <Compile Include="View\StudentManege.Designer.cs">
       <DependentUpon>StudentManege.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\StaffMenuForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\StaffMenuForm.Designer.cs">
-      <DependentUpon>StaffMenuForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\SubjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,12 +207,6 @@
     </Compile>
     <Compile Include="View\TimetableForm.Designer.cs">
       <DependentUpon>TimetableForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserCreateForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\UserCreateForm.Designer.cs">
-      <DependentUpon>UserCreateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UserLoginCreate.cs">
       <SubType>Form</SubType>
@@ -245,8 +239,8 @@
     <EmbeddedResource Include="View\LeactureManage.resx">
       <DependentUpon>LeactureManage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\LectureMenuForm.resx">
-      <DependentUpon>LectureMenuForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\LecturerVireForm.resx">
+      <DependentUpon>LecturerVireForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LectureSubjectForm.resx">
       <DependentUpon>LectureSubjectForm.cs</DependentUpon>
@@ -257,14 +251,17 @@
     <EmbeddedResource Include="View\MainDashboad.resx">
       <DependentUpon>MainDashboad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Mark.resx">
-      <DependentUpon>Mark.cs</DependentUpon>
+    <EmbeddedResource Include="View\MarkForm.resx">
+      <DependentUpon>MarkForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RoomForm.resx">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\StaffManege.resx">
       <DependentUpon>StaffManege.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StaffViewForm.resx">
+      <DependentUpon>StaffViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\StudentViewForm.resx">
       <DependentUpon>StudentViewForm.cs</DependentUpon>
@@ -275,17 +272,11 @@
     <EmbeddedResource Include="View\StudentManege.resx">
       <DependentUpon>StudentManege.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\StaffMenuForm.resx">
-      <DependentUpon>StaffMenuForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\SubjectForm.resx">
       <DependentUpon>SubjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TimetableForm.resx">
       <DependentUpon>TimetableForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\UserCreateForm.resx">
-      <DependentUpon>UserCreateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserLoginCreate.resx">
       <DependentUpon>UserLoginCreate.cs</DependentUpon>

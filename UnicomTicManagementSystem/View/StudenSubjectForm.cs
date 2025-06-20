@@ -26,18 +26,16 @@ namespace UnicomTicManagementSystem.View
         {
             try
             {
-                // Load StudentSubjects to Grid
+              
                 studentSubjectList = await controller.GetAllStudentSubjectsAsync();
                 dgvStudentSubject.DataSource = studentSubjectList;
 
-                // Load Students (Users with Role = 'Student')
                 var users = await new UserController().GetAllUsersAsync();
                 var students = users.Where(u => u.Role == "Student").ToList();
                 cmbUserId.DataSource = students;
                 cmbUserId.DisplayMember = "Name";
                 cmbUserId.ValueMember = "UserID";
 
-                // Load Subjects
                 var subjects = await new SubjectController().GetAllSubjectsAsync();
                 cmbsubjectID.DataSource = subjects;
                 cmbsubjectID.DisplayMember = "SubjectName";
@@ -165,7 +163,6 @@ namespace UnicomTicManagementSystem.View
         }
         public void LoadForm(Form form)
         {
-            // Remove any existing control (and dispose it properly)
             foreach (Control ctrl in panel1.Controls)
             {
                 ctrl.Dispose();
@@ -198,7 +195,7 @@ namespace UnicomTicManagementSystem.View
                 string name = txtSearch.Text.Trim();
                 if (string.IsNullOrWhiteSpace(name))
                 {
-                    LoadFormData(); // reload all
+                    LoadFormData(); 
                     return;
                 }
 

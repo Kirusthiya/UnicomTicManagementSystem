@@ -23,10 +23,7 @@ namespace UnicomTicManagementSystem.View
             lecturerController = new Lecturecontroller();
 
         }
-        private async void LecturerManage_Load(object sender, EventArgs e)
-        {
-            await LoadLecturers();
-        }
+       
 
         private async Task LoadLecturers()
         {
@@ -206,6 +203,12 @@ namespace UnicomTicManagementSystem.View
             string name = txtsearch.Text.Trim();
             var lecturers = await lecturerController.GetLecturerByNameAsync(name);
             dgvLecturer.DataSource = lecturers;
+        }
+
+        private async void LeactureManage_Load(object sender, EventArgs e)
+        {
+            await LoadLecturers();
+
         }
     }
 }

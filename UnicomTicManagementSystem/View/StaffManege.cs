@@ -38,7 +38,29 @@ namespace UnicomTicManagementSystem.View
 
         private bool IsValidPhoneNumber(string phone)
         {
-            return Regex.IsMatch(phone, @"^07\d{8}$");
+            if(phone.Length != 10)
+            {
+                MessageBox.Show("Phone number must be 10 digits long.");
+                return false;
+            }
+
+            if (!phone.StartsWith("07"))
+            {
+                MessageBox.Show("Phone number must start with 07.");
+                return false;
+            }
+
+            foreach (char c in phone)
+            {
+                if (!char.IsDigit(c))
+                {
+                    MessageBox.Show("Phone number must contain only digits.");
+                    return false;
+                }
+            }
+
+            return true; 
+
         }
 
         private void ClearFields()

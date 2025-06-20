@@ -16,23 +16,33 @@ namespace UnicomTicManagementSystem.Controller
 
         public async Task<bool> AddLecturerAsync(Lecture lecturer)
         {
-            using (var conn = DatabaseManager.GetConnection())
+            try
             {
-                string query = @"INSERT INTO Lecturers (UserID, Name, Address, Gender, Salary, PhoneNumber)
-                                 VALUES (@UserID, @Name, @Address, @Gender, @Salary, @PhoneNumber)";
-                using (var cmd = new SQLiteCommand(query, conn))
+                using (var conn = DatabaseManager.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@UserID", lecturer.UserID);
-                    cmd.Parameters.AddWithValue("@Name", lecturer.Name);
-                    cmd.Parameters.AddWithValue("@Address", lecturer.Address);
-                    cmd.Parameters.AddWithValue("@Gender", lecturer.Gender);
-                    cmd.Parameters.AddWithValue("@Salary", lecturer.Salary);
-                    cmd.Parameters.AddWithValue("@PhoneNumber", lecturer.PhoneNumber);
+                    string query = @"INSERT INTO Lecturers (UserID, Name, Address, Gender, Salary, PhoneNumber)
+                             VALUES (@UserID, @Name, @Address, @Gender, @Salary, @PhoneNumber)";
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", lecturer.UserID);
+                        cmd.Parameters.AddWithValue("@Name", lecturer.Name);
+                        cmd.Parameters.AddWithValue("@Address", lecturer.Address);
+                        cmd.Parameters.AddWithValue("@Gender", lecturer.Gender);
+                        cmd.Parameters.AddWithValue("@Salary", lecturer.Salary);
+                        cmd.Parameters.AddWithValue("@PhoneNumber", lecturer.PhoneNumber);
 
-                    return await cmd.ExecuteNonQueryAsync() > 0;
+                        return await cmd.ExecuteNonQueryAsync() > 0;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Database error in AddLecturerAsync:\n" + ex.Message);
+                return false;
+            }
         }
+
+        
 
         public async Task<bool> UpdateLecturerAsync(Lecture lecturer)
         {
