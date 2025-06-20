@@ -44,46 +44,17 @@ namespace UnicomTicManagementSystem.View
 
             string selectedRole = cmbRole.SelectedItem.ToString();
 
-            // Show LoginForm with role
+           
             LoginForm loginForm = new LoginForm(selectedRole);
             loginForm.TopLevel = false;
             loginForm.FormBorderStyle = FormBorderStyle.None;
             loginForm.Dock = DockStyle.Fill;
 
-            this.Controls.Clear();            // remove current form controls
-            this.Controls.Add(loginForm);     // add login form
-            loginForm.Show();                 // display login form
+            this.Controls.Clear();            
+            this.Controls.Add(loginForm);     
+            loginForm.Show();                 
         }
     }
-        //private void btnAdmin_Click(object sender, EventArgs e)
-        //{
-        //    LoadForm(new LoginForm("Admin"));
-        //}
-
-        //private void panelMain_Paint(object sender, PaintEventArgs e)
-        //{
-
-        //}
-
-        //private void btnLecture_Click(object sender, EventArgs e)
-        //{
-        //    LoadForm(new LoginForm("Lecturer"));
-
-        //}
-
-        //private void btnStudent_Click(object sender, EventArgs e)
-        //{
-        //    LoadForm(new LoginForm("Student"));
-        //}
-
-        //private void btnLogout_Click(object sender, EventArgs e)
-        //{
-        //    Application.Exit();
-        //}
-
-        //private void btnStaff_Click(object sender, EventArgs e)
-        //{
-        //    LoadForm(new LoginForm("Staff"));
-        //}
+       
     
 }

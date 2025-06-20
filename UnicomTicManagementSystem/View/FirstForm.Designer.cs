@@ -33,12 +33,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbRole = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.cmbRole = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,6 +91,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(402, 471);
             this.panel1.TabIndex = 16;
+            // 
+            // cmbRole
+            // 
+            this.cmbRole.FormattingEnabled = true;
+            this.cmbRole.Items.AddRange(new object[] {
+            ""});
+            this.cmbRole.Location = new System.Drawing.Point(50, 257);
+            this.cmbRole.Name = "cmbRole";
+            this.cmbRole.Size = new System.Drawing.Size(232, 21);
+            this.cmbRole.TabIndex = 21;
             // 
             // label4
             // 
@@ -151,16 +161,6 @@
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // cmbRole
-            // 
-            this.cmbRole.FormattingEnabled = true;
-            this.cmbRole.Items.AddRange(new object[] {
-            ""});
-            this.cmbRole.Location = new System.Drawing.Point(50, 257);
-            this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(232, 21);
-            this.cmbRole.TabIndex = 21;
             // 
             // FirstForm
             // 

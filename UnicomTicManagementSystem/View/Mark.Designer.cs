@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnlogout = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@
             this.dgvMark = new System.Windows.Forms.DataGridView();
             this.txtMark = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnlogout = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMark)).BeginInit();
             this.SuspendLayout();
@@ -74,8 +74,21 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(665, 596);
+            this.panel1.Size = new System.Drawing.Size(606, 583);
             this.panel1.TabIndex = 0;
+            // 
+            // btnlogout
+            // 
+            this.btnlogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnlogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnlogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnlogout.Location = new System.Drawing.Point(486, 18);
+            this.btnlogout.Name = "btnlogout";
+            this.btnlogout.Size = new System.Drawing.Size(75, 27);
+            this.btnlogout.TabIndex = 34;
+            this.btnlogout.Text = "Logout";
+            this.btnlogout.UseVisualStyleBackColor = false;
+            this.btnlogout.Click += new System.EventHandler(this.btnlogout_Click);
             // 
             // btnDelete
             // 
@@ -214,9 +227,9 @@
             this.dgvMark.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvMark.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMark.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvMark.Location = new System.Drawing.Point(0, 446);
+            this.dgvMark.Location = new System.Drawing.Point(0, 433);
             this.dgvMark.Name = "dgvMark";
-            this.dgvMark.Size = new System.Drawing.Size(665, 150);
+            this.dgvMark.Size = new System.Drawing.Size(606, 150);
             this.dgvMark.TabIndex = 19;
             this.dgvMark.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMark_CellContentClick);
             // 
@@ -237,24 +250,11 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "Mark Details";
             // 
-            // btnlogout
-            // 
-            this.btnlogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnlogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnlogout.Location = new System.Drawing.Point(560, 22);
-            this.btnlogout.Name = "btnlogout";
-            this.btnlogout.Size = new System.Drawing.Size(75, 27);
-            this.btnlogout.TabIndex = 34;
-            this.btnlogout.Text = "Logout";
-            this.btnlogout.UseVisualStyleBackColor = false;
-            this.btnlogout.Click += new System.EventHandler(this.btnlogout_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 596);
+            this.ClientSize = new System.Drawing.Size(606, 583);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";

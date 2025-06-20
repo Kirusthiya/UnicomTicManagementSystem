@@ -62,22 +62,27 @@ namespace UnicomTicManagementSystem.View
                 }
 
                 MessageBox.Show("Logged in successfully with new password!");
+                this.Hide();
 
                 if (user.Role == "Admin")
                 {
-                    LoadForm(new AdminMenuForm()); 
+                    var adminmenuform = new AdminMenuForm();
+                    adminmenuform.Show();
                 }
                 else if (user.Role == "Student")
                 {
-                    LoadForm(new StudentViewForm());
+                    var studetviewform = new StudentViewForm();
+                    studetviewform.Show();
                 }
                 else if (user.Role == "Lecturer")
                 {
-                    LoadForm(new LectureMenuForm(user.UserID));
+                    var lectureMenuform = new LectureMenuForm(user.UserID);
+                    lectureMenuform.Show();
                 }
                 else if (user.Role == "Staff")
                 {
-                    LoadForm(new StaffMenuForm());
+                   var staffMenuForm = new StaffMenuForm();
+                    staffMenuForm.Show();
                 }
 
                 
@@ -96,59 +101,14 @@ namespace UnicomTicManagementSystem.View
             txtPassword.Text = "Password";
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-
-
-        }
       
-
-        private void btnForgotPassword_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnChange_Click(object sender, EventArgs e)
-        {
-           
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsename_Enter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtUsename_Leave(object sender, EventArgs e)
-        {
-           
-        }
-
         private void txtPassword_Enter(object sender, EventArgs e)
         {
             if (txtPassword.Text == "Password")
             {
                 txtPassword.Text = "";
                 txtPassword.ForeColor = Color.Black;
-                txtPassword.UseSystemPasswordChar = true; // hide password chars
+                txtPassword.UseSystemPasswordChar = true; 
             }
         }
 
@@ -295,30 +255,38 @@ namespace UnicomTicManagementSystem.View
             var user = await loginController.AuthenticateUserAsync(username, password);
             if (user != null)
             {
-                // ✅ Check role match
+              
                 if (user.Role != expectedRole)
                 {
                     MessageBox.Show($"Access denied! You are not authorized to login as {expectedRole}.");
                     return;
                 }
-
+               
                 MessageBox.Show("Login successful!");
+                this.Hide();
 
                 if (user.Role == "Admin")
                 {
-                    LoadForm(new AdminMenuForm());
+                    AdminMenuForm adminMenuForm = new AdminMenuForm();
+                    adminMenuForm.Show();
+              
                 }
                 else if (user.Role == "Student")
                 {
-                    LoadForm(new StudentViewForm());
+                    var studetviewform = new StudentViewForm();
+                    studetviewform.Show();
                 }
                 else if (user.Role == "Lecturer")
                 {
-                    LoadForm(new LectureMenuForm(user.UserID));
+                    var lectureMenuform = new LectureMenuForm(user.UserID);
+                    lectureMenuform.Show();
+                    
                 }
                 else if (user.Role == "Staff")
                 {
-                    LoadForm(new StaffMenuForm());
+                    var staffMenuForm = new StaffMenuForm();
+                    staffMenuForm.Show();
+                   
                 }
             }
             else
@@ -374,6 +342,13 @@ namespace UnicomTicManagementSystem.View
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FirstForm firstForm = new FirstForm();
+            firstForm.ShowDialog();
         }
     }
     

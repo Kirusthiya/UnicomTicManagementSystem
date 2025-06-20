@@ -81,7 +81,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(665, 596);
+            this.panel1.Size = new System.Drawing.Size(606, 583);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -90,7 +90,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(552, 12);
+            this.button1.Location = new System.Drawing.Point(489, 31);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 29);
             this.button1.TabIndex = 26;
@@ -100,9 +100,9 @@
             // 
             // txtsearch
             // 
-            this.txtsearch.Location = new System.Drawing.Point(439, 171);
+            this.txtsearch.Location = new System.Drawing.Point(424, 175);
             this.txtsearch.Name = "txtsearch";
-            this.txtsearch.Size = new System.Drawing.Size(213, 20);
+            this.txtsearch.Size = new System.Drawing.Size(170, 20);
             this.txtsearch.TabIndex = 21;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
             // 
@@ -118,9 +118,9 @@
             // 
             // txtUserId
             // 
-            this.txtUserId.Location = new System.Drawing.Point(439, 128);
+            this.txtUserId.Location = new System.Drawing.Point(424, 132);
             this.txtUserId.Name = "txtUserId";
-            this.txtUserId.Size = new System.Drawing.Size(200, 20);
+            this.txtUserId.Size = new System.Drawing.Size(159, 20);
             this.txtUserId.TabIndex = 19;
             // 
             // grbGender
@@ -193,7 +193,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdate.Location = new System.Drawing.Point(224, 396);
+            this.btnUpdate.Location = new System.Drawing.Point(224, 381);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 33);
             this.btnUpdate.TabIndex = 14;
@@ -207,7 +207,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDelete.Location = new System.Drawing.Point(364, 396);
+            this.btnDelete.Location = new System.Drawing.Point(364, 381);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 33);
             this.btnDelete.TabIndex = 13;
@@ -274,9 +274,9 @@
             this.dgvLecturer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvLecturer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLecturer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvLecturer.Location = new System.Drawing.Point(0, 446);
+            this.dgvLecturer.Location = new System.Drawing.Point(0, 433);
             this.dgvLecturer.Name = "dgvLecturer";
-            this.dgvLecturer.Size = new System.Drawing.Size(665, 150);
+            this.dgvLecturer.Size = new System.Drawing.Size(606, 150);
             this.dgvLecturer.TabIndex = 5;
             this.dgvLecturer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLecturer_CellContentClick);
             // 
@@ -286,7 +286,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAdd.Location = new System.Drawing.Point(85, 396);
+            this.btnAdd.Location = new System.Drawing.Point(87, 381);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 33);
             this.btnAdd.TabIndex = 4;
@@ -315,7 +315,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 596);
+            this.ClientSize = new System.Drawing.Size(606, 583);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LeactureManage";

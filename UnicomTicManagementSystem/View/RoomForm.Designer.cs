@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnlogout = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.txtRoomtype = new System.Windows.Forms.TextBox();
@@ -39,8 +41,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtRoomname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoom)).BeginInit();
             this.SuspendLayout();
@@ -62,15 +62,35 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(665, 596);
+            this.panel1.Size = new System.Drawing.Size(606, 583);
             this.panel1.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(57, 164);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 20);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Type";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(57, 119);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 20);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Name";
             // 
             // btnlogout
             // 
             this.btnlogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnlogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnlogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnlogout.Location = new System.Drawing.Point(554, 25);
+            this.btnlogout.Location = new System.Drawing.Point(470, 23);
             this.btnlogout.Name = "btnlogout";
             this.btnlogout.Size = new System.Drawing.Size(75, 27);
             this.btnlogout.TabIndex = 25;
@@ -136,9 +156,9 @@
             this.dgvRoom.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRoom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvRoom.Location = new System.Drawing.Point(0, 446);
+            this.dgvRoom.Location = new System.Drawing.Point(0, 433);
             this.dgvRoom.Name = "dgvRoom";
-            this.dgvRoom.Size = new System.Drawing.Size(665, 150);
+            this.dgvRoom.Size = new System.Drawing.Size(606, 150);
             this.dgvRoom.TabIndex = 3;
             this.dgvRoom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoom_CellContentClick);
             // 
@@ -173,31 +193,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Room ";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(57, 119);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 20);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Name";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(57, 164);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 20);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "Type";
-            // 
             // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 596);
+            this.ClientSize = new System.Drawing.Size(606, 583);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RoomForm";

@@ -62,7 +62,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(649, 557);
+            this.panel1.Size = new System.Drawing.Size(606, 583);
             this.panel1.TabIndex = 0;
             // 
             // cmbsubjectID
@@ -86,7 +86,7 @@
             this.btnsearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnsearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsearch.ForeColor = System.Drawing.Color.White;
-            this.btnsearch.Location = new System.Drawing.Point(528, 65);
+            this.btnsearch.Location = new System.Drawing.Point(504, 52);
             this.btnsearch.Name = "btnsearch";
             this.btnsearch.Size = new System.Drawing.Size(75, 32);
             this.btnsearch.TabIndex = 26;
@@ -177,9 +177,9 @@
             this.dgvStudentSubject.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvStudentSubject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStudentSubject.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvStudentSubject.Location = new System.Drawing.Point(0, 407);
+            this.dgvStudentSubject.Location = new System.Drawing.Point(0, 433);
             this.dgvStudentSubject.Name = "dgvStudentSubject";
-            this.dgvStudentSubject.Size = new System.Drawing.Size(649, 150);
+            this.dgvStudentSubject.Size = new System.Drawing.Size(606, 150);
             this.dgvStudentSubject.TabIndex = 2;
             this.dgvStudentSubject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudentSubject_CellContentClick);
             // 
@@ -197,7 +197,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 557);
+            this.ClientSize = new System.Drawing.Size(606, 583);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StudenSubjectForm";

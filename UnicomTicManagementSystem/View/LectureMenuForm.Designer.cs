@@ -54,7 +54,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(665, 596);
+            this.panel1.Size = new System.Drawing.Size(891, 632);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -99,9 +99,9 @@
             this.dgvLectureMenu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvLectureMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLectureMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvLectureMenu.Location = new System.Drawing.Point(0, 401);
+            this.dgvLectureMenu.Location = new System.Drawing.Point(0, 437);
             this.dgvLectureMenu.Name = "dgvLectureMenu";
-            this.dgvLectureMenu.Size = new System.Drawing.Size(665, 195);
+            this.dgvLectureMenu.Size = new System.Drawing.Size(891, 195);
             this.dgvLectureMenu.TabIndex = 4;
             this.dgvLectureMenu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLectureMenu_CellContentClick);
             // 
@@ -151,7 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 596);
+            this.ClientSize = new System.Drawing.Size(891, 632);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LectureMenuForm";

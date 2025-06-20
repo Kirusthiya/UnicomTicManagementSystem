@@ -21,17 +21,17 @@ namespace UnicomTicManagementSystem.View
         public void LoadForm(Form form)
         {
             
-            foreach (Control ctrl in AdminPanel.Controls)
+            foreach (Control ctrl in adminpanel.Controls)
             {
                 ctrl.Dispose();
             }
-            AdminPanel.Controls.Clear();
+            adminpanel.Controls.Clear();
 
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
 
-            AdminPanel.Controls.Add(form);
+            adminpanel.Controls.Add(form);
             form.Show();
 
         }
@@ -94,6 +94,19 @@ namespace UnicomTicManagementSystem.View
         private void LectureSubject_Click(object sender, EventArgs e)
         {
             LoadForm(new LectureSubjectForm());
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm("Admin");
+            loginForm.TopLevel = false;
+            loginForm.FormBorderStyle = FormBorderStyle.None;
+            loginForm.Dock = DockStyle.Fill;
+
+            this.Controls.Clear();
+            this.Controls.Add(loginForm);
+            loginForm.Show();
+           
         }
     }
 }

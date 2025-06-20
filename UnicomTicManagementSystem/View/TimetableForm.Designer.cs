@@ -30,7 +30,6 @@
         {
             this.TimetablePanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnlogout = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.cmbDay = new System.Windows.Forms.ComboBox();
@@ -57,12 +56,11 @@
             this.TimetablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TimetablePanel.Location = new System.Drawing.Point(0, 0);
             this.TimetablePanel.Name = "TimetablePanel";
-            this.TimetablePanel.Size = new System.Drawing.Size(649, 557);
+            this.TimetablePanel.Size = new System.Drawing.Size(606, 583);
             this.TimetablePanel.TabIndex = 0;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnlogout);
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.cmbDay);
@@ -81,28 +79,15 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(649, 557);
+            this.panel1.Size = new System.Drawing.Size(606, 583);
             this.panel1.TabIndex = 0;
-            // 
-            // btnlogout
-            // 
-            this.btnlogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnlogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnlogout.Location = new System.Drawing.Point(553, 15);
-            this.btnlogout.Name = "btnlogout";
-            this.btnlogout.Size = new System.Drawing.Size(75, 27);
-            this.btnlogout.TabIndex = 41;
-            this.btnlogout.Text = "Logout";
-            this.btnlogout.UseVisualStyleBackColor = false;
-            this.btnlogout.Click += new System.EventHandler(this.btnlogout_Click_1);
             // 
             // btnUpdate
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnUpdate.Location = new System.Drawing.Point(227, 286);
+            this.btnUpdate.Location = new System.Drawing.Point(223, 359);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 35);
             this.btnUpdate.TabIndex = 40;
@@ -115,7 +100,7 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDelete.Location = new System.Drawing.Point(334, 286);
+            this.btnDelete.Location = new System.Drawing.Point(352, 359);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 35);
             this.btnDelete.TabIndex = 39;
@@ -134,16 +119,16 @@
             "Friday",
             "Saturday",
             "Friday"});
-            this.cmbDay.Location = new System.Drawing.Point(468, 142);
+            this.cmbDay.Location = new System.Drawing.Point(142, 231);
             this.cmbDay.Name = "cmbDay";
-            this.cmbDay.Size = new System.Drawing.Size(151, 21);
+            this.cmbDay.Size = new System.Drawing.Size(192, 21);
             this.cmbDay.TabIndex = 38;
             this.cmbDay.SelectedIndexChanged += new System.EventHandler(this.cmbDay_SelectedIndexChanged);
             // 
             // cmbLEcture
             // 
             this.cmbLEcture.FormattingEnabled = true;
-            this.cmbLEcture.Location = new System.Drawing.Point(170, 134);
+            this.cmbLEcture.Location = new System.Drawing.Point(142, 134);
             this.cmbLEcture.Name = "cmbLEcture";
             this.cmbLEcture.Size = new System.Drawing.Size(192, 21);
             this.cmbLEcture.TabIndex = 37;
@@ -152,7 +137,7 @@
             // cmbRoom
             // 
             this.cmbRoom.FormattingEnabled = true;
-            this.cmbRoom.Location = new System.Drawing.Point(170, 181);
+            this.cmbRoom.Location = new System.Drawing.Point(142, 181);
             this.cmbRoom.Name = "cmbRoom";
             this.cmbRoom.Size = new System.Drawing.Size(192, 21);
             this.cmbRoom.TabIndex = 36;
@@ -162,7 +147,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(412, 147);
+            this.label6.Location = new System.Drawing.Point(63, 236);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 16);
             this.label6.TabIndex = 35;
@@ -173,7 +158,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(412, 100);
+            this.label5.Location = new System.Drawing.Point(63, 298);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 16);
             this.label5.TabIndex = 34;
@@ -184,7 +169,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(106, 181);
+            this.label4.Location = new System.Drawing.Point(63, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 16);
             this.label4.TabIndex = 33;
@@ -195,7 +180,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(106, 134);
+            this.label3.Location = new System.Drawing.Point(63, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 16);
             this.label3.TabIndex = 32;
@@ -206,7 +191,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(106, 85);
+            this.label2.Location = new System.Drawing.Point(63, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 16);
             this.label2.TabIndex = 31;
@@ -230,9 +215,9 @@
             this.dgvTimetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTimetable.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvTimetable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvTimetable.Location = new System.Drawing.Point(0, 414);
+            this.dgvTimetable.Location = new System.Drawing.Point(0, 440);
             this.dgvTimetable.Name = "dgvTimetable";
-            this.dgvTimetable.Size = new System.Drawing.Size(649, 143);
+            this.dgvTimetable.Size = new System.Drawing.Size(606, 143);
             this.dgvTimetable.TabIndex = 29;
             this.dgvTimetable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTimetable_CellContentClick_1);
             // 
@@ -241,7 +226,7 @@
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAdd.Location = new System.Drawing.Point(128, 286);
+            this.btnAdd.Location = new System.Drawing.Point(83, 359);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 35);
             this.btnAdd.TabIndex = 28;
@@ -251,16 +236,16 @@
             // 
             // txtTime
             // 
-            this.txtTime.Location = new System.Drawing.Point(468, 96);
+            this.txtTime.Location = new System.Drawing.Point(142, 276);
             this.txtTime.Name = "txtTime";
-            this.txtTime.Size = new System.Drawing.Size(151, 20);
+            this.txtTime.Size = new System.Drawing.Size(192, 20);
             this.txtTime.TabIndex = 27;
             this.txtTime.TextChanged += new System.EventHandler(this.txtTime_TextChanged);
             // 
             // cmbSubject
             // 
             this.cmbSubject.FormattingEnabled = true;
-            this.cmbSubject.Location = new System.Drawing.Point(174, 85);
+            this.cmbSubject.Location = new System.Drawing.Point(142, 86);
             this.cmbSubject.Name = "cmbSubject";
             this.cmbSubject.Size = new System.Drawing.Size(192, 21);
             this.cmbSubject.TabIndex = 26;
@@ -270,7 +255,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 557);
+            this.ClientSize = new System.Drawing.Size(606, 583);
             this.Controls.Add(this.TimetablePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TimetableForm";
@@ -287,7 +272,6 @@
 
         private System.Windows.Forms.Panel TimetablePanel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnlogout;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ComboBox cmbDay;

@@ -72,7 +72,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(649, 557);
+            this.panel1.Size = new System.Drawing.Size(606, 583);
             this.panel1.TabIndex = 0;
             // 
             // label6
@@ -224,9 +224,9 @@
             this.dgvExam.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvExam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExam.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvExam.Location = new System.Drawing.Point(0, 343);
+            this.dgvExam.Location = new System.Drawing.Point(0, 369);
             this.dgvExam.Name = "dgvExam";
-            this.dgvExam.Size = new System.Drawing.Size(649, 214);
+            this.dgvExam.Size = new System.Drawing.Size(606, 214);
             this.dgvExam.TabIndex = 14;
             this.dgvExam.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExam_CellContentClick);
             // 
@@ -260,11 +260,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 557);
+            this.ClientSize = new System.Drawing.Size(606, 583);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ExamForm";
             this.Text = "ExamForm";
+            this.Load += new System.EventHandler(this.ExamForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExam)).EndInit();

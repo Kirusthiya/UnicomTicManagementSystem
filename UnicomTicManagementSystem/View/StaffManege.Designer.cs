@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnlogout = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -61,7 +60,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnlogout);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
@@ -86,22 +84,9 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(665, 596);
+            this.panel1.Size = new System.Drawing.Size(606, 583);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // btnlogout
-            // 
-            this.btnlogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnlogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnlogout.Location = new System.Drawing.Point(566, 9);
-            this.btnlogout.Name = "btnlogout";
-            this.btnlogout.Size = new System.Drawing.Size(75, 27);
-            this.btnlogout.TabIndex = 50;
-            this.btnlogout.Text = "Logout";
-            this.btnlogout.UseVisualStyleBackColor = false;
-            this.btnlogout.Click += new System.EventHandler(this.btnlogout_Click_2);
             // 
             // btnSearch
             // 
@@ -121,7 +106,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(348, 191);
+            this.label8.Location = new System.Drawing.Point(347, 176);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 16);
             this.label8.TabIndex = 48;
@@ -131,7 +116,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(348, 135);
+            this.label7.Location = new System.Drawing.Point(334, 129);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 16);
             this.label7.TabIndex = 47;
@@ -139,23 +124,23 @@
             // 
             // txtPosition
             // 
-            this.txtPosition.Location = new System.Drawing.Point(452, 177);
+            this.txtPosition.Location = new System.Drawing.Point(430, 162);
             this.txtPosition.Multiline = true;
             this.txtPosition.Name = "txtPosition";
-            this.txtPosition.Size = new System.Drawing.Size(201, 30);
+            this.txtPosition.Size = new System.Drawing.Size(161, 30);
             this.txtPosition.TabIndex = 46;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(452, 121);
+            this.textBox1.Location = new System.Drawing.Point(433, 115);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 30);
+            this.textBox1.Size = new System.Drawing.Size(158, 30);
             this.textBox1.TabIndex = 45;
             // 
             // txtUserID
             // 
-            this.txtUserID.Location = new System.Drawing.Point(142, 207);
+            this.txtUserID.Location = new System.Drawing.Point(116, 197);
             this.txtUserID.Multiline = true;
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Size = new System.Drawing.Size(168, 27);
@@ -163,17 +148,17 @@
             // 
             // txtPhoneNo
             // 
-            this.txtPhoneNo.Location = new System.Drawing.Point(452, 59);
+            this.txtPhoneNo.Location = new System.Drawing.Point(430, 79);
             this.txtPhoneNo.Multiline = true;
             this.txtPhoneNo.Name = "txtPhoneNo";
-            this.txtPhoneNo.Size = new System.Drawing.Size(201, 30);
+            this.txtPhoneNo.Size = new System.Drawing.Size(161, 30);
             this.txtPhoneNo.TabIndex = 43;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(348, 73);
+            this.label5.Location = new System.Drawing.Point(330, 93);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(94, 16);
             this.label5.TabIndex = 42;
@@ -183,7 +168,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(58, 73);
+            this.label2.Location = new System.Drawing.Point(34, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 16);
             this.label2.TabIndex = 41;
@@ -277,7 +262,7 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(142, 110);
+            this.txtAddress.Location = new System.Drawing.Point(116, 111);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(168, 27);
@@ -285,7 +270,7 @@
             // 
             // txtSalary
             // 
-            this.txtSalary.Location = new System.Drawing.Point(142, 151);
+            this.txtSalary.Location = new System.Drawing.Point(116, 151);
             this.txtSalary.Multiline = true;
             this.txtSalary.Name = "txtSalary";
             this.txtSalary.Size = new System.Drawing.Size(168, 27);
@@ -295,7 +280,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(58, 208);
+            this.label6.Location = new System.Drawing.Point(34, 208);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 16);
             this.label6.TabIndex = 34;
@@ -305,7 +290,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(58, 162);
+            this.label4.Location = new System.Drawing.Point(34, 162);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 16);
             this.label4.TabIndex = 33;
@@ -315,7 +300,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(58, 121);
+            this.label3.Location = new System.Drawing.Point(34, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 16);
             this.label3.TabIndex = 32;
@@ -323,7 +308,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(142, 67);
+            this.txtName.Location = new System.Drawing.Point(116, 67);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(168, 29);
@@ -345,9 +330,9 @@
             this.dvgStaff.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dvgStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgStaff.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dvgStaff.Location = new System.Drawing.Point(0, 446);
+            this.dvgStaff.Location = new System.Drawing.Point(0, 433);
             this.dvgStaff.Name = "dvgStaff";
-            this.dvgStaff.Size = new System.Drawing.Size(665, 150);
+            this.dvgStaff.Size = new System.Drawing.Size(606, 150);
             this.dvgStaff.TabIndex = 29;
             this.dvgStaff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgStaff_CellContentClick);
             // 
@@ -355,7 +340,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 596);
+            this.ClientSize = new System.Drawing.Size(606, 583);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StaffManege";
@@ -372,7 +357,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnlogout;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;

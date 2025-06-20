@@ -180,5 +180,10 @@ namespace UnicomTicManagementSystem.View
         {
 
         }
+
+        private void ExamForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
