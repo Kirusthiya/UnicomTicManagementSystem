@@ -225,6 +225,55 @@ namespace UnicomTicManagementSystem.Controller
 
             return marks;
         }
+        public async Task<List<Mark>> GetMarksByLecturerIDAsync(string lecturerId)
+        {
+            var marks = new List<Mark>();
+            try
+            {
+                using (var conn = DatabaseManager.GetConnection())
+                {
+                    string query = @"
+                        SELECT m.MarkID, m.UserID, u.Name AS StudentName, 
+                               m.ExamID, e.ExamName, m.SubjectID, s.SubjectName, m.Score
+                        FROM Marks m
+                        JOIN Users u ON m.UserID = u.UserID
+                        JOIN Exams e ON m.ExamID = e.ExamID
+                        JOIN Subjects s ON m.SubjectID = s.SubjectID
+                        JOIN LecturerSubjects ls ON s.SubjectID = ls.SubjectID
+                        WHERE ls.UserID = @LecturerID"
+                    ;
+
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@LecturerID", lecturerId);
+
+                        using (var reader = await cmd.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                marks.Add(new Mark
+                                {
+                                    MarkID = Convert.ToInt32(reader["MarkID"]),
+                                    UserID = reader["UserID"].ToString(),
+                                    StudentName = reader["StudentName"].ToString(),
+                                    ExamID = Convert.ToInt32(reader["ExamID"]),
+                                    ExamName = reader["ExamName"].ToString(),
+                                    SubjectID = Convert.ToInt32(reader["SubjectID"]),
+                                    SubjectName = reader["SubjectName"].ToString(),
+                                    Score = Convert.ToInt32(reader["Score"])
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return marks;
+        }
 
 
     }

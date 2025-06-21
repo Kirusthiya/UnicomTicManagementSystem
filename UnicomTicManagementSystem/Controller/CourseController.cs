@@ -33,7 +33,7 @@ namespace UnicomTicManagementSystem.Controller
                     return false;
                 }
             }
-
+         //update course============================
             public async Task<bool> UpdateCourseAsync(Course course)
             {
                 try
@@ -56,7 +56,7 @@ namespace UnicomTicManagementSystem.Controller
                     return false;
                 }
             }
-
+        //delete course==========================
             public async Task<bool> DeleteCourseAsync(int courseId)
             {
                 try

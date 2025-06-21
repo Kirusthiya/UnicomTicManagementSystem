@@ -12,6 +12,7 @@ namespace UnicomTicManagementSystem.Controller
 {
     public class UserController
     {
+        //create user id==================================
         public string GenerateUserID(string role)
         {
             string prefix;
@@ -39,18 +40,19 @@ namespace UnicomTicManagementSystem.Controller
             return prefix + number;
         }
 
+       // create new user ==================================================
         public async Task<bool> CreateUserAsync(User user, string confirmPassword)
         {
             try
-            {
+            { 
                 if (!user.UserName.EndsWith("@gmail.com"))
                 {
                     user.UserName += "@gmail.com";
                 }
-
-                if (!user.UserName.EndsWith("@gmail.com") || user.UserName.Contains(" "))
+               if (!user.UserName.EndsWith("@gmail.com") || user.UserName.Contains(" "))
                     throw new Exception("Invalid email format. Must be a valid Gmail address.");
 
+               // Password Validation========================================
                 if (string.IsNullOrWhiteSpace(user.Password) || user.Password.Length < 8)
                     throw new Exception("Password must be at least 8 characters long.");
 
@@ -59,7 +61,7 @@ namespace UnicomTicManagementSystem.Controller
 
                 user.UserID = GenerateUserID(user.Role);
 
-              
+               //douplicate usename check =========================
                 using (var connCheck = DatabaseManager.GetConnection())
                 {
                     string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
@@ -72,7 +74,7 @@ namespace UnicomTicManagementSystem.Controller
                     }
                 }
 
-               
+               //add user in datebase==================================
                 using (var connInsert = DatabaseManager.GetConnection())
                 {
                     string insertQuery = "INSERT INTO Users (UserID, Username, Password, Role) VALUES (@UserID, @Username, @Password, @Role)";
@@ -95,6 +97,7 @@ namespace UnicomTicManagementSystem.Controller
             }
         }
 
+        //user return =============================================
         public async Task<List<User>> GetAllUsersAsync()
         {
             var userList = new List<User>();
@@ -127,6 +130,7 @@ namespace UnicomTicManagementSystem.Controller
 
             return userList;
         }
+        //filter student only================================================
         public async Task<List<User>> GetAllStudentsAsync()
         {
             var allUsers = await GetAllUsersAsync();

@@ -199,6 +199,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UserLoginCreate";
             this.Text = "UserLoginCreate";
+            this.Load += new System.EventHandler(this.UserLoginCreate_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

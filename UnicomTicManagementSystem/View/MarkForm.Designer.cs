@@ -167,6 +167,7 @@
             this.cmbExam.Name = "cmbExam";
             this.cmbExam.Size = new System.Drawing.Size(121, 21);
             this.cmbExam.TabIndex = 39;
+            this.cmbExam.SelectedIndexChanged += new System.EventHandler(this.cmbExam_SelectedIndexChanged);
             // 
             // btnAdd
             // 

@@ -78,10 +78,17 @@ namespace UnicomTicManagementSystem.View
         }
         private void btnMark_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("btnMark clicked");
-            LoadForm(new MarkForm());
-            MessageBox.Show("MarkForm loaded");
+            try
+            {
+                LoadForm(new MarkForm()); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading Mark Form: " + ex.Message);
+            }
         }
+
+        
         private async void btnTimetable_Click(object sender, EventArgs e)
         {
             var timetableList = await timetableController.GetAllTimetablesAsync();

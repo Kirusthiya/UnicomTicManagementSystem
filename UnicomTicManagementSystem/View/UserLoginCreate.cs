@@ -22,44 +22,6 @@ namespace UnicomTicManagementSystem.View
             cmbRole.Items.AddRange(new string[] { "Admin", "Staff", "Lecturer", "Student" });
             cmbRole.SelectedIndex = 0;
         }
-
-
-        public string GenerateUserID(string role)
-        {
-            string prefix;
-            switch (role)
-            {
-                case "Admin":
-                    prefix = "A";
-                    break;
-                case "Student":
-                    prefix = "S";
-                    break;
-                case "Staff":
-                    prefix = "Sf";
-                    break;
-                case "Lecturer":
-                    prefix = "L";
-                    break;
-                default:
-                    prefix = "U";
-                    break;
-            }
-
-            Random rand = new Random();
-            int number = rand.Next(100000, 999999);
-            return prefix + number;
-        }
-
-        private void UserLoginCreate_Load(object sender, EventArgs e)
-        {
-            txtUsername.Text = "Email address";
-            txtPassword.Text = "Password";
-            txtConfirmpassword.Text = "Confirm password";
-
-
-        }
-
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -140,6 +102,7 @@ namespace UnicomTicManagementSystem.View
             }
         }
 
+        //create user==================================
         private async void btnCreate_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
@@ -147,8 +110,8 @@ namespace UnicomTicManagementSystem.View
             string confirmPassword = txtConfirmpassword.Text.Trim();
             string role = cmbRole.SelectedItem?.ToString();
 
-            // Input validations
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(role))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) ||
+                string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(role))
             {
                 MessageBox.Show("All fields are required.");
                 return;
@@ -166,7 +129,6 @@ namespace UnicomTicManagementSystem.View
                 return;
             }
 
-            // Ensure email ends with @gmail.com
             if (!Regex.IsMatch(username, @"^[^@\s]+@gmail\.com$"))
             {
                 if (!username.Contains("@"))
@@ -178,11 +140,9 @@ namespace UnicomTicManagementSystem.View
                 }
             }
 
-            // Generate user ID
-            string userId = GenerateUserID(role);
+            string userId = userController.GenerateUserID(role);
             lblUserID.Text = $"Generated ID: {userId}";
 
-            // Create user object
             var user = new User
             {
                 UserID = userId,
@@ -202,6 +162,7 @@ namespace UnicomTicManagementSystem.View
                 MessageBox.Show("Failed to create user.");
             }
         }
+
         private void ClearForm()
         {
             txtUsername.Clear();
@@ -209,7 +170,13 @@ namespace UnicomTicManagementSystem.View
             txtConfirmpassword.Clear();
             cmbRole.SelectedIndex = 0;
         }
-      
+
+        private void UserLoginCreate_Load_1(object sender, EventArgs e)
+        {
+            txtUsername.Text = "Email address";
+            txtPassword.Text = "Password";
+            txtConfirmpassword.Text = "Confirm password";
+        }
     }
 }
        

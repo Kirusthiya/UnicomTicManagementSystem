@@ -98,9 +98,9 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(165, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 27);
+            this.label2.Size = new System.Drawing.Size(122, 27);
             this.label2.TabIndex = 22;
-            this.label2.Text = "Login Form";
+            this.label2.Text = "Unicom Tic";
             // 
             // ForgotPanel
             // 
@@ -185,7 +185,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 40);
             this.btnLogin.TabIndex = 20;
-            this.btnLogin.Text = "Login";
+            this.btnLogin.Text = "Sign in";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click_1);
             // 

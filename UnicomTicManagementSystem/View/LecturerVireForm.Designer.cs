@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.LecturePanel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnTimetable = new System.Windows.Forms.Button();
             this.btnMark = new System.Windows.Forms.Button();
             this.btnview = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.LecturePanel = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.LecturePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -49,15 +49,79 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btnTimetable);
-            this.panel1.Controls.Add(this.btnMark);
-            this.panel1.Controls.Add(this.btnview);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.btnMark);
+            this.panel1.Controls.Add(this.btnTimetable);
+            this.panel1.Controls.Add(this.btnview);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(258, 632);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(59, 367);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 38);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Logout";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnTimetable
+            // 
+            this.btnTimetable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnTimetable.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnTimetable.FlatAppearance.BorderSize = 0;
+            this.btnTimetable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTimetable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimetable.ForeColor = System.Drawing.Color.White;
+            this.btnTimetable.Location = new System.Drawing.Point(59, 284);
+            this.btnTimetable.Name = "btnTimetable";
+            this.btnTimetable.Size = new System.Drawing.Size(106, 38);
+            this.btnTimetable.TabIndex = 11;
+            this.btnTimetable.Text = "Timetable";
+            this.btnTimetable.UseVisualStyleBackColor = false;
+            this.btnTimetable.Click += new System.EventHandler(this.btnTimetable_Click);
+            // 
+            // btnMark
+            // 
+            this.btnMark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnMark.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnMark.FlatAppearance.BorderSize = 0;
+            this.btnMark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMark.ForeColor = System.Drawing.Color.White;
+            this.btnMark.Location = new System.Drawing.Point(59, 141);
+            this.btnMark.Name = "btnMark";
+            this.btnMark.Size = new System.Drawing.Size(106, 38);
+            this.btnMark.TabIndex = 10;
+            this.btnMark.Text = "Add mark";
+            this.btnMark.UseVisualStyleBackColor = false;
+            this.btnMark.Click += new System.EventHandler(this.btnMark_Click);
+            // 
+            // btnview
+            // 
+            this.btnview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnview.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnview.FlatAppearance.BorderSize = 0;
+            this.btnview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnview.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnview.ForeColor = System.Drawing.Color.White;
+            this.btnview.Location = new System.Drawing.Point(59, 209);
+            this.btnview.Name = "btnview";
+            this.btnview.Size = new System.Drawing.Size(106, 38);
+            this.btnview.TabIndex = 9;
+            this.btnview.Text = "View details";
+            this.btnview.UseVisualStyleBackColor = false;
+            this.btnview.Click += new System.EventHandler(this.btnview_Click);
             // 
             // panel2
             // 
@@ -87,61 +151,17 @@
             this.LecturePanel.Size = new System.Drawing.Size(633, 583);
             this.LecturePanel.TabIndex = 2;
             // 
-            // button1
+            // dataGridView1
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(65, 361);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 38);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Logout";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnTimetable
-            // 
-            this.btnTimetable.BackColor = System.Drawing.Color.White;
-            this.btnTimetable.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnTimetable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimetable.ForeColor = System.Drawing.Color.Black;
-            this.btnTimetable.Location = new System.Drawing.Point(65, 286);
-            this.btnTimetable.Name = "btnTimetable";
-            this.btnTimetable.Size = new System.Drawing.Size(106, 38);
-            this.btnTimetable.TabIndex = 11;
-            this.btnTimetable.Text = "Timetable";
-            this.btnTimetable.UseVisualStyleBackColor = false;
-            this.btnTimetable.Click += new System.EventHandler(this.btnTimetable_Click);
-            // 
-            // btnMark
-            // 
-            this.btnMark.BackColor = System.Drawing.Color.White;
-            this.btnMark.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMark.ForeColor = System.Drawing.Color.Black;
-            this.btnMark.Location = new System.Drawing.Point(65, 133);
-            this.btnMark.Name = "btnMark";
-            this.btnMark.Size = new System.Drawing.Size(106, 38);
-            this.btnMark.TabIndex = 10;
-            this.btnMark.Text = "Add mark";
-            this.btnMark.UseVisualStyleBackColor = false;
-            this.btnMark.Click += new System.EventHandler(this.btnMark_Click);
-            // 
-            // btnview
-            // 
-            this.btnview.BackColor = System.Drawing.Color.White;
-            this.btnview.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnview.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnview.ForeColor = System.Drawing.Color.Black;
-            this.btnview.Location = new System.Drawing.Point(65, 210);
-            this.btnview.Name = "btnview";
-            this.btnview.Size = new System.Drawing.Size(106, 38);
-            this.btnview.TabIndex = 9;
-            this.btnview.Text = "View details";
-            this.btnview.UseVisualStyleBackColor = false;
-            this.btnview.Click += new System.EventHandler(this.btnview_Click);
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridView1.Location = new System.Drawing.Point(0, 433);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(633, 150);
+            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txtUserId
             // 
@@ -170,18 +190,6 @@
             this.label1.Size = new System.Drawing.Size(156, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Lecturer View";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView1.Location = new System.Drawing.Point(0, 433);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(633, 150);
-            this.dataGridView1.TabIndex = 6;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // LecturerVireForm
             // 

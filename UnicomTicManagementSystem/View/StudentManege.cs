@@ -76,7 +76,7 @@ namespace UnicomTicManagementSystem.View
             }
             bool IsValidPhone(string phone)
             {
-                return System.Text.RegularExpressions.Regex.IsMatch(phone, @"^07\d{8}$");
+               return phone.StartsWith("07") && phone.Length == 10 && phone.All(char.IsDigit);
             }
 
             

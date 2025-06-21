@@ -22,6 +22,7 @@ namespace UnicomTicManagementSystem.View
         public MarkForm()
         {
             InitializeComponent();
+            
         }
         private async Task LoadStudentsAsync()
         {
@@ -146,6 +147,11 @@ namespace UnicomTicManagementSystem.View
             await LoadExamsAsync();
             await LoadSubjectsAsync();
             await LoadMarksAsync();
+        }
+
+        private void cmbExam_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

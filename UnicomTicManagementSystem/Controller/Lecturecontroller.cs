@@ -37,8 +37,9 @@ namespace UnicomTicManagementSystem.Controller
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("Database error in AddLecturerAsync:\n" + ex.Message);
+                Console.WriteLine("Database error in AddLecturerAsync " + ex.Message);
                 return false;
+              
             }
         }
 
@@ -135,7 +136,7 @@ namespace UnicomTicManagementSystem.Controller
             return null;
         }
 
-        // ✅ Search by Name (partial match)
+        
         public async Task<List<Lecture>> GetLecturerByNameAsync(string name)
         {
             var lecturers = new List<Lecture>();
