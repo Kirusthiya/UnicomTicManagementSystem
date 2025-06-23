@@ -41,15 +41,13 @@ namespace UnicomTicManagementSystem.View
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm("Admin");
-            loginForm.TopLevel = false;
-            loginForm.FormBorderStyle = FormBorderStyle.None;
-            loginForm.Dock = DockStyle.Fill;
+            DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            this.Controls.Clear();
-            this.Controls.Add(loginForm);
-            loginForm.Show();
-           
+            if (result == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
+
         }
 
         private void btnUser_Click(object sender, EventArgs e)

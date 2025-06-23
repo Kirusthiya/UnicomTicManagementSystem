@@ -104,12 +104,14 @@ namespace UnicomTicManagementSystem.View
         private void btnLogout_Click_1(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
             if (result == DialogResult.Yes)
             {
-                LoadForm(new LoginForm("Student"));
-
+                Application.Restart();
             }
         }
+
+        
 
         private void textBox1_Enter(object sender, EventArgs e)
         {

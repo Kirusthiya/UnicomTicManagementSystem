@@ -116,10 +116,13 @@ namespace UnicomTicManagementSystem.View
         }
         //Logout=================
         private void button1_Click(object sender, EventArgs e)
-        { 
-            LoginForm loginForm = new LoginForm("Lecturer");
-            loginForm.Show();
-            this.Close();
+        {
+            DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
         }
     }
 }

@@ -367,10 +367,12 @@ namespace UnicomTicManagementSystem.View
         //Logout=======================
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var firstForm = new FirstForm();
-            firstForm.FormClosed += (s, args) => this.Close();  
-            firstForm.ShowDialog();
+            DialogResult result = MessageBox.Show("Are you sure want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
         }
 
         private void LoginForm_Load_1(object sender, EventArgs e)
