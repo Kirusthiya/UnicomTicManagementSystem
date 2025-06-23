@@ -143,10 +143,17 @@ namespace UnicomTicManagementSystem.View
         }
         private async void MarkForm_Load(object sender, EventArgs e)
         {
-            await LoadStudentsAsync();
-            await LoadExamsAsync();
-            await LoadSubjectsAsync();
-            await LoadMarksAsync();
+            try
+            {
+                await LoadStudentsAsync();
+                await LoadExamsAsync();
+                await LoadSubjectsAsync();
+                await LoadMarksAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading data: " + ex.Message);
+            }
         }
 
         private void cmbExam_SelectedIndexChanged(object sender, EventArgs e)

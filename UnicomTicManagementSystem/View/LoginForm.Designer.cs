@@ -59,9 +59,10 @@
             this.panel2.Controls.Add(this.txtPassword);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(286, -4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(286, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(437, 628);
+            this.panel2.Size = new System.Drawing.Size(437, 624);
             this.panel2.TabIndex = 16;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -195,9 +196,11 @@
             this.txtPassword.Location = new System.Drawing.Point(49, 191);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.ShortcutsEnabled = false;
             this.txtPassword.Size = new System.Drawing.Size(338, 43);
             this.txtPassword.TabIndex = 19;
             this.txtPassword.Text = "Password";
+            this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
             this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
@@ -241,6 +244,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load_1);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ForgotPanel.ResumeLayout(false);

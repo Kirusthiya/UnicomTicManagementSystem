@@ -16,21 +16,7 @@ namespace UnicomTicManagementSystem.View
     {
         private readonly LoginController loginController = new LoginController();
         private string expectedRole = " ";
-        public void LoadForm(Form form)
-        {
-            foreach (Control ctrl in panel1.Controls)
-            {
-                ctrl.Dispose();
-            }
-            panel1.Controls.Clear();
-
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-
-            panel1.Controls.Add(form);
-            form.Show();
-        }
+      
         public void ClearForm()
         {
             ForgotPanel.Visible = false;
@@ -102,8 +88,6 @@ namespace UnicomTicManagementSystem.View
        
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            txtUserName.Text = "Enter username";
-            txtPassword.Text = "Password";
         }
 
       
@@ -124,7 +108,7 @@ namespace UnicomTicManagementSystem.View
             {
                 txtPassword.Text = "Password";
                 txtPassword.ForeColor = Color.Gray;
-                txtPassword.UseSystemPasswordChar = false; // show text
+                txtPassword.UseSystemPasswordChar = false; 
             }
         }
 
@@ -352,13 +336,21 @@ namespace UnicomTicManagementSystem.View
         {
 
         }
-
+        //Logout=======================
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
             var firstForm = new FirstForm();
             firstForm.FormClosed += (s, args) => this.Close();  
             firstForm.ShowDialog();
+        }
+
+        private void LoginForm_Load_1(object sender, EventArgs e)
+        {
+
+            txtUserName.Text = "Enter username";
+            txtPassword.Text = "Password";
+            
         }
 
     }

@@ -22,9 +22,10 @@ namespace UnicomTicManagementSystem.View
         {
             InitializeComponent();
             lecturerUserID = userId;
-           txtUserId.Text = lecturerUserID;
+            txtUserId.Text = lecturerUserID;
             txtUserId.ReadOnly = true;
         }
+
         public void LoadForm(Form form)
         {
             try
@@ -48,7 +49,6 @@ namespace UnicomTicManagementSystem.View
                 MessageBox.Show("Error loading form: " + ex.Message);
             }
         }
-
         private async void btnview_Click(object sender, EventArgs e)
         {
             var allLecturers = await lectureController.GetAllLecturersAsync();
@@ -77,16 +77,10 @@ namespace UnicomTicManagementSystem.View
             }
         }
         private void btnMark_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                LoadForm(new MarkForm()); 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading Mark Form: " + ex.Message);
-            }
+        { 
+            LoadForm(new MarkForm());
         }
+        
 
         
         private async void btnTimetable_Click(object sender, EventArgs e)
@@ -120,10 +114,10 @@ namespace UnicomTicManagementSystem.View
                 }
             }
         }
-
+        //Logout=================
         private void button1_Click(object sender, EventArgs e)
-        {
-            var loginForm = new LoginForm("Lecturer");
+        { 
+            LoginForm loginForm = new LoginForm("Lecturer");
             loginForm.Show();
             this.Close();
         }

@@ -17,6 +17,7 @@ namespace UnicomTicManagementSystem.View
         public StaffViewForm()
         {
             InitializeComponent();
+            LoadForm(new MainDashboad());
         }
         public void LoadForm(Form form)
         {

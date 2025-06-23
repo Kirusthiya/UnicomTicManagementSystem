@@ -35,34 +35,24 @@ namespace UnicomTicManagementSystem.View
             if (rdoFemale.Checked) return "Female";
             return "Other";
         }
-
         private bool IsValidPhoneNumber(string phone)
         {
-            if(phone.Length != 10)
-            {
-                MessageBox.Show("Phone number must be 10 digits long.");
+            if (string.IsNullOrWhiteSpace(phone))
                 return false;
-            }
 
-            if (!phone.StartsWith("07"))
-            {
-                MessageBox.Show("Phone number must start with 07.");
-                return false;
-            }
-
-            foreach (char c in phone)
-            {
-                if (!char.IsDigit(c))
-                {
-                    MessageBox.Show("Phone number must contain only digits.");
-                    return false;
-                }
-            }
-
-            return true; 
-
+            return phone.StartsWith("07") && phone.Length == 10 && phone.All(char.IsDigit);
         }
 
+        private bool ValidateInput()
+        {
+            if (!IsValidPhoneNumber(txtPhoneNo.Text))
+            {
+                MessageBox.Show("Phone number must start with 07 and contain exactly 10 digits.");
+                return false;
+            }
+
+            return true;
+        }
         private void ClearFields()
         {
             txtUserID.Clear();
@@ -80,7 +70,6 @@ namespace UnicomTicManagementSystem.View
         }
         public void LoadForm(Form form)
         {
-            // Remove any existing control (and dispose it properly)
             foreach (Control ctrl in panel1.Controls)
             {
                 ctrl.Dispose();
@@ -123,12 +112,8 @@ namespace UnicomTicManagementSystem.View
 
         private async void btnUpdate_Click_1(object sender, EventArgs e)
         {
-            if (!IsValidPhoneNumber(txtPhoneNo.Text))
-            {
-                MessageBox.Show("Phone number must start with 07 and be 10 digits.");
+             if (!ValidateInput()) 
                 return;
-            }
-
             var staff = new Staff
             {
                 UserID = txtUserID.Text,
@@ -153,7 +138,7 @@ namespace UnicomTicManagementSystem.View
                 var row = dvgStaff.CurrentRow;
 
                 txtUserID.Text = row.Cells["UserID"].Value.ToString();
-                txtName.Text = row.Cells["StaffName"].Value.ToString();
+                txtName.Text = row.Cells["Name"].Value.ToString();
                 txtAddress.Text = row.Cells["Address"].Value.ToString();
                 txtPosition.Text = row.Cells["Position"].Value.ToString();
                 txtSalary.Text = row.Cells["Salary"].Value.ToString();
@@ -169,11 +154,8 @@ namespace UnicomTicManagementSystem.View
 
         private async void btnAdd_Click_1(object sender, EventArgs e)
         {
-            if (!IsValidPhoneNumber(txtPhoneNo.Text))
-            {
-                MessageBox.Show("Phone number must start with 07 and be 10 digits.");
+            if (!ValidateInput()) 
                 return;
-            }
 
             var staff = new Staff
             {
@@ -194,8 +176,7 @@ namespace UnicomTicManagementSystem.View
 
         private async void btnSearch_Click_1(object sender, EventArgs e)
         {
-
-            string name = txtName.Text;
+            string name = txtSearch.Text;
             var result = await staffController.SearchStaffByNameAsync(name);
             dvgStaff.DataSource = result;
         }

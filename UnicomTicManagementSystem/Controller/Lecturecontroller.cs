@@ -21,7 +21,8 @@ namespace UnicomTicManagementSystem.Controller
                 using (var conn = DatabaseManager.GetConnection())
                 {
                     string query = @"INSERT INTO Lecturers (UserID, Name, Address, Gender, Salary, PhoneNumber)
-                             VALUES (@UserID, @Name, @Address, @Gender, @Salary, @PhoneNumber)";
+                             VALUES (@UserID, @Name, @Address, @Gender, @Salary, @PhoneNumber)"
+                    ;
                     using (var cmd = new SQLiteCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@UserID", lecturer.UserID);
@@ -49,9 +50,11 @@ namespace UnicomTicManagementSystem.Controller
         {
             using (var conn = DatabaseManager.GetConnection())
             {
-                string query = @"UPDATE Lecturers SET Name = @Name, Address = @Address, 
-                                 Gender = @Gender, Salary = @Salary, PhoneNumber = @PhoneNumber 
-                                 WHERE UserID = @UserID";
+                string query = @"
+                   UPDATE Lecturers SET Name = @Name, Address = @Address, 
+                   Gender = @Gender, Salary = @Salary, PhoneNumber = @PhoneNumber 
+                    WHERE UserID = @UserID"
+                ;
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@UserID", lecturer.UserID);
@@ -107,34 +110,34 @@ namespace UnicomTicManagementSystem.Controller
             return lecturers;
         }
 
-        public async Task<Lecture> GetLecturerByUserIdAsync(string userId)
-        {
-            using (var conn = DatabaseManager.GetConnection())
-            {
-                string query = "SELECT * FROM Lecturers WHERE UserID = @UserID";
-                using (var cmd = new SQLiteCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@UserID", userId);
-                    using (var reader = await cmd.ExecuteReaderAsync())
-                    {
-                        if (await reader.ReadAsync())
-                        {
-                            return new Lecture
-                            {
-                                UserID = reader["UserID"].ToString(),
-                                Name = reader["Name"].ToString(),
-                                Address = reader["Address"].ToString(),
-                                Gender = reader["Gender"].ToString(),
-                                Salary = Convert.ToDecimal(reader["Salary"]),
-                                PhoneNumber = reader["PhoneNumber"].ToString()
-                            };
-                        }
-                    }
-                }
-            }
+        //public async Task<Lecture> GetLecturerByUserIdAsync(string userId)
+        //{
+        //    using (var conn = DatabaseManager.GetConnection())
+        //    {
+        //        string query = "SELECT * FROM Lecturers WHERE UserID = @UserID";
+        //        using (var cmd = new SQLiteCommand(query, conn))
+        //        {
+        //            cmd.Parameters.AddWithValue("@UserID", userId);
+        //            using (var reader = await cmd.ExecuteReaderAsync())
+        //            {
+        //                if (await reader.ReadAsync())
+        //                {
+        //                    return new Lecture
+        //                    {
+        //                        UserID = reader["UserID"].ToString(),
+        //                        Name = reader["Name"].ToString(),
+        //                        Address = reader["Address"].ToString(),
+        //                        Gender = reader["Gender"].ToString(),
+        //                        Salary = Convert.ToDecimal(reader["Salary"]),
+        //                        PhoneNumber = reader["PhoneNumber"].ToString()
+        //                    };
+        //                }
+        //            }
+        //        }
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
         
         public async Task<List<Lecture>> GetLecturerByNameAsync(string name)

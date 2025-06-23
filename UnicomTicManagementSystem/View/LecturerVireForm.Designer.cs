@@ -94,7 +94,7 @@
             // btnMark
             // 
             this.btnMark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnMark.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+           // this.btnMark.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnMark.FlatAppearance.BorderSize = 0;
             this.btnMark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

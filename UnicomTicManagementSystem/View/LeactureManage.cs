@@ -80,13 +80,19 @@ namespace UnicomTicManagementSystem.View
                 return false;
             }
 
-            if (!System.Text.RegularExpressions.Regex.IsMatch(txtPhoneNo.Text, @"^07\d{8}$"))
+            bool IsValidPhone(string phone)
             {
-                MessageBox.Show("Phone number must start with 07 and be 10 digits.");
-                return false;
+                return phone.StartsWith("07") && phone.Length == 10 && phone.All(char.IsDigit);
             }
 
+
+            if (!IsValidPhone(txtPhoneNo.Text))
+            {
+                MessageBox.Show("Phone number must start with 07 and contain exactly 10 digits.");
+                return false;
+            }
             return true;
+
         }
 
 
@@ -193,11 +199,6 @@ namespace UnicomTicManagementSystem.View
         {
            
         }
-        
-      
-
-    
-
         private async void button1_Click(object sender, EventArgs e)
         {
             string name = txtsearch.Text.Trim();

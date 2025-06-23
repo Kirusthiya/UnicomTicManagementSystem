@@ -51,7 +51,7 @@ namespace UnicomTicManagementSystem.Controller
                 using (var conn = DatabaseManager.GetConnection())
                 {
                     string query = @"UPDATE Staff
-                                     SET StaffName = @Name, Address = @Address, Gender = @Gender,
+                                     SET Name = @Name, Address = @Address, Gender = @Gender,
                                          Position = @Position, Salary = @Salary, PhoneNumber = @PhoneNumber
                                      WHERE UserID = @UserID";
 

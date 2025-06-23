@@ -33,7 +33,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPosition = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.txtUserID = new System.Windows.Forms.TextBox();
             this.txtPhoneNo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtPosition);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.txtUserID);
             this.panel1.Controls.Add(this.txtPhoneNo);
             this.panel1.Controls.Add(this.label5);
@@ -131,13 +131,13 @@
             this.txtPosition.Size = new System.Drawing.Size(161, 30);
             this.txtPosition.TabIndex = 46;
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(433, 115);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 30);
-            this.textBox1.TabIndex = 45;
+            this.txtSearch.Location = new System.Drawing.Point(433, 115);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(158, 30);
+            this.txtSearch.TabIndex = 45;
             // 
             // txtUserID
             // 
@@ -362,7 +362,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPosition;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.TextBox txtUserID;
         private System.Windows.Forms.TextBox txtPhoneNo;
         private System.Windows.Forms.Label label5;
