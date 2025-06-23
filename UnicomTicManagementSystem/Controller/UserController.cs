@@ -40,28 +40,44 @@ namespace UnicomTicManagementSystem.Controller
             return prefix + number;
         }
 
-       // create new user ==================================================
+        // create new user ==================================================
         public async Task<bool> CreateUserAsync(User user, string confirmPassword)
         {
             try
-            { 
-                if (!user.UserName.EndsWith("@gmail.com"))
+            {
+                if (!user.UserName.Contains("@"))
                 {
-                    user.UserName += "@gmail.com";
-                }
-               if (!user.UserName.EndsWith("@gmail.com") || user.UserName.Contains(" "))
-                    throw new Exception("Invalid email format. Must be a valid Gmail address.");
+                    DialogResult result = MessageBox.Show(
+                        "Username should end with @gmail.com. Do you want to add it automatically?",
+                        "Email Format",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
 
-               // Password Validation========================================
+                    if (result == DialogResult.Yes)
+                    {
+                        user.UserName += "@gmail.com";
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                if (!user.UserName.EndsWith("@gmail.com") || user.UserName.Contains(" "))
+                {
+                    throw new Exception("Invalid email format. Must be a valid Gmail address without spaces.");
+                }
+
+                // Password Validation
                 if (string.IsNullOrWhiteSpace(user.Password) || user.Password.Length < 8)
                     throw new Exception("Password must be at least 8 characters long.");
 
                 if (user.Password != confirmPassword)
                     throw new Exception("Passwords do not match.");
 
+              
                 user.UserID = GenerateUserID(user.Role);
 
-               //douplicate usename check =========================
                 using (var connCheck = DatabaseManager.GetConnection())
                 {
                     string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
@@ -74,7 +90,7 @@ namespace UnicomTicManagementSystem.Controller
                     }
                 }
 
-               //add user in datebase==================================
+                // Insert user into database
                 using (var connInsert = DatabaseManager.GetConnection())
                 {
                     string insertQuery = "INSERT INTO Users (UserID, Username, Password, Role) VALUES (@UserID, @Username, @Password, @Role)";
@@ -96,6 +112,7 @@ namespace UnicomTicManagementSystem.Controller
                 return false;
             }
         }
+
 
         //user return =============================================
         public async Task<List<User>> GetAllUsersAsync()

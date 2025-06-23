@@ -57,12 +57,7 @@ namespace UnicomTicManagementSystem.View
             {
                 txtUsername.Text = "Email address";
             }
-            else if (!text.Contains("@") && text != "Email address")
-            {
-                txtUsername.Text = text + "@gmail.com";
-            }
-
-
+           
         }
 
         private void txtPassword_Enter(object sender, EventArgs e)
@@ -70,6 +65,7 @@ namespace UnicomTicManagementSystem.View
             if (txtPassword.Text == "Password")
             {
                 txtPassword.Text = "";
+                txtPassword.UseSystemPasswordChar = true;
 
             }
         }
@@ -79,7 +75,7 @@ namespace UnicomTicManagementSystem.View
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 txtPassword.Text = "Password";
-
+                txtPassword.UseSystemPasswordChar = true;
             }
         }
 
@@ -128,17 +124,32 @@ namespace UnicomTicManagementSystem.View
                 MessageBox.Show("Passwords do not match.");
                 return;
             }
-
-            if (!Regex.IsMatch(username, @"^[^@\s]+@gmail\.com$"))
+            if (!username.EndsWith("@gmail.com") && username != "Enter username")
             {
                 if (!username.Contains("@"))
-                    username += "@gmail.com";
+                {
+                    DialogResult result = MessageBox.Show("Username should end with @gmail.com. Do you want to add it automatically?", "Email Format", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        username += "@gmail.com";
+                        txtUsername.Text = username;
+                        
+                    }
+                    else
+                    {
+                        txtUsername.Focus();
+                    }
+
+                    return;
+                }
                 else
                 {
                     MessageBox.Show("Username must be a valid Gmail address.");
                     return;
                 }
             }
+
 
             string userId = userController.GenerateUserID(role);
             lblUserID.Text = $"Generated ID: {userId}";

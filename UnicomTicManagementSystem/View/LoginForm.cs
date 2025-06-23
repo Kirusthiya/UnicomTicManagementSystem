@@ -132,7 +132,7 @@ namespace UnicomTicManagementSystem.View
             }
             else if (!text.EndsWith("@gmail.com") && text != "Enter username")
             {
-                txtUserName.Text = text + "@gmail.com";
+               
                 txtUserName.ForeColor = Color.Black;
             }
         }
@@ -147,10 +147,30 @@ namespace UnicomTicManagementSystem.View
                 MessageBox.Show("Please enter your username to reset password.");
                 return;
             }
-
             if (!currentForgotUser.EndsWith("@gmail.com"))
             {
-                currentForgotUser += "@gmail.com";
+                if (!currentForgotUser.Contains("@"))
+                {
+                    DialogResult result = MessageBox.Show(
+                        "Username should end with @gmail.com. Do you want to add it automatically?",
+                        "Email Format",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        currentForgotUser += "@gmail.com";
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Username must be a valid Gmail address.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
 
             ForgotPanel.Visible = true;
@@ -164,6 +184,7 @@ namespace UnicomTicManagementSystem.View
             {
                 txtForgotUsername.Text = "";
                 txtForgotUsername.ForeColor = Color.Black;
+
             }
         }
 
@@ -178,7 +199,6 @@ namespace UnicomTicManagementSystem.View
             }
             else if (!text.EndsWith("@gmail.com") && text != "Username")
             {
-                txtForgotUsername.Text = text + "@gmail.com";
                 txtForgotUsername.ForeColor = Color.Black;
             }
         }
@@ -200,7 +220,7 @@ namespace UnicomTicManagementSystem.View
             {
                 txtForgotPass.Text = "Password";
                 txtForgotPass.ForeColor = Color.Gray;
-                txtForgotPass.UseSystemPasswordChar = false; // show text
+                txtForgotPass.UseSystemPasswordChar = true; // show text
             }
         }
 
@@ -223,7 +243,7 @@ namespace UnicomTicManagementSystem.View
                 txtForcotConPass.UseSystemPasswordChar = false;
             }
         }
-      
+
         private async void btnLogin_Click_1(object sender, EventArgs e)
         {
             string username = txtUserName.Text.Trim();
@@ -236,59 +256,67 @@ namespace UnicomTicManagementSystem.View
                 return;
             }
 
-            if (!username.EndsWith("@gmail.com"))
+            if (!username.EndsWith("@gmail.com") && username != "Enter username")
             {
-                username += "@gmail.com";
-            }
+                DialogResult result = MessageBox.Show("Username should end with @gmail.com. Do you want to add it automatically?", "Email Format", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            var user = await loginController.AuthenticateUserAsync(username, password);
-            if (user != null)
-            {
-              
-                if (user.Role != expectedRole)
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show($"Access denied! You are not authorized to login as {expectedRole}.");
-                    return;
+                    txtUserName.Text = username + "@gmail.com";
+                    txtUserName.ForeColor = Color.Black;
                 }
-              
-                MessageBox.Show("Login successful!");
-            
-                if (user.Role == "Admin")
+                else
                 {
-                    this.Hide();
-                    var adminmenuform=new AdminMenuForm();
-                    adminmenuform.ShowDialog();
-                    
-                }
-                else if (user.Role == "Student")
-                {
-                    this.Hide();
-                    var studetviewform = new StudentViewForm();
-                    studetviewform.ShowDialog();
-                }
-                else if (user.Role == "Lecturer")
-                {
-                    this.Hide();
-                    var lectureViewform = new LecturerVireForm(user.UserID);
-                    lectureViewform.ShowDialog();
-                    
-                    
-                }
-                else if (user.Role == "Staff")
-                {
-                    this.Hide();
-                    var staffViewform = new StaffViewForm();
-                    staffViewform.ShowDialog();
-                   
+                    txtUserName.Focus();
                 }
             }
-            else
-            {
-                MessageBox.Show("Invalid username or password.");
-            }
+                var user = await loginController.AuthenticateUserAsync(username, password);
+                if (user != null)
+                {
+
+                    if (user.Role != expectedRole)
+                    {
+                        MessageBox.Show($"Access denied! You are not authorized to login as {expectedRole}.");
+                        return;
+                    }
+
+                    MessageBox.Show("Login successful!");
+
+                    if (user.Role == "Admin")
+                    {
+                        this.Hide();
+                        var adminmenuform = new AdminMenuForm();
+                        adminmenuform.ShowDialog();
+
+                    }
+                    else if (user.Role == "Student")
+                    {
+                        this.Hide();
+                        var studetviewform = new StudentViewForm();
+                        studetviewform.ShowDialog();
+                    }
+                    else if (user.Role == "Lecturer")
+                    {
+                        this.Hide();
+                        var lectureViewform = new LecturerVireForm(user.UserID);
+                        lectureViewform.ShowDialog();
+
+
+                    }
+                    else if (user.Role == "Staff")
+                    {
+                        this.Hide();
+                        var staffViewform = new StaffViewForm();
+                        staffViewform.ShowDialog();
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password.");
+                }
         }
         
-
         private async void btnChange_Click_1(object sender, EventArgs e)
         {
             string username = currentForgotUser;
@@ -347,7 +375,6 @@ namespace UnicomTicManagementSystem.View
 
         private void LoginForm_Load_1(object sender, EventArgs e)
         {
-
             txtUserName.Text = "Enter username";
             txtPassword.Text = "Password";
             
