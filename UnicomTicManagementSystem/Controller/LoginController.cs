@@ -93,15 +93,6 @@ namespace UnicomTicManagementSystem.Controller
                 return false;
             }
         }
-        public async Task<bool> IsAnyUSerExitsAsync()
-        {
-            using (var conn = DatabaseManager.GetConnection())
-            {
-                var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT COUNT(*) FROM Users";
-                var result = await cmd.ExecuteScalarAsync();
-                return Convert.ToInt32(result) > 0;
-            }
-        }
+       
     }
 }

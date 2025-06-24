@@ -222,20 +222,16 @@ C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManageme
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.ExamForm.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.FirstForm.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.LeactureManage.resources
-C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.LectureMenuForm.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.LectureSubjectForm.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.LoginForm.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.MainDashboad.resources
-C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.Form1.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.RoomForm.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StaffManege.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StudentViewForm.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StudenSubjectForm.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StudentManege.resources
-C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StaffMenuForm.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.SubjectForm.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.TimetableForm.resources
-C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.UserCreateForm.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.UserLoginCreate.resources
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.csproj.GenerateResource.cache
 C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.csproj.CoreCompileInputs.cache
@@ -374,3 +370,6 @@ C:\Users\admin\Desktop\New folder (4)\UnicomTicManagementSystem\UnicomTicManagem
 C:\Users\admin\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.LecturerVireForm.resources
 C:\Users\admin\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.MarkForm.resources
 C:\Users\admin\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StaffViewForm.resources
+C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.LecturerVireForm.resources
+C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.MarkForm.resources
+C:\Users\UT010777\Desktop\New folder\UnicomTicManagementSystem\UnicomTicManagementSystem\obj\Debug\UnicomTicManagementSystem.View.StaffViewForm.resources
